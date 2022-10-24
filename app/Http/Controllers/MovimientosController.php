@@ -2,19 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Clientes;
-use App\Models\Movimientos;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use App\Models\Movimientos;
+use App\Models\Clientes;
 use Gate;
 
-class ClientesController extends Controller
+class MovimientosController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -22,9 +17,7 @@ class ClientesController extends Controller
      */
     public function index()
     {
-        $clientes = Clientes::all();
-
-        // enviar a la vista
+        $movimientos = Movimientos::all();
         return view('clientes.index', compact('clientes'));
     }
 
@@ -35,8 +28,7 @@ class ClientesController extends Controller
      */
     public function create()
     {
-        // $clientes = new Clientes;
-        return view('clientes.insert');
+        return view('movimientos.insert');
     }
 
     /**
@@ -47,65 +39,59 @@ class ClientesController extends Controller
      */
     public function store(Request $request)
     {
+        $valor = $request->valor;
 
-
-        $nombre = $request->nombre;
-        $telefono = $request->telefono;
-        $direccion = $request->direccion;
-
-        Clientes::create($request->all());
-        return redirect()->route('clientes.index')->with('exito', '¡El registro del crédito se ha creado satisfactoriamente!');
-
+        Movimientos::create($request->all());
+        return redirect()->route('clientes.show')->with('exitoCredito', '¡El crédito se ha Inicializado satisfactoriamente!');
     }
+
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Clientes  $clientes
+     * @param  \App\Models\Movimientos  $movimientos
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Movimientos $movimientos)
     {
-        $clientes = Clientes::findOrFail($id);
-        return view('clientes.show', compact('clientes'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Clientes  $clientes
+     * @param  \App\Models\Movimientos  $movimientos
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Movimientos $movimientos)
     {
-        $clientes = Clientes::findOrFail($id);
-        return view('clientes.edit', compact('clientes'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Clientes  $clientes
+     * @param  \App\Models\Movimientos  $movimientos
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $clientes = Clientes::findOrFail($id);
+        $movimientos = Movimientos::findOrFail($id);
 
-        $clientes->update($request->all());
+        $movimientos->update($request->all());
         return redirect()->route('clientes.index')->with('exito', '¡El registro se ha actualizado satisfactoriamente!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Clientes  $clientes
+     * @param  \App\Models\Movimientos  $movimientos
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $clientes = Clientes::findOrFail($id);
-        $clientes->delete();
+        $movimientos = Movimientos::findOrFail($id);
+        $movimientos->delete();
         return redirect()->route('clientes.index');
     }
 }

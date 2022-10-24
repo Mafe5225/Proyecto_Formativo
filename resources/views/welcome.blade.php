@@ -20,14 +20,12 @@
             <main class="px-3">
                 <h3>Agrega informacion de tus clientes, ingresos y prestamos.</h3>
                 <td id="botones">
-                    <!-- <button style="background-color:#f7c94c;border-color">Registrar nuevo cliente</button> -->
-                <a href="{{ route('clientes.index') }}" class="btn  w-20">Registrar un cliente.</a> 
-                <!-- <a href="#" class="btn w-20">Registrar ganancia.</a> --> 
+                    <a href="{{ route('clientes.index') }}" class="btn  w-20">Registrar un cliente.</a> 
                 </td>
             </main>
         </div>
     </div>
-
+    
     <script src="{{ asset('css/bootstrap/js/bootstrap.bundle.js') }}"></script>
 </body>
 </html>

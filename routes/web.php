@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\MovimientosController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +26,7 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 Route::resource('clientes', ClientesController::class)->middleware('auth');
+Route::resource('movimientos', MovimientosController::class)->middleware('auth');
 
 
 

@@ -11,12 +11,12 @@
             <label for="nombre">Nombre</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Teléfono" minlength="0" maxlength="10"  value="{{ $clientes->telefono }}"  required>
+            <input type="number" class="form-control" id="telefono" name="telefono" placeholder="Teléfono" minlength="0" maxlength="10"  value="{{ $clientes->telefono }}"  required>
             <label for="telefono">Teléfono</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="number" class="form-control" id="deuda" name="deuda" placeholder="Deuda" value="{{ $clientes->deuda}}" required>
-            <label for="deuda">Deuda</label>
+            <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Direccion" value="{{ $clientes->direccion }}" required>
+            <label for="direccion">Direccion</label>
         </div>
 
 

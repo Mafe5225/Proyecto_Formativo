@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClientesTable extends Migration
+class CreateMovimientosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateClientesTable extends Migration
      */
     public function up()
     {
-        Schema::create('clientes', function (Blueprint $table) {
+        Schema::create('movimientos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('telefono');
-            $table->string('direccion');
+            $table->string('fecha');
+            $table->integer('valor');
+            $table->integer('tipoMovimiento');
             $table->timestamps();
             $table->softDeletes();
             
@@ -31,7 +31,6 @@ class CreateClientesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clientes');
-        
+        Schema::dropIfExists('movimientos');
     }
 }

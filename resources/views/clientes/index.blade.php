@@ -3,8 +3,12 @@
 @section('titulo', 'Clientes')
 
 @section('content')
-
-
+    @if ($mensaje = Session::get('exito'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <p>{{ $mensaje }}</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     <div class="mt-3">
         <a href="{{ route('clientes.create') }}" class="btn btn-secondary">
             Registrar nuevo cliente
@@ -16,7 +20,6 @@
                 <tr>
                     <th>Nombre</th>
                     <th>Acciones</th>
-                    <th>Acciones para el credito</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,22 +35,6 @@
                                 <button type="submit" class="btn btn-outline-danger rounded-circle">
                                     <i class="fa-solid fa-trash-can"></i>
                                 </button>
-                            </td>
-                            <td>
-                                
-                                <a href="#" class="btn btn-outline-success justify-content-start me-1 rounded-circle"> <i class="fa-solid fa-dollar-sign"></i></a>
-                                <a href="#" class="btn btn-outline-info justify-content-start me-1 rounded-circle" > <i class="fa-solid fa-eye"></i></a>
-                                <a href="#"  class="btn btn-outline-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
-                                
-                                  
-                                <form action="#" method="post" class="justify-content-start form-delete">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-outline-danger rounded-circle">
-                                        <i class="fa-solid fa-trash-can"></i>
-                                    </button>
-                                    {{-- {{ route('clientes.destroy', $item->id) }} --}}
-                            </td>
                             </form>
                     </tr>
                 @endforeach
