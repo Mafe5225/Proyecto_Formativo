@@ -2,8 +2,10 @@
 
 @section('titulo', 'Detalle del cliente')
 
+<link rel="stylesheet" href="{{ asset('css/main.css') }}">
+
 @section('content')
-<div class="my-3">
+<div class="my-3" id="cliente">
         <table class="table table-hover">
             <thead>
                 <tr>

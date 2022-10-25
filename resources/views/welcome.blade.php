@@ -8,17 +8,17 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     
-    <title>Tienda Buena vista</title>
+    <title>Tienda bella vista</title>
 </head> 
 
 <body class=" h-100 text-center ">
     
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    {{-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
         <div class="container">
             <ul class="navbar-nav text-white ms-3">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Iniciar seccion
+                        Iniciar sesión
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{{ route('clientes.index') }}">Iniciar</a></li>
@@ -28,7 +28,7 @@
             </ul>
           
         </div>
-    </nav>
+    </nav> --}}
       
       
     <div id="vista">
@@ -49,7 +49,7 @@
                         <main class="8-px">
                         <!-- <button style="background-color:#f7c94c;border-color">Registrar nuevo cliente</button> -->
                        
-                        <!-- <a href="#" class="btn w-20">Registrar ganancia.</a> --> 
+                         <a href="{{ route('clientes.index') }}" class="btn w-20" id="botones">Iniciar sesión</a> 
                     </main>
                 </main>
 

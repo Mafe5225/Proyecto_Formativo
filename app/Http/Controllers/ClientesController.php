@@ -72,8 +72,10 @@ class ClientesController extends Controller
      */
     public function edit($id)
     {
-        $clientes = Clientes::findOrFail($id);
-        return view('clientes.edit', compact('clientes'));
+         abort(403);
+
+         $clientes = Clientes::findOrFail($id);
+         return view('clientes.edit', compact('clientes'));
     }
 
     /**
@@ -101,7 +103,7 @@ class ClientesController extends Controller
     {
         if(Gate::denies('administrador'))
         {
-            //abort(403);
+            abort(403);
             return redirect()->route('clientes.index');
         }
 
