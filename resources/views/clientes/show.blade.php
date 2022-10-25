@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('titulo', 'Detalle de cliente')
+@section('titulo', 'Historial')
 
 @section('content')
     @if ($mensaje = Session::get('exitoCredito'))
@@ -9,23 +9,18 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
-    <div class="row my-3">
+    <div action="{{ route('movimientos.store') }}" method="post" class="needs-validation row my-3" novalidate>
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
-            <table class="table table-bordered mt-3">
-                <tbody>
-                    <tr>
-                        <td class="fw-bold">Nombre</td>
-                        <td>{{ $clientes->nombre }}</td>
-                    </tr>
-                    <tr>
-                        <td class="fw-bold">Teléfono</td>
-                        <td>{{ $clientes->telefono }}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <a href="{{ route('movimientos.create') }}" class="btn btn-secondary">Fiar</a>
-            <a href="{{ route('clientes.index') }}" class="btn btn-secondary">Volver</a>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">$</span>
+                <input type="number" class="form-control" minlength="0" maxlength="6" name="valor" id="valor">
+            </div>
+              
+            <button type="submit" class="btn btn-outline-success" id="abono">Abono</button>
+            <button type="submit" class="btn btn-outline-danger" id="deuda">Deuda</button>
+            <a href="{{ route('clientes.index') }}" class="btn btn-outline-secondary">Volver</a>
         </div>
         <div class="col-sm-3"></div>
     </div>

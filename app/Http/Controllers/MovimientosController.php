@@ -28,7 +28,7 @@ class MovimientosController extends Controller
      */
     public function create()
     {
-        return view('movimientos.insert');
+        return view('clientes.show');
     }
 
     /**
@@ -42,7 +42,7 @@ class MovimientosController extends Controller
         $valor = $request->valor;
 
         Movimientos::create($request->all());
-        return redirect()->route('clientes.show')->with('exitoCredito', '¡El crédito se ha Inicializado satisfactoriamente!');
+        return redirect()->route('clientes.show')->with('exitoCredito', '¡El crédito se ha registrado satisfactoriamente!');
     }
 
     /**
@@ -53,7 +53,9 @@ class MovimientosController extends Controller
      */
     public function show(Movimientos $movimientos)
     {
-        //
+        $clientes = Clientes::findOrFail($id);
+        $movimientos = Movimientos::findOrFail($id);
+        return view('clientes.show', compact('clientes'));
     }
 
     /**
