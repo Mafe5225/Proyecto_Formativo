@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\user;
 use Illuminate\Http\Request;
 use App\Models\Ventas;
+use App\Models\Clientes;
 
 class VentasController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -54,7 +60,7 @@ class VentasController extends Controller
      * @param  \App\Models\user  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(user $user)
+    public function show($id)
     {
         $ventas = Ventas::findOrFail($id);
         return view('ventas.show', compact('ventas'));
@@ -66,7 +72,7 @@ class VentasController extends Controller
      * @param  \App\Models\user  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(user $user)
+    public function edit($id)
     {
         $ventas = Ventas::findOrFail($id);
         return view('ventas.edit', compact('ventas'));
@@ -79,7 +85,7 @@ class VentasController extends Controller
      * @param  \App\Models\user  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, user $user)
+    public function update($id)
     {
         $ventas = Ventas::findOrFail($id);
 

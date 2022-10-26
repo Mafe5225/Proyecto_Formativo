@@ -1,24 +1,25 @@
 @extends('layouts.main')
 
 @section('titulo','Modificacion de ventas')
-@section
-<form action="{{ route('ventas.update') }}" method="post" class="needs-validation" novalidate>
-    @csrf
-    <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="venta" name="venta" placeholder="Venta" required>
-      <label for="venta">Total venta</label>
-    </div>
-    <div class="form-floating mb-3">
-      <input type="date" class="form-control" id="fecha" name="fecha" placeholder="fecha" required>
-      <label for="fecha">fecha</label>
-    </div>
+@section('content')
+  <form action="{{ route('ventas.update', $ventas->id) }}" method="post" class="needs-validation" novalidate>
+      @csrf
+      @method('PUT')
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="venta" name="venta" placeholder="Venta" value="{{ $ventas->ventas }}" required>
+        <label for="venta">Total venta</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="date" class="form-control" id="fecha" name="fecha" placeholder="fecha" value="{{ $ventas->fecha }}" required>
+        <label for="fecha">fecha</label>
+      </div>
 
 
 
-    <button type="submit" class="btn btn-secondary">Guardar</button>
-  <a href="{{ route('ventas.index') }}" class="btn btn-danger">Cancelar</a>
-</form>
-
+      <button type="submit" class="btn btn-secondary">Guardar</button>
+    <a href="{{ route('ventas.index') }}" class="btn btn-danger">Cancelar</a>
+  </form>
+ 
 @endsection
 @section('script')
     <script>
@@ -42,7 +43,5 @@
     })
     })()
     </script>
-
-@endsection
 
 @endsection

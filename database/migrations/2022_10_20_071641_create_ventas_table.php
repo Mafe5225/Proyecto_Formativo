@@ -15,12 +15,12 @@ class CreateVentasTable extends Migration
     {
         Schema::create('ventas', function (Blueprint $table) {
             $table->id();
-            $table->double('ventas'); 
-            $table->date('fecha');
-            $table->foreignId('clientes_id')->constrained('clientes');
+            $table->double('ventas')->default(50); 
+            $table->date('fecha')->default(date("Y-n-j"));
             $table->timestamps();
             $table->softDeletes();
         });
+        // date_time_set
     }
     /**
      * Reverse the migrations.
@@ -29,9 +29,6 @@ class CreateVentasTable extends Migration
      */
     public function down()
     {
-        Schema::create('ventas', function (Blueprint $table) {
-            $table->dropForeign('ventas_proyecto_id_foreign');
-        });
         Schema::dropIfExists('ventas');
     }
 }

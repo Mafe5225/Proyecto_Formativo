@@ -10,6 +10,6 @@ class Ventas extends Model
     use SoftDeletes;
     protected $fillable = [
         'ventas',
-        'fechas'
+        'fecha'
     ];
 }
