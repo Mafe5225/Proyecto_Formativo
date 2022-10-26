@@ -6,26 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     
-    <title>Tienda Buena vista</title>
-</head>
-<body class="d-flex h-100 text-center " >
-    <div class="container">
-        <h1 class="text-center mt-1 " id="titulo" id="hi">Tienda buena vista</h1>
-        <div class="my-5"></div>
-        <h3 class="text-center ">Saludos te damos la bienvenida a tienda buena vista.</h3>
+    <title>Tienda bella vista</title>
+</head> 
+
+<body class=" h-100 text-center ">
+          
+    <div id="vista">
+ 
         
-        <div class="d-flex h-100 w-100 p-3 mx-auto flex-column main-container ">
-            <div class="my-4"></div>
-            <main class="px-3">
-                <h3>Agrega informacion de tus clientes, ingresos y prestamos.</h3>
-                <td id="botones">
-                    <!-- <button style="background-color:#f7c94c;border-color">Registrar nuevo cliente</button> -->
-                <a href="{{ route('clientes.index') }}" class="btn  w-24">Registrar un cliente.</a> 
-                {{-- <a href="{{ route('ganancias.index') }}" class="btn btn pri w-24">Registrar las ventas.</a>  --}}
-              
-                </td>
-            </main>
+        <h1 class="text-center mt-8 " id="titulo">Tienda bella vista</h1>
+
+        <div class="my-5" id="texto">
+            <h3 class="text-center ">Saludos te damos la bienvenida a tienda bella vista, Tu tienda amiga.</h3>
+            
+            <div class="d-flex h-100 w-100 p-1 mx-auto flex-column main-container ">
+                <div class="my-2"></div>
+                <main class="8-px">
+                    <h3>Agrega informacion de tus clientes, ingresos y prestamos.</h3>
+
+                    <div class="d-flex h-100 w-100 p-1 mx-auto flex-column main-container ">
+                        <div class="my-5"></div>
+                        <main class="8-px">
+                        <!-- <button style="background-color:#f7c94c;border-color">Registrar nuevo cliente</button> -->
+                       
+                         <a href="{{ route('clientes.index') }}" class="btn w-20" id="botones">Iniciar sesión</a> 
+                    </main>
+                   
+                </main>
+            </div>
         </div>
     </div>
 

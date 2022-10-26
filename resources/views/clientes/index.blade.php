@@ -4,14 +4,14 @@
 
 @section('content')
 
- @can(['administrador'])
+ {{-- @can(['administrador']) --}}
     
     <div class="mt-3">
         <a href="{{ route('clientes.create') }}" class="btn btn-secondary">
         Registrar nuevo cliente
     </a>
     </div>
-@endcan
+{{-- @endcan --}}
     <div class="my-3">
         <table class="table table-hover">
             <thead>
@@ -27,6 +27,8 @@
                         <td>{{ $item->nombre }}</td>
                         <td class="d-flex">
                             <a href="{{ route('clientes.show', $item->id) }}" class="btn btn-outline-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye"></i></a>
+
+                            @can('administrador')
                             <a href="{{ route('clientes.edit', $item->id) }}" class="btn btn-outline-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
                             <form action="{{ route('clientes.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
                                 @csrf
@@ -35,6 +37,8 @@
                                     <i class="fa-solid fa-trash-can"></i>
                                 </button>
                             </td>
+                                
+                            @endcan
                             <td>
                                 
                                 <a href="#" class="btn btn-outline-success justify-content-start me-1 rounded-circle"> <i class="fa-solid fa-dollar-sign"></i></a>
@@ -42,15 +46,9 @@
                                 <a href="#"  class="btn btn-outline-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
                                 
                                   
-                                <form action="#" method="post" class="justify-content-start form-delete">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-outline-danger rounded-circle">
-                                        <i class="fa-solid fa-trash-can"></i>
-                                    </button>
-                                    {{-- {{ route('clientes.destroy', $item->id) }} --}}
+                               
                             </td>
-                            </form>
+                            
                     </tr>
                 @endforeach
             </tbody> 
