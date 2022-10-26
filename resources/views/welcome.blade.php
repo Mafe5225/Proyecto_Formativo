@@ -51,8 +51,8 @@
                        
                          <a href="{{ route('clientes.index') }}" class="btn w-20" id="botones">Iniciar sesión</a> 
                     </main>
+                   
                 </main>
-
             </div>
         </div>
     </div>
