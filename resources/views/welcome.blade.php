@@ -37,7 +37,7 @@
         <h1 class="text-center mt-8 " id="titulo">Tienda bella vista</h1>
 
         <div class="my-5" id="texto">
-            <h3 class="text-center ">Saludos te damos la bienvenida a tienda bella vista.</h3>
+            <h3 class="text-center ">Saludos te damos la bienvenida a tienda bella vista, Tu tienda amiga.</h3>
             
             <div class="d-flex h-100 w-100 p-1 mx-auto flex-column main-container ">
                 <div class="my-2"></div>

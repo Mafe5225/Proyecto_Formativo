@@ -4,12 +4,13 @@
 
 @section('content')
 
-
+    @can("administrador")
     <div class="mt-3">
         <a href="{{ route('clientes.create') }}" class="btn btn-secondary">
             Registrar nuevo cliente
         </a>
     </div>
+     @endcan 
     <div class="my-3">
         <table class="table table-hover">
             <thead>

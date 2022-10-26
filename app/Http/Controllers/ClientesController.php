@@ -72,8 +72,8 @@ class ClientesController extends Controller
      */
     public function edit($id)
     {
-    //      abort(403);
-
+    
+        //      abort(403);
          $clientes = Clientes::findOrFail($id);
          return view('clientes.edit', compact('clientes'));
     }
