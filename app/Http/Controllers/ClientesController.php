@@ -43,9 +43,9 @@ class ClientesController extends Controller
     {
 
       
-        $nombre = $request->nombre;
-        $telefono = $request->telefono;
-        $direccion = $request->direccion;
+        // $nombre = $request->nombre;
+        // $telefono = $request->telefono;
+        // $direccion = $request->direccion;
 
         Clientes::create($request->all());
         return redirect()->route('clientes.index')->with('exito', '¡El registro se ha creado satisfactoriamente!');

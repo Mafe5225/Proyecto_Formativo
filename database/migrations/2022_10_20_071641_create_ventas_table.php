@@ -15,6 +15,7 @@ class CreateVentasTable extends Migration
     {
         Schema::create('ventas', function (Blueprint $table) {
             $table->id();
+            $table->string('tipo');
             $table->double('ventas')->default(50); 
             $table->date('fecha')->default(date("Y-n-j"));
             $table->timestamps();

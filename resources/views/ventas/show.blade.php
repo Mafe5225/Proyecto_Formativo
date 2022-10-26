@@ -2,16 +2,17 @@
 @section('titulo','Visualisación de la venta')
 @section('content')
 <table class="table table-hover ml-6" >
-    <thead>
+    <thead class="table-dark">
         <tr>
+            <th>Tipo de venta</th>
             <th>Total de la venta</th>
             <th>Fecha</th>
         </tr>
     </thead>
-    <tbody>
-  
-            <td>{{ $ventas->ventas}}</td>
-            <td>  {{ $ventas->fecha }}</td>
+    <tbody class="table-light">
+            <td>{{ $ventas->tipo }}</td>
+            <td>${{ $ventas->ventas}}</td>
+            <td>{{ $ventas->fecha }}</td>
      
     </tbody>
 </table>

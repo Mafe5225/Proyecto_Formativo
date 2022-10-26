@@ -5,7 +5,10 @@
 
 <form action="{{ route('ventas.store') }}" method="post" class="needs-validation"  novalidate>
       @csrf
-    
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="tipo" name="tipo" placeholder="Tipo"   required>
+        <label for="tipo">tipo de venta</label>
+      </div>
       <div class="form-floating mb-3">
         <input type="text" class="form-control" id="ventas" name="ventas" placeholder="Venta"   required>
         <label for="ventas">Total venta</label>

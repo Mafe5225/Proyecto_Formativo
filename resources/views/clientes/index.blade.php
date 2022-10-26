@@ -4,12 +4,14 @@
 
 @section('content')
 
-
+ @can(['administrador'])
+    
     <div class="mt-3">
         <a href="{{ route('clientes.create') }}" class="btn btn-secondary">
-            Registrar nuevo cliente
-        </a>
+        Registrar nuevo cliente
+    </a>
     </div>
+@endcan
     <div class="my-3">
         <table class="table table-hover">
             <thead>
@@ -68,7 +70,7 @@
             e.preventDefault();
             //Lanzar alerta de sweetAlert
             Swal.fire({
-                title: '¿Está seguro de eliminar el proyecto?',
+                title: '¿Está seguro de eliminar el cliente?',
                 text: "¡Esta acción no se podrá deshacer!",
                 icon: 'warning',
                 showCancelButton: true,

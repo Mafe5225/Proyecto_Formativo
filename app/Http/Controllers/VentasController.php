@@ -85,7 +85,7 @@ class VentasController extends Controller
      * @param  \App\Models\user  $user
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(Request $request,$id)
     {
         $ventas = Ventas::findOrFail($id);
 
@@ -100,8 +100,10 @@ class VentasController extends Controller
      * @param  \App\Models\user  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(user $user)
+    public function destroy($id)
     {
-        //
+        $ventas = Ventas::findOrFail($id);
+        $ventas->delete();
+        return redirect()->route('ventas.index');
     }
 }
