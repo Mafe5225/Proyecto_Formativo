@@ -16,6 +16,11 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
+                     <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Buscar..." name="buscar" aria-label="Buscar">
+                            <button class="btn btn-outline-light" type="submit">Buscar</button>
+                        </form>
+
 
             <ul class="navbar-nav text-white ms-3">
                 <li class="nav-item dropdown">

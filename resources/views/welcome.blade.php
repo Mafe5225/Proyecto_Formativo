@@ -50,6 +50,8 @@
                         <!-- <button style="background-color:#f7c94c;border-color">Registrar nuevo cliente</button> -->
                        
                          <a href="{{ route('clientes.index') }}" class="btn w-20" id="botones">Iniciar sesión</a> 
+
+     
                     </main>
                    
                 </main>
