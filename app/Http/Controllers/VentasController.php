@@ -6,7 +6,7 @@ use App\Models\user;
 use Illuminate\Http\Request;
 use App\Models\Ventas;
 use App\Models\Clientes;
-
+use Gate;
 class VentasController extends Controller
 {
     public function __construct()
@@ -19,9 +19,20 @@ class VentasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $ventas = Ventas::all();
+        if($request)
+        {
+            $query = $request->buscar;
+            $ventas = Ventas::where('tipo', 'LIKE', '%' . $query . '%')
+                                    ->orderBy('tipo', 'asc')
+                                    ->paginate(5);
+            // 
+            return view('ventas.index', compact('ventas', 'query'));
+        }
+         // Obtener todos los registros
+         $ventas = Ventas::orderBy('nombre', 'asc')
+         ->paginate(5);
 
         // enviar a la vista
         return view('ventas.index', compact('ventas'));
@@ -34,6 +45,11 @@ class VentasController extends Controller
      */
     public function create()
     {
+        if(Gate::denies('administrador'))
+        {
+            // abort(403);
+            return redirect()->route('ventas.index');
+        }
         return view('ventas.insert');
     }
 
@@ -46,8 +62,6 @@ class VentasController extends Controller
     public function store(Request $request)
     {
        
-        $venta = $request->venta;
-        $fecha = $request->fecha;
      
 
         Ventas::create($request->all());

@@ -7,27 +7,32 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fontawesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('js/main.js') }}">
     <title>@yield('titulo')</title>
 </head>
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
-            <div class="container">
-                <a class="navbar-brand" href="{{ route('clientes.index') }}">Gestión de clientes</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <div class="container ">
+            
+                <a class="navbar-brand " href="#">Tienda bella vista</a>
+                   
+               
+                    <div class="dropdown" type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Gestion">
+                        <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Indice
+                        </button>
+                        <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ route('clientes.index') }}">Gestión de clientes</a></li>
+                        <li><a class="dropdown-item" href="{{ route('ventas.index') }}">Gestión de ganancias</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </div>
 
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Rutas
-                    </button>
-                    <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{{ route('clientes.index') }}">Gestión de clientes</a></li>
-                    <li><a class="dropdown-item" href="{{ route('ventas.index') }}">Gestión de ganancias</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </div>
-
+                
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Buscar..." name="buscar" aria-label="Buscar">
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                </form>
                 <ul class="navbar-nav text-white ms-3">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -61,11 +66,10 @@
     <div class="my-3 container">
         @yield('content')
     </div>
-
-
-    
-
     <script src="{{ asset('css/bootstrap/js/bootstrap.bundle.js') }}"></script>
     @yield('scripts')
+    <Script>const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    </Script>
 </body>
 </html>

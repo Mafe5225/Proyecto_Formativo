@@ -14,9 +14,20 @@ class ClientesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $clientes = Clientes::all();
+        if($request)
+        {
+            $query = $request->buscar;
+            $clientes = Clientes::where('nombre', 'LIKE', '%' . $query . '%')
+                                    ->orderBy('nombre', 'asc')
+                                    ->paginate(5);
+            // 
+            return view('clientes.index', compact('clientes', 'query'));
+        }
+         // Obtener todos los registros
+         $clientes = Clientes::orderBy('nombre', 'asc')
+         ->paginate(5);
 
         // enviar a la vista
         return view('clientes.index', compact('clientes'));

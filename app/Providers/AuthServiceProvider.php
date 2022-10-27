@@ -23,6 +23,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+    //Es el que permite comparar a todos los usuarios si son administrador. 
         $this->registerPolicies();
         Gate::define('administrador', function($user) {
             return $user->hasRol('Administrador');
