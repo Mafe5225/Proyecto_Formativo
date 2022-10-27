@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fontawesome/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/showCliente.css') }}">
     <title>@yield('titulo')</title>
 </head>
 <body class="bg-light">
@@ -15,6 +16,19 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white ms-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Información del cliente
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="list-group-item ms-2"><b>Nombre:</b> {{ $clientes->nombre }}</li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li class="list-group-item ms-2"><b>Teléfono:</b> {{ $clientes->telefono }}</li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li class="list-group-item ms-2"><b>Dirección:</b> {{ $clientes->direccion }}</li>
+                </ul>
+            </li>
 
             <ul class="navbar-nav text-white ms-3">
                 <li class="nav-item dropdown">

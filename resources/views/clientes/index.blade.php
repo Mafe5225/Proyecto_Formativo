@@ -36,11 +36,12 @@
                                     <i class="fa-solid fa-trash-can"></i>
                                 </button>
                             </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody> 
         </table> 
-        
+
     </div>
 @endsection
 
@@ -55,7 +56,7 @@
             e.preventDefault();
             //Lanzar alerta de sweetAlert
             Swal.fire({
-                title: '¿Está seguro de eliminar el proyecto?',
+                title: '¿Está seguro de eliminar el registro del cliente?',
                 text: "¡Esta acción no se podrá deshacer!",
                 icon: 'warning',
                 showCancelButton: true,
