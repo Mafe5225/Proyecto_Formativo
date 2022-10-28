@@ -51,12 +51,16 @@ class MovimientosController extends Controller
      * @param  \App\Models\Movimientos  $movimientos
      * @return \Illuminate\Http\Response
      */
-    public function show(Movimientos $movimientos)
+    public function show($id)
     {
-        $clientes = Clientes::findOrFail($id);
-        $movimientos = Movimientos::findOrFail($id);
+        $movimientos = Movimientos::join('clientes', 'movimientos.cliente_id', 'clientes.id')
+                              ->select('movimientos.fecha', 'movimientos.valor')
+                              ->where('movimientos.id', $id)
+                              ->first();
+
         return view('clientes.show', compact('clientes'));
     }
+
 
     /**
      * Show the form for editing the specified resource.

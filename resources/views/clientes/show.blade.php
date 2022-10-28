@@ -11,7 +11,7 @@
     {{-- Historial --}}
 
     <div class="col-sm-6">
-        <div class="position-absolute top-50 start-50 translate-middle">
+        <div class="position-absolute top-50 start-50 translate-middle" id="historial">
             <div class="card text-center">
                 <div class="card-header">
                     <h3>Historial</h3>
@@ -35,8 +35,8 @@
                             <input type="number" class="form-control" id="valor" name="valor" minlength="0" maxlength="6" required>
                         </div>
 
-                        <button type="submit" class="btn btn-outline-danger">Deuda</button>
-                        <button type="submit" class="btn btn-outline-success">Abono</button>
+                        <button type="submit" class="btn btn-outline-danger" id="Deu">Deuda</button>
+                        <button type="submit" class="btn btn-outline-success" id="Abo">Abono</button>
                         <a href="{{ route('clientes.index') }}" class="btn btn-outline-secondary">Volver</a>
                     </form>
                 </div>

@@ -48,7 +48,7 @@
 
 @section('scripts')
     <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
     <script>
         //Captura del evento submit del formulario para eliminar
         $('.form-delete').submit(function(e){
