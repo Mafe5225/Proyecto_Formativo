@@ -24,7 +24,7 @@ class VentasController extends Controller
         if($request)
         {
             $query = $request->buscar;
-            $ventas = Ventas::where('tipo', 'LIKE', '%' . $query . '%')
+            $ventas = Ventas::where('id', 'LIKE', '%' . $query . '%')
                                     ->orderBy('tipo', 'asc')
                                     ->paginate(5);
             // 

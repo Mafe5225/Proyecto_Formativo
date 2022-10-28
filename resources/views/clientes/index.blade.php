@@ -17,10 +17,12 @@
     </a>
     </div>
 @endcan
-    <div class="my-3">
+<div class="my-3">
+        @if(count($clientes)>0)
         <table class="table table-hover">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Nombre</th>
                     <th>Acciones</th>
                     <th>Acciones para el credito</th>
@@ -29,10 +31,11 @@
             <tbody>
                 @foreach($clientes as $item)
                     <tr>
+                        <td>{{ $item->id }}</td>
                         <td>{{ $item->nombre }}</td>
                         <td class="d-flex">
                             <a href="{{ route('clientes.show', $item->id) }}" class="btn btn-outline-info justify-content-start me-1 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Actualizar"><i class="fa-solid fa-eye"></i></a>
-
+        
                             @can(['administrador'])
                                 <a href="{{ route('clientes.edit', $item->id) }}" type="button" class="btn btn-outline-warning justify-content-start me-1 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Actualizar"><i class="fa-solid fa-pen-to-square"></i></a>
                             
@@ -48,18 +51,18 @@
                             <td>
                                 
                                 <a href="#" class="btn btn-outline-success justify-content-start me-1 rounded-circle"> <i class="fa-solid fa-dollar-sign"></i></a>
-                                {{-- <a href="#" class="btn btn-outline-info justify-content-start me-1 rounded-circle" > <i class="fa-solid fa-eye"></i></a>
-                                <a href="#"  class="btn btn-outline-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a> --}}
                                 
-                                  
-                               
                             </td>
                             
                     </tr>
                 @endforeach
             </tbody> 
         </table> 
-        
+        {{ $clientes->links() }}
+   
+        @else
+            <p>La búsqueda no arrojó resultados.</p>
+        @endif
     </div>
 @endsection
 

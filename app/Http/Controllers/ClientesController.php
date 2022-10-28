@@ -19,9 +19,11 @@ class ClientesController extends Controller
         if($request)
         {
             $query = $request->buscar;
-            $clientes = Clientes::where('nombre', 'LIKE', '%' . $query . '%')
+            
+            $clientes = Clientes::where('id', 'LIKE', '%' . $query . '%')
                                     ->orderBy('nombre', 'asc')
                                     ->paginate(5);
+            
             // 
             return view('clientes.index', compact('clientes', 'query'));
         }

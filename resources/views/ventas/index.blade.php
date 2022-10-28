@@ -15,6 +15,7 @@
     </div>
     @endcan
     <div class="my-3">
+        @if(count($ventas)>0)
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -51,7 +52,10 @@
                 @endforeach
             </tbody> 
         </table> 
-        
+        {{ $ventas->links() }}
+        @else
+            <p>La búsqueda no arrojó resultados.</p>
+        @endif
     </div>
     
 @endsection
