@@ -32,7 +32,7 @@
                 <tr>
                     <th>Nombre</th>
                     <th>Acciones</th>
-                    <th>Acciones para el credito</th>
+                    {{-- <th>Acciones para el credito</th> --}}
                 </tr>
             </thead>
             <tbody>
@@ -46,27 +46,28 @@
                          @endcan
                             <form action="{{ route('clientes.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
                                 @csrf
+                                @can("administrador")
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-outline-danger rounded-circle">
                                     <i class="fa-solid fa-trash-can"></i>
                                 </button>
+                                @endcan
                             </td>
                             <td>
                                 @can("administrador")
-                                    {{-- <a href="#" class="btn btn-outline-success justify-content-start me-1 rounded-circle"> <i class="fa-solid fa-dollar-sign">Tooltip on top</i></a> --}}
                                     <a href="#" class="btn btn-outline-success justify-content-start me-1 rounded-circle"> <i class="fa-solid fa-dollar-sign"></i></a>
                                     <a href="#" class="btn btn-outline-info justify-content-start me-1 rounded-circle" > <i class="fa-solid fa-eye"></i></a>
                                     <a href="#"  class="btn btn-outline-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
                                 @endcan
                                   
-                                <form action="#" method="post" class="justify-content-start form-delete">
+                                {{-- <form action="#" method="post" class="justify-content-start form-delete">
                                     @csrf
-                                    @method('DELETE')
+                                    {{-- @method('DELETE')
                                     <button type="submit" class="btn btn-outline-danger rounded-circle">
                                         <i class="fa-solid fa-trash-can"></i>
-                                    </button>
+                                    </button> --}}
                                     {{-- {{ route('clientes.destroy', $item->id) }} --}}
-                             </form>    
+                             {{-- </form>     --}} 
                         </td>  
                     </tr>
                 @endforeach
