@@ -14,3 +14,4 @@ class Clientes extends Model
         'direccion'
     ];
 }
+?>

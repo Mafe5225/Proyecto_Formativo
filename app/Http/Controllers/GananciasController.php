@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\user;
+use Illuminate\Support\Facades\DB;
+use App\Models\Ganancias;
 use Illuminate\Http\Request;
+use App\Models\Http\Ventas;
+
 
 class GananciasController extends Controller
 {
@@ -12,9 +14,11 @@ class GananciasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+      
+        return view('ganancias.index');
+        
     }
 
     /**
@@ -41,10 +45,10 @@ class GananciasController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\user  $user
+     * @param  \App\Models\Ganancias  $ganancias
      * @return \Illuminate\Http\Response
      */
-    public function show(user $user)
+    public function show(Ganancias $ganancias)
     {
         //
     }
@@ -52,10 +56,10 @@ class GananciasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\user  $user
+     * @param  \App\Models\Ganancias  $ganancias
      * @return \Illuminate\Http\Response
      */
-    public function edit(user $user)
+    public function edit(Ganancias $ganancias)
     {
         //
     }
@@ -64,10 +68,10 @@ class GananciasController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\user  $user
+     * @param  \App\Models\Ganancias  $ganancias
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, user $user)
+    public function update(Request $request, Ganancias $ganancias)
     {
         //
     }
@@ -75,10 +79,10 @@ class GananciasController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\user  $user
+     * @param  \App\Models\Ganancias  $ganancias
      * @return \Illuminate\Http\Response
      */
-    public function destroy(user $user)
+    public function destroy(Ganancias $ganancias)
     {
         //
     }

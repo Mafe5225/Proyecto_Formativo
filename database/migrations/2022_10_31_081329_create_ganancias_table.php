@@ -15,10 +15,14 @@ class CreateGananciasTable extends Migration
     {
         Schema::create('ganancias', function (Blueprint $table) {
             $table->id();
+            $table->double('ganaciaTotal');
+            $table->foreignId('ventas_id')->constrained('ventas');
+            
             $table->timestamps();
+            $table->softDeletes();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *
@@ -26,6 +30,10 @@ class CreateGananciasTable extends Migration
      */
     public function down()
     {
+        Schema::table('ventas', function (Blueprint $table) {
+            $table->dropForeign('ganancias_ventas_id_foreign');
+        });
+      
         Schema::dropIfExists('ganancias');
     }
 }
