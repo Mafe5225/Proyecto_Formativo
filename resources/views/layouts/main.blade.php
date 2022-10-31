@@ -18,7 +18,7 @@
                    
                
                     <div class="dropdown" type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Gestion">
-                        <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Indice
                         </button>
                         <ul class="dropdown-menu">
@@ -30,8 +30,8 @@
 
                 
                 <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Buscar..." name="buscar" aria-label="Buscar">
-                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                    <input class="form-control me-2" type="search" placeholder="ingrese el id de la venta" name="buscar" aria-label="Buscar">
+                    <button class="btn btn-light" type="submit">Buscar</button>
                 </form>
                 <ul class="navbar-nav text-white ms-3">
                     <li class="nav-item dropdown">

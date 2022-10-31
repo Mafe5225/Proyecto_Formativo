@@ -9,6 +9,7 @@ class Ventas extends Model
 {
     use SoftDeletes;
     protected $fillable = [
+      'ganancias'
         
     ];
 }
