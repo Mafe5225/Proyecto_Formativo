@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fontawesome/css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/showCliente.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/showCredito.css') }}">
     <title>@yield('titulo')</title>
 </head>
 <body class="bg-light">
@@ -23,6 +23,8 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li class="list-group-item ms-2"><b>Nombre:</b> {{ $clientes->nombre }}</li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li class="list-group-item ms-2"><b>Teléfono:</b> {{ $clientes->cedula }}</li>
                     <li><hr class="dropdown-divider"></li>
                     <li class="list-group-item ms-2"><b>Teléfono:</b> {{ $clientes->telefono }}</li>
                     <li><hr class="dropdown-divider"></li>

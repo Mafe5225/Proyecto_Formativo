@@ -1,4 +1,4 @@
-@extends('layouts.mainCliente')
+@extends('layouts.mainCredito')
 
 @section('content')
     @if ($mensaje = Session::get('exitoCredito'))

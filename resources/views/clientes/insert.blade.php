@@ -10,7 +10,11 @@
       <label for="nombre">Nombre</label>
     </div>
     <div class="form-floating mb-3">
-      <input type="number" class="form-control" id="telefono" name="telefono" placeholder="Teléfono" minlength="0" maxlength="10" required>
+      <input type="number" class="form-control" id="cedula" name="cedula" placeholder="Cedula" minlength="0" maxlength="10" required>
+      <label for="cedula">Cédula</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="number" class="form-control" id="telefono" name="telefono" placeholder="Telefono" minlength="0" maxlength="10" required>
       <label for="telefono">Teléfono</label>
     </div>
 

@@ -1,47 +1,63 @@
-@extends('layouts.main')
+@extends('layouts.mainClientesIndex')
 
 @section('titulo', 'Clientes')
 
 @section('content')
+
+    <div class="mt-3 mb-2">
+        <a href="{{ route('clientes.create') }}" class="btn btn-secondary">
+            Registrar nuevo cliente
+        </a>
+    </div>
+    
     @if ($mensaje = Session::get('exito'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <p>{{ $mensaje }}</p>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
-    <div class="mt-3">
-        <a href="{{ route('clientes.create') }}" class="btn btn-secondary">
-            Registrar nuevo cliente
-        </a>
-    </div>
+    
     <div class="my-3">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($clientes as $item)
-                    <tr>
-                        <td>{{ $item->nombre }}</td>
-                        <td class="d-flex">
-                            <a href="{{ route('clientes.show', $item->id) }}" class="btn btn-outline-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye"></i></a>
-                            <a href="{{ route('clientes.edit', $item->id) }}" class="btn btn-outline-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
-                            <form action="{{ route('clientes.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-outline-danger rounded-circle">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody> 
-        </table> 
+        @if (count($clientes) > 0)
 
+            @if ($query)
+                <div class="alert alert-info" role="alert">
+                    <p>A continuación se presentan los resultados de la búsqueda <span class="fw-bold">{{ $query }}</span></p>
+                </div>
+            @endif
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($clientes as $item)
+                        <tr>
+                            <td>{{ $item->nombre }}</td>
+                            <td class="d-flex">
+                                <a href="{{ route('clientes.show', $item->id) }}" class="btn btn-outline-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye"></i></a>
+                                <a href="{{ route('clientes.edit', $item->id) }}" class="btn btn-outline-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <form action="{{ route('clientes.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-outline-danger rounded-circle">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody> 
+            </table> 
+        
+            {{ $clientes->links() }}
+   
+        @else
+            <p>La búsqueda no arrojó resultados.</p>
+        @endif
     </div>
 @endsection
 

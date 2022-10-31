@@ -2,19 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Clientes;
-use App\Models\Movimientos;
 use Illuminate\Http\Request;
+use App\Models\Movimientos;
+use App\Models\Clientes;
 use Gate;
 
 class ClientesController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +16,20 @@ class ClientesController extends Controller
      */
     public function index()
     {
-        $clientes = Clientes::all();
+        if($request)
+        {
+            $query = $request->buscar;
+            
+            $clientes = Clientes::where('cedula', 'LIKE', '%' . $query . '%')
+                                    ->orderBy('nombre', 'asc')
+                                    ->paginate(5);
+            
+            // 
+            return view('clientes.index', compact('clientes', 'query'));
+        }
+         // Obtener todos los registros
+         $clientes = Clientes::orderBy('nombre', 'asc')
+         ->paginate(5);
 
         // enviar a la vista
         return view('clientes.index', compact('clientes'));
@@ -48,6 +55,7 @@ class ClientesController extends Controller
     public function store(Request $request)
     {
         $nombre = $request->nombre;
+        $cedula = $request->cedula;
         $telefono = $request->telefono;
         $direccion = $request->direccion;
 
@@ -55,13 +63,14 @@ class ClientesController extends Controller
         return redirect()->route('clientes.index')->with('exito', '¡El registro del crédito se ha creado satisfactoriamente!');
 
     }
+
     /**
      * Display the specified resource.
      *
      * @param  \App\Models\Clientes  $clientes
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Clientes $clientes)
     {
         $clientes = Clientes::findOrFail($id);
         return view('clientes.show', compact('clientes'));
@@ -73,7 +82,7 @@ class ClientesController extends Controller
      * @param  \App\Models\Clientes  $clientes
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Clientes $clientes)
     {
         $clientes = Clientes::findOrFail($id);
         return view('clientes.edit', compact('clientes'));
@@ -86,13 +95,14 @@ class ClientesController extends Controller
      * @param  \App\Models\Clientes  $clientes
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Clientes $clientes)
     {
         $clientes = Clientes::findOrFail($id);
 
         $clientes->update($request->all());
         return redirect()->route('clientes.index')->with('exito', '¡El registro se ha actualizado satisfactoriamente!');
     }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -100,7 +110,7 @@ class ClientesController extends Controller
      * @param  \App\Models\Clientes  $clientes
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Clientes $clientes)
     {
         $clientes = Clientes::findOrFail($id);
         $clientes->delete();
