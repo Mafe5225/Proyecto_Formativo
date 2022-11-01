@@ -16,9 +16,10 @@ class GananciasController extends Controller
      */
     public function index(Request $request)
     {
-      
-        return view('ganancias.index');
-        
+        // $ganancias = $request->ventas;
+        $gananciasTotal = (
+        DB::table('ventas')->sum('ventas'));
+        return view('ganancias.index', compact('gananciasTotal') );
     }
 
     /**

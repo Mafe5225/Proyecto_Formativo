@@ -1,16 +1,21 @@
 @extends('layouts.main')
 @section('titulo', 'Total de ganancias')
 @section('content')
-{{-- <table class="table table-hover">
+<table class="table table-hover">
     <tbody>
-        @foreach ($ganancias as $item)
         
-        <td>ff{{ $item->ventas }}</td>
-        <h2>2222</h2>
+        @foreach ($gananciasTotal as $item)
+        <tr>
+            <td>{{ $item->gananciasTotal }}</td>
+                <td class="d-flex">            
+                    <a href="{{ route('usuarios.edit', $item->id) }}" class="btn btn-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
+                                
+                    </td>
+                </tr>
+            </table>
+    @endforeach
         
-        @endforeach
     </tbody>
-</table> --}}
-<?php 
-return DB::table('ventas')->sum('ventas');?>
+</table>
+
 @endsection
