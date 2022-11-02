@@ -10,7 +10,7 @@ class Ventas extends Model
     use SoftDeletes;
     protected $fillable = [
         'tipo',
-        'ventas',
+        'gesVentas',
         'fecha'
     ];
 }

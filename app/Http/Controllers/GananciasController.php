@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Models\Ganancias;
 use Illuminate\Http\Request;
-use App\Models\Http\Ventas;
+use App\Models\Ventas;
 
 
 class GananciasController extends Controller
@@ -16,10 +16,16 @@ class GananciasController extends Controller
      */
     public function index(Request $request)
     {
+        // $ganancias = $request->ventas;  DB::table('ventas')->sum('ventas');
+        
         // $ganancias = $request->ventas;
-        $gananciasTotal = (
-        DB::table('ventas')->sum('ventas'));
-        return view('ganancias.index', compact('gananciasTotal') );
+       
+        // $ganancias  = ventas::orderBy('fecha', 'asc')
+        // ->paginate(5);
+        $ventas = Ventas::orderBy('id', 'asc')
+        ->paginate(5);
+        return view('ganancias.index', compact('ventas') );
+
     }
 
     /**
@@ -49,9 +55,10 @@ class GananciasController extends Controller
      * @param  \App\Models\Ganancias  $ganancias
      * @return \Illuminate\Http\Response
      */
-    public function show(Ganancias $ganancias)
+    public function show(Ganancias $ganancias, $id)
     {
-        //
+        $total = DB::table('ventas')->sum('ventas');
+        return view('ganancias.show', compact('total'));
     }
 
     /**

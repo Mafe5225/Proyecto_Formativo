@@ -17,7 +17,6 @@ class CreateGananciasTable extends Migration
             $table->id();
             $table->double('ganaciaTotal');
             $table->foreignId('ventas_id')->constrained('ventas');
-            
             $table->timestamps();
             $table->softDeletes();
         });

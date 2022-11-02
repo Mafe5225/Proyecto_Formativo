@@ -33,21 +33,21 @@
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->tipo }}</td>
                         <td>{{ $item->fecha}}</td>
-                        <td>${{ $item->ventas }}</td>
+                        <td>${{ $item->gesVentas }}</td>
                         <td class="d-flex">
                             <a href="{{ route('ventas.show', $item->id) }}" class="btn btn-outline-info justify-content-start me-1 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Visualisar"><i class="fa-solid fa-eye"></i></a>
-                            @can('administrador')
+                                @can('administrador')
                             
-                            <a href="{{ route('ventas.edit', $item->id) }}" class="btn btn-outline-warning justify-content-start me-1 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Actualizar"><i class="fa-solid fa-pen-to-square"></i></a>
-                            <form action="{{ route('ventas.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-outline-danger rounded-circle"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Eliminar">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </button>
+                                <a href="{{ route('ventas.edit', $item->id) }}" class="btn btn-outline-warning justify-content-start me-1 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Actualizar"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <form action="{{ route('ventas.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
+                                    @csrf
+                                    @method('DELETE')
+                                        <button type="submit" class="btn btn-outline-danger rounded-circle"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Eliminar">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </button>
+                                    @endcan
                                 </form>
-                                </td>
-                            @endcan
+                        </td>
                     </tr>
                 @endforeach
             </tbody> 

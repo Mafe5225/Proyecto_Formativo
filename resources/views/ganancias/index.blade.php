@@ -2,20 +2,20 @@
 @section('titulo', 'Total de ganancias')
 @section('content')
 <table class="table table-hover">
-    <tbody>
+    <tbody>  
         
-        @foreach ($gananciasTotal as $item)
-        <tr>
-            <td>{{ $item->gananciasTotal }}</td>
-                <td class="d-flex">            
-                    <a href="{{ route('usuarios.edit', $item->id) }}" class="btn btn-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
-                                
-                    </td>
-                </tr>
-            </table>
-    @endforeach
         
+        {{-- @foreach ( $ganancias  as $item)
+            <td>{{ $item->gesVentas }}</td>    
+        @endforeach --}}
+       @foreach ($ventas as $item)
+       <td>{{ $item->gesVentas }}</td>
+       <td>  <a href="{{ route('ganancias.show', $item->id) }}" class="btn btn-outline-info justify-content-start me-1 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Visualisar"><i class="fa-solid fa-eye"></i></a></td>
+
+       @endforeach
+
     </tbody>
+            
 </table>
 
 @endsection

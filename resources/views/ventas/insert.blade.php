@@ -9,8 +9,8 @@
     <label for="tipo">Tipo de venta</label>
   </div>
   <div class="form-floating mb-3">
-    <input type="number" class="form-control" id="ventas" name="ventas" placeholder="Total a pagar" required>
-    <label for="ventas">Total a pagar</label>
+    <input type="number" class="form-control" id="gesVentas" name="gesVentas" placeholder="Total a pagar" required>
+    <label for="gesVentas">Total a pagar</label>
           </div>
      
           <div class="form-floating mb-3">

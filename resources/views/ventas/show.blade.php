@@ -11,7 +11,7 @@
     </thead>
     <tbody class="table-light">
             <td>{{ $ventas->tipo }}</td>
-            <td>${{ $ventas->ventas}}</td>
+            <td>${{ $ventas->gesVentas}}</td>
             <td>{{ $ventas->fecha }}</td>
      
     </tbody>

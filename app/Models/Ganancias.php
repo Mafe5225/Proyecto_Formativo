@@ -10,6 +10,7 @@ class Ganancias extends Model
     use SoftDeletes;
     protected $fillable = [
         'ganaciaTotal',
+        'ventas_id',
         
     ];
 }

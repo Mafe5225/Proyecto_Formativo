@@ -31,6 +31,7 @@ class VentasController extends Controller
             return view('ventas.index', compact('ventas', 'query'));
         }
          // Obtener todos los registros
+         
          $ventas = Ventas::orderBy('nombre', 'asc')
          ->paginate(5);
 
