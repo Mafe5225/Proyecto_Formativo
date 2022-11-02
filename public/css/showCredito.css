@@ -10,3 +10,7 @@ p{
 #historial{
     margin-top: 4rem;
 }
+
+.logo {
+    max-width: 100px;
+}

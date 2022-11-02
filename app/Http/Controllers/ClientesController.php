@@ -14,7 +14,7 @@ class ClientesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         if($request)
         {
@@ -70,7 +70,7 @@ class ClientesController extends Controller
      * @param  \App\Models\Clientes  $clientes
      * @return \Illuminate\Http\Response
      */
-    public function show(Clientes $clientes)
+    public function show($id)
     {
         $clientes = Clientes::findOrFail($id);
         return view('clientes.show', compact('clientes'));
@@ -82,7 +82,7 @@ class ClientesController extends Controller
      * @param  \App\Models\Clientes  $clientes
      * @return \Illuminate\Http\Response
      */
-    public function edit(Clientes $clientes)
+    public function edit($id)
     {
         $clientes = Clientes::findOrFail($id);
         return view('clientes.edit', compact('clientes'));
@@ -110,7 +110,7 @@ class ClientesController extends Controller
      * @param  \App\Models\Clientes  $clientes
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Clientes $clientes)
+    public function destroy($id)
     {
         $clientes = Clientes::findOrFail($id);
         $clientes->delete();

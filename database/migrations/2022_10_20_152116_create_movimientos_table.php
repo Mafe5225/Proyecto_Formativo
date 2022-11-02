@@ -17,8 +17,8 @@ class CreateMovimientosTable extends Migration
             $table->id();
             $table->date('fecha')->default(date('y-n-j'));
             $table->double('valor');
-            $table->String('tipoMovimiento');
-            $table->foreignId('clientes_id')->constrained();
+            $table->String('tipoMovimiento')->nullable();
+            $table->foreignId('cliente_id')->constrained('clientes');
             $table->timestamps();
             $table->softDeletes();
             
@@ -33,7 +33,7 @@ class CreateMovimientosTable extends Migration
     public function down()
     {
         Schema::table('movimientos', function (Blueprint $table) {
-            // $table->dropForeign('movimientos_cliente_id_foreign');
+            $table->dropForeign('movimientos_cliente_id_foreign');
         });
 
         Schema::dropIfExists('movimientos');

@@ -7,20 +7,20 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     
-    <title>Tienda Buena vista</title>
+    <title>Tienda Bella Vista</title>
 </head>
 <body class="d-flex h-100 text-center ">
     <div class="container">
-        <h1 class="text-center mt-1 " id="titulo">Tienda buena vista</h1>
+        <h1 class="text-center mt-1 " id="titulo">Tienda Bella Vista</h1>
         <div class="my-5"></div>
-        <h3 class="text-center ">Saludos te damos la bienvenida a tienda buena vista.</h3>
+        <h3 class="text-center ">Saludos te damos la bienvenida a Tienda Bella Vista.</h3>
         
         <div class="d-flex h-100 w-100 p-3 mx-auto flex-column main-container ">
             <div class="my-4"></div>
             <main class="px-3">
-                <h3>Agrega informacion de tus clientes, ingresos y prestamos.</h3>
+                <h3>Agrega información de tus clientes, ingresos y prestamos.</h3>
                 <td id="botones">
-                    <a href="{{ route('clientes.index') }}" class="btn  w-20">Registrar un cliente.</a> 
+                    <a href="{{ route('clientes.index') }}" class="btn  w-20">Iniciar sesión.</a> 
                 </td>
             </main>
         </div>

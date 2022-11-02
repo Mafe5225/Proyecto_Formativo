@@ -11,6 +11,7 @@
 </head>
 <body class="bg-light">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    <img src="{{ asset('images/logoTienda.png') }}" alt="Logo Tienda Bella Vista" class="logo ms-4">
         <div class="container">
             <a class="navbar-brand" href="{{ route('clientes.index') }}">Gestión de clientes</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,17 +19,15 @@
             </button>
 
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white ms-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle text-white ms-1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Información del cliente
                 </a>
                 <ul class="dropdown-menu">
                     <li class="list-group-item ms-2"><b>Nombre:</b> {{ $clientes->nombre }}</li>
                     <li><hr class="dropdown-divider"></li>
-                    <li class="list-group-item ms-2"><b>Teléfono:</b> {{ $clientes->cedula }}</li>
+                    <li class="list-group-item ms-2"><b>Cédula:</b> {{ $clientes->cedula }}</li>
                     <li><hr class="dropdown-divider"></li>
                     <li class="list-group-item ms-2"><b>Teléfono:</b> {{ $clientes->telefono }}</li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li class="list-group-item ms-2"><b>Dirección:</b> {{ $clientes->direccion }}</li>
                 </ul>
             </li>
 

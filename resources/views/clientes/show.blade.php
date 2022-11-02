@@ -30,13 +30,27 @@
                     
                     <form action="{{ route('movimientos.store') }}" method="post" class="needs-validation" novalidate>
                         @csrf
+                        {{-- <input type="text" value="{{$clientes->nombre}}" disabled> --}}
+                        <input type="hidden" name="cliente_id" value="{{$clientes->id}}">
                         <div class="input-group mb-3 mt-1">
                             <label class="input-group-text" for="valor">$</label>
                             <input type="number" class="form-control" id="valor" name="valor" minlength="0" maxlength="6" required>
                         </div>
 
-                        <button type="submit" class="btn btn-outline-danger" id="Deu">Deuda</button>
-                        <button type="submit" class="btn btn-outline-success" id="Abo">Abono</button>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="deuda" id="deuda" checked>
+                            <label class="form-check-label" for="deuda">
+                              Deuda
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="abono" id="abono">
+                            <label class="form-check-label" for="abono">
+                              Abono
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-danger" id="Deu">Guardar</button>
                         <a href="{{ route('clientes.index') }}" class="btn btn-outline-secondary">Volver</a>
                     </form>
                 </div>

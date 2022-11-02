@@ -4,12 +4,14 @@
 
 @section('content')
 
-    <div class="mt-3 mb-2">
-        <a href="{{ route('clientes.create') }}" class="btn btn-secondary">
-            Registrar nuevo cliente
-        </a>
-    </div>
-    
+    @can(['administrador'])
+        <div class="mt-3 mb-2">
+            <a href="{{ route('clientes.create') }}" class="btn btn-secondary">
+                Registrar nuevo cliente
+            </a>
+        </div>
+    @endcan
+
     @if ($mensaje = Session::get('exito'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <p>{{ $mensaje }}</p>
@@ -39,14 +41,16 @@
                             <td>{{ $item->nombre }}</td>
                             <td class="d-flex">
                                 <a href="{{ route('clientes.show', $item->id) }}" class="btn btn-outline-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye"></i></a>
-                                <a href="{{ route('clientes.edit', $item->id) }}" class="btn btn-outline-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <form action="{{ route('clientes.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-outline-danger rounded-circle">
-                                        <i class="fa-solid fa-trash-can"></i>
-                                    </button>
-                                </form>
+                                @can(['administrador'])
+                                    <a href="{{ route('clientes.edit', $item->id) }}" class="btn btn-outline-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <form action="{{ route('clientes.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-outline-danger rounded-circle">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </button>
+                                    </form>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

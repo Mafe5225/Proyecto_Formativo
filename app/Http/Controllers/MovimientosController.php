@@ -17,8 +17,8 @@ class MovimientosController extends Controller
      */
     public function index()
     {
-        $movimientos = Movimientos::all();
-        return view('clientes.show', compact('clientes'));
+        $movimiento = Movimientos::all();
+        return view('clientes.show', compact('movimiento', 'clientes'));
     }
 
     /**
@@ -53,12 +53,12 @@ class MovimientosController extends Controller
      */
     public function show($id)
     {
-        $movimientos = Movimientos::join('clientes', 'movimientos.cliente_id', 'clientes.id')
+        $movimiento = Movimientos::join('clientes', 'movimientos.cliente_id', 'clientes.id')
                               ->select('movimientos.fecha', 'movimientos.valor')
                               ->where('movimientos.id', $id)
                               ->first();
 
-        return view('clientes.show', compact('clientes'));
+        return view('clientes.show', compact('movimiento'));
     }
 
 
