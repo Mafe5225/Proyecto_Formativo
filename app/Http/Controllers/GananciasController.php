@@ -16,15 +16,11 @@ class GananciasController extends Controller
      */
     public function index(Request $request)
     {
-        // $ganancias = $request->ventas;  DB::table('ventas')->sum('ventas');
-        
-        // $ganancias = $request->ventas;
        
-        // $ganancias  = ventas::orderBy('fecha', 'asc')
-        // ->paginate(5);
-        $ventas = Ventas::orderBy('id', 'asc')
-        ->paginate(5);
-        return view('ganancias.index', compact('ventas') );
+        $ventas = Ventas::orderBy('fecha', 'asc')
+         ->paginate(5);
+        $total = DB::table('ventas')->sum('gesVentas');
+        return view('ganancias.index', compact('ventas','total'));
 
     }
 
@@ -55,10 +51,9 @@ class GananciasController extends Controller
      * @param  \App\Models\Ganancias  $ganancias
      * @return \Illuminate\Http\Response
      */
-    public function show(Ganancias $ganancias, $id)
+    public function show(Request $request)
     {
-        $total = DB::table('ventas')->sum('ventas');
-        return view('ganancias.show', compact('total'));
+        //
     }
 
     /**
@@ -90,8 +85,11 @@ class GananciasController extends Controller
      * @param  \App\Models\Ganancias  $ganancias
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ganancias $ganancias)
-    {
-        //
+    public function destroy($id)
+    {  
+        $ventas = Ventas::findOrFail($id);
+        $ventas->delete();
+        return view('ganancias.index');
+       
     }
 }

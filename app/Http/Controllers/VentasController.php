@@ -25,14 +25,14 @@ class VentasController extends Controller
         {
             $query = $request->buscar;
             $ventas = Ventas::where('id', 'LIKE', '%' . $query . '%')
-                                    ->orderBy('tipo', 'asc')
+                                    ->orderBy('fecha', 'asc')
                                     ->paginate(5);
             // 
             return view('ventas.index', compact('ventas', 'query'));
         }
          // Obtener todos los registros
          
-         $ventas = Ventas::orderBy('nombre', 'asc')
+         $ventas = Ventas::orderBy('fecha', 'asc')
          ->paginate(5);
 
         // enviar a la vista
