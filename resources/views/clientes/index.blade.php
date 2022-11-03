@@ -19,8 +19,8 @@
 
    @can("administrador")
     <div class="mt-3">
-        <a href="{{ route('clientes.create') }}" class="btn btn-secondary">
-            Registrar nuevo cliente
+        <a href="{{ route('clientes.create') }}" class="btn btn-dark">
+            <i class="fa-solid fa-user-plus"></i> Registrar nuevo cliente
         </a>
     </div>
      @endcan 
@@ -32,7 +32,7 @@
                 <tr>
                     <th>Nombre</th>
                     <th>Acciones</th>
-                    {{-- <th>Acciones para el credito</th> --}}
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -46,28 +46,24 @@
                          @endcan
                             <form action="{{ route('clientes.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
                                 @csrf
-                                @can("administrador")
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-outline-danger rounded-circle">
                                     <i class="fa-solid fa-trash-can"></i>
                                 </button>
-                                @endcan
                             </td>
                             <td>
                                 @can("administrador")
-                                    <a href="#" class="btn btn-outline-success justify-content-start me-1 rounded-circle"> <i class="fa-solid fa-dollar-sign"></i></a>
-                                    <a href="#" class="btn btn-outline-info justify-content-start me-1 rounded-circle" > <i class="fa-solid fa-eye"></i></a>
-                                    <a href="#"  class="btn btn-outline-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
-                                @endcan
                                   
-                                {{-- <form action="#" method="post" class="justify-content-start form-delete">
+                                @endcan
+                        {{--                                   
+                                <form action="#" method="post" class="justify-content-start form-delete">
                                     @csrf
-                                    {{-- @method('DELETE')
+                                    @method('DELETE')
                                     <button type="submit" class="btn btn-outline-danger rounded-circle">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </button> --}}
                                     {{-- {{ route('clientes.destroy', $item->id) }} --}}
-                             {{-- </form>     --}} 
+                             </form>    
                         </td>  
                     </tr>
                 @endforeach
@@ -87,7 +83,8 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         //Captura del evento submit del formulario para eliminar
-        $('.form-delete').submit(function(e){
+        $('.form-delete').submit(function(e)
+        {
             // Para el lanzamiento del evento
             e.preventDefault();
             //Lanzar alerta de sweetAlert

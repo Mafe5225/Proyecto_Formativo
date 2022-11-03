@@ -1,40 +1,59 @@
 body
 {
-    background-image: radial-gradient(circle at 45.87% 47.11%, #ffffff 0, #f7ffff 12.5%, #e4ffff 25%, #cefcf8 37.5%, #b5f2f2 50%, #9be8ee 62.5%, #83deeb 75%, #6bd5eb 87.5%, #55cceb 100%);
+    /* PARA EL FONDO DEL BODY */
+    background-image: radial-gradient(circle at 34.63% 50%,  #b2babb  0,  #b2babb  7.14%,  #b2babb  14.29%,  #b2babb  21.43%,  #b2babb  28.57%,  #b2babb  35.71%,  #b2babb  42.86%,  #b2babb 50%,  #b2babb  57.14%,  #b2babb  64.29%,  #b2babb  71.43%,  #b2babb  78.57%,  #b2babb  85.71%,  #b2babb  92.86%,  #b2babb  100%);
+
 }
+
 
 #vista
 {
-    margin: 9rem;
+    margin: 13rem;
+    margin-top: 21rem;
     background-image: radial-gradient(circle at 34.63% 50%, #dbf0dd 0, #d8f1e0 7.14%, #d5f1e3 14.29%, #d3f2e6 21.43%, #d1f2e9 28.57%, #cff2ec 35.71%, #cef2ef 42.86%, #cdf2f2 50%, #cdf2f5 57.14%, #cdf1f8 64.29%, #cef1fa 71.43%, #cff0fc 78.57%, #d1f0fe 85.71%, #d3efff 92.86%, #d6eeff 100%);
     border-radius: 8px;
-
-    font-size: 40px;
+    font-size: 100rem;
 }
 
 #texto
 {
+    padding-top: 34px;
     font-size: 20px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding-bottom: 1px;
+   
 }
 
+/* Botones del welcome */
 #botones
 {
+    padding-top: 5px;
     background-color:#55cceb;
     border: black;
-}
-
-#dro
-{
-  
-}
-
-#titulo
-{
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-#cliente
-{
+    margin-top: 1px;
     
 }
 
+
+/* Logo del navar */
+.logo{
+    max-width: 70px;
+}
+
+
+#imagen{
+    width: 260px;
+    height: 260px;
+    margin-top: -11rem;
+
+     
+
+}
+
+#user
+{
+    position: relative;
+    top: 0px;
+    left: 107px;
+    
+}
