@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\user;
-use Illuminate\Http\Request;
 use App\Models\Ventas;
-use App\Models\Clientes;
+use Illuminate\Http\Request;
 use Gate;
+
 class VentasController extends Controller
 {
     public function __construct()
@@ -19,19 +18,20 @@ class VentasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         if($request)
         {
             $query = $request->buscar;
             $ventas = Ventas::where('id', 'LIKE', '%' . $query . '%')
-                                    ->orderBy('tipo', 'asc')
+                                    ->orderBy('fecha', 'asc')
                                     ->paginate(5);
             // 
             return view('ventas.index', compact('ventas', 'query'));
         }
+
          // Obtener todos los registros
-         $ventas = Ventas::orderBy('nombre', 'asc')
+         $ventas = Ventas::orderBy('fecha', 'asc')
          ->paginate(5);
 
         // enviar a la vista
@@ -61,9 +61,6 @@ class VentasController extends Controller
      */
     public function store(Request $request)
     {
-       
-     
-
         Ventas::create($request->all());
         return redirect()->route('ventas.index')->with('exito', '¡El registro se ha creado satisfactoriamente!');
     }
@@ -71,53 +68,45 @@ class VentasController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\user  $user
+     * @param  \App\Models\Ventas  $ventas
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $ventas = Ventas::findOrFail($id);
-        return view('ventas.show', compact('ventas'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\user  $user
+     * @param  \App\Models\Ventas  $ventas
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Ventas $ventas)
     {
-        $ventas = Ventas::findOrFail($id);
-        return view('ventas.edit', compact('ventas'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\user  $user
+     * @param  \App\Models\Ventas  $ventas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, Ventas $ventas)
     {
-        $ventas = Ventas::findOrFail($id);
-
-        $ventas->update($request->all());
-        return redirect()->route('ventas.index')->with('exito', '¡El registro se ha actualizado satisfactoriamente!');
-
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\user  $user
+     * @param  \App\Models\Ventas  $ventas
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $ventas = Ventas::findOrFail($id);
-        $ventas->delete();
-        return redirect()->route('ventas.index');
+        //
     }
 }

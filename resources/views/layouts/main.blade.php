@@ -9,14 +9,23 @@
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <title>@yield('titulo')</title>
 </head>
-<body class="bg-light">
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+<body class="fondo">
+<nav class="navbar navbar-expand-lg shadow" id="navbar">
     <img src="{{ asset('images/logoTienda.png') }}" alt="Logo Tienda Bella Vista" class="logo ms-4">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('clientes.index') }}">Gestión de clientes</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+
+            <ul class="navbar-nav text-white">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Gestiones
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ route('clientes.index') }}">Gestión de clientes</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{{ route('ventas.index') }}">Gestión de ventas</a></li>
+                    </ul>
+                </li>
+            </ul>
 
             <ul class="navbar-nav text-white ms-3">
                 <li class="nav-item dropdown">

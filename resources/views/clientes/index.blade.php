@@ -77,6 +77,7 @@
             <p>La búsqueda no arrojó resultados.</p>
         @endif
     </div>
+    
 @endsection
 
 
