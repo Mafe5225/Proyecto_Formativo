@@ -42,7 +42,10 @@ class GananciasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Ventas::create($request->all());
+
+        return redirect()->route('proyectos.index',$request->ventas_id)->with('exito', '¡El registro se ha creado satisfactoriamente!');
+
     }
 
     /**
@@ -87,9 +90,9 @@ class GananciasController extends Controller
      */
     public function destroy($id)
     {  
-        $ventas = Ventas::findOrFail($id);
-        $ventas->delete();
-        return view('ganancias.index');
+        DB::table('ventas')->delete($id);
+        // $ventas->delete();
+        return view('ventas.index');
        
     }
 }

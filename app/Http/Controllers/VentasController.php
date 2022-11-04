@@ -63,8 +63,6 @@ class VentasController extends Controller
     public function store(Request $request)
     {
        
-     
-
         Ventas::create($request->all());
         return redirect()->route('ventas.index')->with('exito', '¡El registro se ha creado satisfactoriamente!');
     }

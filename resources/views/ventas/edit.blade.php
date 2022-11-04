@@ -20,7 +20,7 @@
 
 
 
-      <button type="submit" class="btn btn-secondary">Guardar</button>
+      <button type="submit" class="btn btn-success">Guardar</button>
     <a href="{{ route('ventas.index') }}" class="btn btn-danger">Cancelar</a>
   </form>
  
