@@ -1,4 +1,18 @@
-@extends('layouts.mainCredito')
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Crédito || Tienda Bella Vista</title>
+    <link rel="shortcut icon" href="{{ asset('images/logoTienda.png') }}">
+</head>
+<body>
+    
+</body>
+</html>
+
+@extends('layouts.main')
 
 @section('content')
     @if ($mensaje = Session::get('exitoCredito'))
@@ -14,44 +28,41 @@
         <div class="position-absolute top-50 start-50 translate-middle" id="historial">
             <div class="card text-center">
                 <div class="card-header">
-                    <h3>Historial</h3>
+                    <h3>Historial de {{$clientes->nombre}}</h3>
                 </div>
                 <div class="card-body">
                 
-                    <h4 class="card-title">$ 50000</h4>
+                    {{--Input que muestra la deuda del cliente 
+                    <input type="text" value="{{$total}}" disabled> --}}
 
                     <div class="overflow-scroll">
                         <p class="border border-dark mb-1">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, asperiores cum impedit, veritatis mollitia quis quos earum corporis ab eligendi voluptatibus aliquid rem, voluptatem id culpa nostrum error vitae. Blanditiis!
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, asperiores cum impedit, veritatis mollitia quis quos earum corporis ab eligendi voluptatibus aliquid rem, voluptatem id culpa nostrum error vitae. Blanditiis!
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, asperiores cum impedit, veritatis mollitia quis quos earum corporis ab eligendi voluptatibus aliquid rem, voluptatem id culpa nostrum error vitae. Blanditiis!
+                            <input type="text" class="mt-1 mb-1" disabled>
                         </p>
                     </div>
                     
                     <form action="{{ route('movimientos.store') }}" method="post" class="needs-validation" novalidate>
                         @csrf
-                        {{-- <input type="text" value="{{$clientes->nombre}}" disabled> --}}
                         <input type="hidden" name="cliente_id" value="{{$clientes->id}}">
                         <div class="input-group mb-3 mt-1">
                             <label class="input-group-text" for="valor">$</label>
                             <input type="number" class="form-control" id="valor" name="valor" minlength="0" maxlength="6" required>
                         </div>
 
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="deuda" id="deuda" checked>
+                        <div class="form-check position-absolute ms-2">
+                            <input class="form-check-input" type="radio" name="tipoMovimiento" id="deuda" value="deuda" checked>
                             <label class="form-check-label" for="deuda">
                               Deuda
                             </label>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="abono" id="abono">
+                        <div class="form-check position-absolute top-5 end-50" id="Abo">
+                            <input class="form-check-input" type="radio" name="tipoMovimiento" id="abono" value="abono">
                             <label class="form-check-label" for="abono">
                               Abono
                             </label>
                         </div>
 
-                        <button type="submit" class="btn btn-outline-danger" id="Deu">Guardar</button>
-                        <a href="{{ route('clientes.index') }}" class="btn btn-outline-secondary">Volver</a>
+                        <button type="submit" class="btn btn-outline-danger mt-5" id="btnGuardar">Guardar</button>
                     </form>
                 </div>
             </div>

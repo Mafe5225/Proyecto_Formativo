@@ -17,7 +17,7 @@ class CreateMovimientosTable extends Migration
             $table->id();
             $table->date('fecha')->default(date('y-n-j'));
             $table->double('valor');
-            $table->String('tipoMovimiento')->nullable();
+            $table->String('tipoMovimiento');
             $table->foreignId('cliente_id')->constrained('clientes');
             $table->timestamps();
             $table->softDeletes();

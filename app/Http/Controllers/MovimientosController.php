@@ -17,6 +17,7 @@ class MovimientosController extends Controller
      */
     public function index()
     {
+        $clientes = Clientes::all();
         $movimiento = Movimientos::all();
         return view('clientes.show', compact('movimiento', 'clientes'));
     }
@@ -42,7 +43,7 @@ class MovimientosController extends Controller
         $valor = $request->valor;
 
         Movimientos::create($request->all());
-        return redirect()->route('clientes.show')->with('exitoCredito', '¡El crédito se ha registrado satisfactoriamente!');
+        return redirect()->route('clientes.show', $request->cliente_id)->with('exitoCredito', '¡El crédito se ha registrado satisfactoriamente!');
     }
 
     /**
