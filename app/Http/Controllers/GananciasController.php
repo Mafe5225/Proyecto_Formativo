@@ -19,7 +19,7 @@ class GananciasController extends Controller
        
         $ventas = Ventas::orderBy('fecha', 'asc')
          ->paginate(5);
-        $total = DB::table('ventas')->sum('gesVentas');
+        $total = DB::table('ventas')->sum('gesVentas')->where('deleted_at','='.'');
         return view('ganancias.index', compact('ventas','total'));
 
     }

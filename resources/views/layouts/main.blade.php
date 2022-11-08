@@ -25,7 +25,7 @@
                         <li><a class="dropdown-item" href="{{ route('clientes.index') }}">Gestión de clientes</a></li>
                         <li><a class="dropdown-item" href="{{ route('ventas.index') }}">Gestión de ventas</a></li>
                         <li>
-                            <a class="dropdown-item" href="{{ route('ganancias.index') }}">Something else here</a>
+                            <a class="dropdown-item" href="{{ route('ganancias.index') }}">Gestion de ganancias</a>
                         </li>
                         </ul>
                     </div>

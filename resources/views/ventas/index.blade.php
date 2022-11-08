@@ -20,7 +20,6 @@
             <thead>
                 <tr>
                     <th>id</th>
-                    <th>tipo</th>
                     <th>fecha</th>
                     <th>Valor</th>
                     <th>Acciones</th>
@@ -31,7 +30,6 @@
                 @foreach($ventas as $item)
                     <tr>
                         <td>{{ $item->id }}</td>
-                        <td>{{ $item->tipo }}</td>
                         <td>{{ $item->fecha}}</td>
                         <td>${{ $item->gesVentas }}</td>
                         <td class="d-flex">
@@ -53,6 +51,13 @@
             </tbody> 
         </table> 
         {{ $ventas->links() }}
+        <th><form action="{{ route('ganancias.destroy', $item->id) }}" class="d-inline" method="post">
+            @method('DELETE')
+            @csrf 
+          
+            <button type="submit" class="btn btn-danger justify-content-start me-1 rounded-circle"><i class="fa-solid fa-trash"></i></button>
+        </th>
+        </form> 
         @else
             <p>La búsqueda no arrojó resultados.</p>
         @endif
