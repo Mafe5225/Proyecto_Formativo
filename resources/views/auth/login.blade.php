@@ -15,13 +15,13 @@
 </body>
 </html>
 <div id="login">
-    <x-guest-layout>
+    <x-login-layout>
         <x-auth-card>
             <x-slot name="logo">
         
                     {{-- <x-application-logo class="w-20 h-20 fill-current text-gray-500" /> --}}
-                    <img src="{{ asset('image/tienda BV.png') }}" alt="Logo Tienda Bella Vista" class="fill-current text-gray-0" id="Logos">
-            
+                    <img src="{{ asset('image/T-Bella.png') }}" alt="Logo Tienda Bella Vista" class="fill-current text-gray-0" id="Logos">
+                   
             </x-slot>
 
             <!-- Session Status -->

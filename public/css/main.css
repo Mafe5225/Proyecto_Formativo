@@ -1,8 +1,9 @@
 body
 {
     /* PARA EL FONDO DEL BODY */
-    background-image: radial-gradient(circle at 34.63% 50%,  #b2babb  0,  #b2babb  7.14%,  #b2babb  14.29%,  #b2babb  21.43%,  #b2babb  28.57%,  #b2babb  35.71%,  #b2babb  42.86%,  #b2babb 50%,  #b2babb  57.14%,  #b2babb  64.29%,  #b2babb  71.43%,  #b2babb  78.57%,  #b2babb  85.71%,  #b2babb  92.86%,  #b2babb  100%);
-
+    /* background-image: radial-gradient(circle at 34.63% 50%,  #ecece4  0,  #ecece4  7.14%,  #ecece4  14.29%,  #ecece4  21.43%,  #ecece4  28.57%,  #ecece4  35.71%,  #ecece4  42.86%,  #ecece4 50%,  #ecece4  57.14%,  #ecece4  64.29%,  #ecece4  71.43%,  #ecece4 78.57%,  #ecece4  85.71%,  #ecece4  92.86%,  #ecece4  100%);  */
+    background: url(../image/WhatsApp\ Image\ 2022-11-09\ at\ 9.08.08\ AM.jpeg);
+    opacity: 10;
 }
 
 
@@ -10,7 +11,7 @@ body
 {
     margin: 13rem;
     margin-top: 21rem;
-    background-image: radial-gradient(circle at 34.63% 50%, #dbf0dd 0, #d8f1e0 7.14%, #d5f1e3 14.29%, #d3f2e6 21.43%, #d1f2e9 28.57%, #cff2ec 35.71%, #cef2ef 42.86%, #cdf2f2 50%, #cdf2f5 57.14%, #cdf1f8 64.29%, #cef1fa 71.43%, #cff0fc 78.57%, #d1f0fe 85.71%, #d3efff 92.86%, #d6eeff 100%);
+    /* background-image: radial-gradient(circle at 34.63% 50%, #dbf0dd 0, #d8f1e0 7.14%, #d5f1e3 14.29%, #d3f2e6 21.43%, #d1f2e9 28.57%, #cff2ec 35.71%, #cef2ef 42.86%, #cdf2f2 50%, #cdf2f5 57.14%, #cdf1f8 64.29%, #cef1fa 71.43%, #cff0fc 78.57%, #d1f0fe 85.71%, #d3efff 92.86%, #d6eeff 100%); */
     border-radius: 8px;
     font-size: 100rem;
 }

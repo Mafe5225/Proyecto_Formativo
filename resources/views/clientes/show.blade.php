@@ -3,6 +3,7 @@
 @section('titulo', 'Detalle del cliente')
 
 <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+<link rel="shortcut icon" href="{{ asset('images/T-Bella.png') }}">
 
 @section('content')
 <div class="my-3" id="cliente">

@@ -1,0 +1,11 @@
+.fondo{
+    background-image: linear-gradient(rgba(242, 255, 59, 0.479),rgba(59, 255, 229, 0.479) ), url(../image/WhatsApp\ Image\ 2022-11-09\ at\ 9.08.08\ AM.jpeg);
+    opacity: 10;
+}
+
+img
+{
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.021);
+}
+

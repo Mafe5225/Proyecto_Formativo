@@ -4,9 +4,9 @@
 
 @section('content')
 @if($query)
-<div class="alert alert-warning" role="alert">
+{{-- <div class="alert alert-warning" role="alert">
     <p>A continuación se presentan los resultados de la búsqueda: <span class="fw-bold">{{ $query }}</span></p>
-</div>
+</div> --}}
 
 @endif
 @if($mensaje = Session::get('exito'))
@@ -40,28 +40,31 @@
                     <tr>
                         <td>{{ $item->nombre }}</td>
                         <td class="d-flex">
-                            <a href="{{ route('clientes.show', $item->id) }}" class="btn btn-outline-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye"></i></a>
+                            <a href="{{ route('clientes.show', $item->id) }}" class="btn btn-outline-secundary justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye"></i></a>
                         @can("administrador")  
-                            <a href="{{ route('clientes.edit', $item->id) }}" class="btn btn-outline-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="{{ route('clientes.edit', $item->id) }}" class="btn btn-outline-secundary justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
                          @endcan
+                        @can("administrador")
                             <form action="{{ route('clientes.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-outline-danger rounded-circle">
+                                <button type="submit" class="btn btn-outline-secundary rounded-circle">
                                     <i class="fa-solid fa-trash-can"></i>
-                                </button>
+                                </button>                                
+                        @endcan
                             </td>
                             <td>
                                 @can("administrador")
                                   
                                 @endcan
-                        {{--                                   
-                                <form action="#" method="post" class="justify-content-start form-delete">
+                                                          
+                                {{-- <form action="#" method="post" class="justify-content-start form-delete">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-outline-danger rounded-circle">
                                         <i class="fa-solid fa-trash-can"></i>
-                                    </button> --}}
+                                    </button>  --}}
+
                                     {{-- {{ route('clientes.destroy', $item->id) }} --}}
                              </form>    
                         </td>  

@@ -8,13 +8,15 @@
     <link rel="stylesheet" href="{{ asset('css/fontawesome/css/all.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    
     <title>@yield('titulo')</title>
 </head>
 
 <body class="bg-light">
-    <nav class="navbar navbar-expand-lg navar-background" style="background-color: #FFF200; navbar-dark bg-dark shadow">
-        
-        <img alt="Logo Tienda Bella Vista" src="{{ asset('image/tienda BV.png') }}"  class="logo ms-4" >
+    <nav class="navbar navbar-expand-lg navar-background" style="background-color: #44c1F5; navbar-dark bg-dark shadow">
+<div>
+    <img alt="Logo Tienda Bella Vista" src="{{ asset('image/T-Bella.png') }}"  class="logo ms-4" >
+</div>
 
 
             <div class="container">
