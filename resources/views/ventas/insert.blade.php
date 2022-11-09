@@ -6,7 +6,7 @@
   @csrf
   
   <div class="form-floating mb-3">
-    <input type="number" class="form-control" id="gesVentas" name="gesVentas" placeholder="Total a pagar" required>
+    <input type="double" class="form-control" id="gesVentas" name="gesVentas" placeholder="Total a pagar" required>
     <label for="gesVentas">Total a pagar</label>
           </div>
      

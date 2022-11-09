@@ -50,7 +50,7 @@
                             @endcan
                             <td>
                                 
-                                <a href="#" class="btn btn-outline-success justify-content-start me-1 rounded-circle"> <i class="fa-solid fa-dollar-sign"></i></a>
+                                <a href="{{ route('clientes.index') }}" class="btn btn-outline-success justify-content-start me-1 rounded-circle"> <i class="fa-solid fa-dollar-sign"></i></a>
                                 
                             </td>
                             

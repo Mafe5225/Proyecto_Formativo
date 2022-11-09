@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Models\Ganancias;
 use Illuminate\Http\Request;
@@ -19,7 +20,12 @@ class GananciasController extends Controller
        
         $ventas = Ventas::orderBy('fecha', 'asc')
          ->paginate(5);
-        $total = DB::table('ventas')->sum('gesVentas')->where('deleted_at','='.'');
+        $total = DB::table('ventas')
+        ->select(DB::raw('sum(gesVentas) as "Total de las ventas" '))
+        ->whereNull('deleted_at')
+        ->get();
+       
+        
         return view('ganancias.index', compact('ventas','total'));
 
     }

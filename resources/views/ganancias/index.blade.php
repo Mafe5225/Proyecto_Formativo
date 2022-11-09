@@ -20,9 +20,9 @@
         </tbody>
     </table>
     <tr>
-            <th>Total de las ventas: <b>$ {{ $total }}</b></th>
+            <th><b> {{ $total }}</b></th>
             
-            {{-- <th><a href="{{ route('ventas.index', $item->id) }}" class="btn btn-danger justify-content-start me-1 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Visualisar"><i class="fa-solid fa-trash"></i></a></th> --}}
+            <th><a href="{{ route('ventas.index', $item->id) }}" class="btn btn-danger justify-content-start me-1 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Visualisar"><i class="fa-solid fa-trash"></i></a></th>
             
      </tr>
     
