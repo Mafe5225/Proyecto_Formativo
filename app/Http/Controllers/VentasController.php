@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\user;
 use App\Models\Ventas;
 use Illuminate\Http\Request;
 use Gate;
@@ -18,7 +19,7 @@ class VentasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         if($request)
         {
@@ -29,8 +30,8 @@ class VentasController extends Controller
             // 
             return view('ventas.index', compact('ventas', 'query'));
         }
-
          // Obtener todos los registros
+         
          $ventas = Ventas::orderBy('fecha', 'asc')
          ->paginate(5);
 
@@ -47,7 +48,6 @@ class VentasController extends Controller
     {
         if(Gate::denies('administrador'))
         {
-            // abort(403);
             return redirect()->route('ventas.index');
         }
         return view('ventas.insert');
@@ -73,7 +73,8 @@ class VentasController extends Controller
      */
     public function show($id)
     {
-        //
+        $ventas = Ventas::findOrFail($id);
+        return view('ventas.show', compact('ventas'));
     }
 
     /**
@@ -82,9 +83,10 @@ class VentasController extends Controller
      * @param  \App\Models\Ventas  $ventas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Ventas $ventas)
+    public function edit($id)
     {
-        //
+        $ventas = Ventas::findOrFail($id);
+        return view('ventas.edit', compact('ventas'));
     }
 
     /**
@@ -94,9 +96,12 @@ class VentasController extends Controller
      * @param  \App\Models\Ventas  $ventas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ventas $ventas)
+    public function update(Request $request,$id)
     {
-        //
+        $ventas = Ventas::findOrFail($id);
+
+        $ventas->update($request->all());
+        return redirect()->route('ventas.index')->with('exito', '¡El registro se ha actualizado satisfactoriamente!');
     }
 
     /**
@@ -107,6 +112,8 @@ class VentasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ventas = Ventas::findOrFail($id);
+        $ventas->delete();
+        return redirect()->route('ventas.index');
     }
 }
