@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <title>@yield('titulo')</title>
 </head>
-<body class="bg-light">
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+<body class="fondo">
+<nav class="navbar navbar-expand-lg shadow" id="navbar">
     <img src="{{ asset('images/logoTienda.png') }}" alt="Logo Tienda Bella Vista" class="logo ms-4">
     <div class="container">
         

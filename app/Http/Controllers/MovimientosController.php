@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\Movimientos;
@@ -17,9 +16,8 @@ class MovimientosController extends Controller
      */
     public function index()
     {
-        $clientes = Clientes::all();
         $movimiento = Movimientos::all();
-        return view('clientes.show', compact('movimiento', 'clientes'));
+        return view('clientes.show', compact('movimiento'));
     }
 
     /**
@@ -54,12 +52,7 @@ class MovimientosController extends Controller
      */
     public function show($id)
     {
-        $movimiento = Movimientos::join('clientes', 'movimientos.cliente_id', 'clientes.id')
-                              ->select('movimientos.fecha', 'movimientos.valor')
-                              ->where('movimientos.id', $id)
-                              ->first();
-
-        return view('clientes.show', compact('movimiento'));
+        //
     }
 
 

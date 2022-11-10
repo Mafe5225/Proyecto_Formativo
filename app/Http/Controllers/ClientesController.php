@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Movimientos;
 use App\Models\Clientes;
@@ -47,7 +48,7 @@ class ClientesController extends Controller
      */
     public function create()
     {
-        // $clientes = new Clientes;
+        // $clientes = new CltipoMovimientoientes;
         return view('clientes.insert');
     }
 
@@ -78,8 +79,25 @@ class ClientesController extends Controller
     public function show($id)
     {
         $clientes = Clientes::findOrFail($id);
-        return view('clientes.show', compact('clientes'));
+        $movimientos = Movimientos::where('cliente_id', $id)
+        ->orderBy('created_at', 'desc')
+        ->get();
+        $total = 0;
+        foreach($movimientos as $item)
+        {
+            if($item->tipoMovimiento == 'deuda')
+            {
+                $total += $item->valor;
+            }
+            else{
+                $total -= $item->valor;
+            }
+            return view('clientes.show', compact('clientes','movimientos','item', 'total'));
+        }
+        return view('clientes.show', compact('clientes','movimientos', 'total'));
     }
+        
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -100,7 +118,7 @@ class ClientesController extends Controller
      * @param  \App\Models\Clientes  $clientes
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Clientes $clientes)
+    public function update(Request $request, Clientes $clientes, $id)
     {
         $clientes = Clientes::findOrFail($id);
 

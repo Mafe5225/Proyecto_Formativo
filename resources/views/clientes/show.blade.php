@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="{{ asset('images/logoTienda.png') }}">
 </head>
 <body>
-    
+
 </body>
 </html>
 
@@ -31,16 +31,35 @@
                     <h3>Historial de {{$clientes->nombre}}</h3>
                 </div>
                 <div class="card-body">
-                
-                    {{--Input que muestra la deuda del cliente 
-                    <input type="text" value="{{$total}}" disabled> --}}
+
+                    {{-- Input que muestra la deuda del cliente --}}
+                    {{$total}} 
 
                     <div class="overflow-scroll">
-                        <p class="border border-dark mb-1">
-                            <input type="text" class="mt-1 mb-1" disabled>
-                        </p>
+                        @if(count($movimientos) > 0)
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Valor</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($movimientos as $item)
+                                        <tr>
+                                            <td>{{ $item->fecha }}</td>
+                                            <td>{{$item->valor}}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @else
+                            <p>No hay historial ;3</p>
+                        @endif
                     </div>
-                    
+
+
+
                     <form action="{{ route('movimientos.store') }}" method="post" class="needs-validation" novalidate>
                         @csrf
                         <input type="hidden" name="cliente_id" value="{{$clientes->id}}">
@@ -62,16 +81,17 @@
                             </label>
                         </div>
 
-                        <button type="submit" class="btn btn-outline-danger mt-5" id="btnGuardar">Guardar</button>
+                        <button type="submit" class="btn btn-outline-success mt-5" id="btnGuardar">Guardar</button>
+                        <a href="{{ route('clientes.index') }}" class="btn btn-danger position-absolute end-50" id="btnVolver">Volver</a>
                     </form>
                 </div>
             </div>
             <div class="col-sm-3"></div>
         </div>
-    
+
     </div>
 
-        
+
 @endsection
 
 

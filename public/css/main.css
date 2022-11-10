@@ -3,7 +3,7 @@
 }
 
 #navbar{
-    background-color: #44C1F5;
+    background-color: #bac3eb;
 }
 
 .overflow-scroll {
@@ -26,4 +26,9 @@
 
 #btnGuardar {
     margin-right: 24rem;
+}
+
+#btnVolver {
+    margin-top: 3rem;
+    margin-right: 3rem;
 }

@@ -20,6 +20,7 @@
     <form action="{{ route('clientes.update', $clientes->id) }}" method="post" class="needs-validation"  novalidate>
         @method('PUT')
         @csrf
+        
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" value="{{ $clientes->nombre}}" required>
             <label for="nombre">Nombre</label>
