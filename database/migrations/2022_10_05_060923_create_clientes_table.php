@@ -17,6 +17,7 @@ class CreateClientesTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('telefono');
+            $table->string('cedula');
             $table->string('direccion');
             $table->timestamps();
             $table->softDeletes();

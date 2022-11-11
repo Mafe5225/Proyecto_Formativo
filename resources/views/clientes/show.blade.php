@@ -8,12 +8,14 @@
             <thead>
                 <tr>
                     <th>Nombre</th>
+                    <th>Indentificación</th>
                     <th>Telefono</th>
                     <th>Direccion</th>
                 </tr>
             </thead>
             <tbody>
                 <td>{{ $clientes->nombre}}</td>
+                <td>{{ $clientes->cedula}}</td>
                 <td>  {{ $clientes->telefono }}</td>
                 <td>{{ $clientes->direccion}}</td>
             </tbody>

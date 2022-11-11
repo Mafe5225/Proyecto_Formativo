@@ -10,6 +10,10 @@
       <label for="nombre">Nombre</label>
     </div>
     <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="cedula" name="cedula" placeholder="cedula" minlength="0" maxlength="11" required>
+      <label for="cedula">Numero de identificación</label>
+    </div>
+    <div class="form-floating mb-3">
       <input type="number" class="form-control" id="telefono" name="telefono" placeholder="Teléfono" minlength="0" maxlength="10" required>
       <label for="telefono">Teléfono</label>
     </div>
@@ -26,7 +30,7 @@
 
 @endsection
 
-@section('script')
+@section('scripts')
     <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
     (() => {

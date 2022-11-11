@@ -20,7 +20,7 @@ class ClientesController extends Controller
         {
             $query = $request->buscar;
             
-            $clientes = Clientes::where('id', 'LIKE', '%' . $query . '%')
+            $clientes = Clientes::where('cedula', 'LIKE', '%' . $query . '%')
                                     ->orderBy('nombre', 'asc')
                                     ->paginate(5);
             

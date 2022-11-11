@@ -24,16 +24,18 @@
                         <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{{ route('clientes.index') }}">Gestión de clientes</a></li>
                         <li><a class="dropdown-item" href="{{ route('ventas.index') }}">Gestión de ventas</a></li>
-                        <li>
-                            <a class="dropdown-item" href="{{ route('ganancias.index') }}">Gestion de ganancias</a>
-                        </li>
+                        @can(['administrador'])
+                            <li>
+                                <a class="dropdown-item" href="{{ route('ganancias.index') }}">Gestion de ganancias</a>
+                            </li>
+                        @endcan
                         </ul>
                     </div>
 
                 
                 <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="ingrese el id de la venta" name="buscar" aria-label="Buscar">
-                    <button class="btn btn-light" type="submit">Buscar</button>
+                    <input class="form-control me-2" type="search" placeholder="Buscar" name="buscar" aria-label="Buscar">
+                    <button class="btn btn-light" type="submit"> <i class="fa-solid fa-magnifying-glass"></i> </button>
                 </form>
                 <ul class="navbar-nav text-white ms-3">
                     <li class="nav-item dropdown">
