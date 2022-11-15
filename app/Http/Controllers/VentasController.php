@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\user;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Models\Ventas;
 use App\Models\Clientes;
+use App\Models\Ventas;
+use App\Models\user;
 use Gate;
 class VentasController extends Controller
 {
@@ -119,4 +120,10 @@ class VentasController extends Controller
         $ventas->delete();
         return redirect()->route('ventas.index');
     }
+    // public function destroy2()
+    // {
+    //     $ventas = DB::select('ventas');
+    //     $ventas->delete();
+    //     return redirect()->route('ventas.index');
+    // }
 }

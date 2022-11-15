@@ -20,7 +20,7 @@ class CreateVentasTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
-        // date_time_set
+     
     }
     /**
      * Reverse the migrations.

@@ -51,7 +51,7 @@
             </tbody> 
         </table> 
         {{ $ventas->links() }}
-        <th><form action="{{ route('ganancias.destroy', $item->id) }}" class="d-inline" method="post">
+        <th><form action="{{ route('ventas.destroy', $item->id) }}" class="d-inline" method="post">
             @method('DELETE')
             @csrf 
           
