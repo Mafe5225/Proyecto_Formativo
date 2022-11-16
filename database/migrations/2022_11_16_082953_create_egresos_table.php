@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGananciasTable extends Migration
+class CreateEgresosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class CreateGananciasTable extends Migration
      */
     public function up()
     {
-        Schema::create('ganancias', function (Blueprint $table) {
+        Schema::create('egresos', function (Blueprint $table) {
             $table->id();
-            $table->double('ganaciaTotal');
-            $table->foreignId('ventas_id')->constrained('ventas');
+            $table->double('gesEgresos');
+            $table->string('tipo');
+            $table->date('fecha')->default(date("Y-n-j"));
             $table->timestamps();
             $table->softDeletes();
         });
     }
-    
+
     /**
      * Reverse the migrations.
      *
@@ -29,10 +30,8 @@ class CreateGananciasTable extends Migration
      */
     public function down()
     {
-        Schema::table('ventas', function (Blueprint $table) {
-            $table->dropForeign('ganancias_ventas_id_foreign');
-        });
-      
-        Schema::dropIfExists('ganancias');
+        Schema::dropIfExists('egresos');
     }
 }
+
+

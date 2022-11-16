@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Models\Ganancias;
+use App\Models\Egresos;
 use Illuminate\Http\Request;
 use App\Models\Ventas;
 
@@ -24,9 +25,17 @@ class GananciasController extends Controller
         ->select(DB::raw('sum(gesVentas) as "total" '))
         ->whereNull('deleted_at')
         ->first();
-       
+
+        $egresos = Egresos::orderBy('fecha', 'asc')
+        ->paginate(5);
+       $total2 = DB::table('egresos')
+       ->select(DB::raw('sum(gesEgresos) as "total2" '))
+       ->whereNull('deleted_at')
+       ->first();
+      
+       $total3 =(double)$total - $total2;
         
-        return view('ganancias.index', compact('ventas','total'));
+        return view('ganancias.index', compact('ventas','egresos','total', 'total2','total3'));
 
     }
 
@@ -96,9 +105,7 @@ class GananciasController extends Controller
      */
     public function destroy($id)
     {  
-        DB::table('ventas')->delete($id);
-        // $ventas->delete();
-        return view('ventas.index');
+     
        
     }
 }

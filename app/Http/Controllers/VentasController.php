@@ -120,10 +120,4 @@ class VentasController extends Controller
         $ventas->delete();
         return redirect()->route('ventas.index');
     }
-    // public function destroy2()
-    // {
-    //     $ventas = DB::select('ventas');
-    //     $ventas->delete();
-    //     return redirect()->route('ventas.index');
-    // }
 }

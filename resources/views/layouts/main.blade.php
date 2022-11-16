@@ -23,10 +23,11 @@
                         </button>
                         <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{{ route('clientes.index') }}">Gestión de clientes</a></li>
-                        <li><a class="dropdown-item" href="{{ route('ventas.index') }}">Gestión de ventas</a></li>
                         @can(['administrador'])
-                            <li>
-                                <a class="dropdown-item" href="{{ route('ganancias.index') }}">Gestion de ganancias </a>
+                        <li><a class="dropdown-item" href="{{ route('egresos.index') }}">Gestión de egresos </a></li>
+                        <li><a class="dropdown-item" href="{{ route('ventas.index') }}">Gestión de ingresos</a></li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('ganancias.index') }}">Gestion de ganancias </a>
                             </li>
                         @endcan
                         </ul>

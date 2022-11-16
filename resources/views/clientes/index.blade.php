@@ -58,6 +58,7 @@
                 @endforeach
             </tbody> 
         </table> 
+        
         {{ $clientes->links() }}
    
         @else

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\GananciasController;
 use App\Http\Controllers\VentasController;
+use App\Http\Controllers\EgresosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,6 @@ require __DIR__.'/auth.php';
 Route::resource('clientes', ClientesController::class)->middleware('auth');
 Route::resource('ventas', VentasController::class)->middleware('auth');
 Route::resource('ganancias', GananciasController::class)->middleware('auth');
-
+Route::resource('egresos', EgresosController::class)->middleware('auth');
 
 
