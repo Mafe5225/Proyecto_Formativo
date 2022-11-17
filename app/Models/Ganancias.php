@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
-class Ventas extends Model
+class Ganancias extends Model
 {
     use SoftDeletes;
     protected $fillable = [
-        'gesVentas',
-        'fecha'
+        'ganaciaTotal',
+        'ventas_id',
+        'egresos_id'
+        
     ];
 }

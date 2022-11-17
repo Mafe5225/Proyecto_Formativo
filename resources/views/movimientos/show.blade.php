@@ -61,7 +61,7 @@
                                 </tbody>
                             </table>
                         @else
-                            <p>No hay historial ;3</p>
+                            <p>No hay historial °\(^_^)/°</p>
                         @endif
                     </div>
         

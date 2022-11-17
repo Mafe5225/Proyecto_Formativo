@@ -48,7 +48,6 @@ class ClientesController extends Controller
      */
     public function create()
     {
-        // $clientes = new CltipoMovimientoientes;
         return view('clientes.insert');
     }
 

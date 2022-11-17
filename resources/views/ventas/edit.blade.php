@@ -6,10 +6,6 @@
       @csrf
       @method('PUT')
       <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="tipo" name="tipo" placeholder="Tipo"  value="{{ $ventas->tipo }}" required>
-        <label for="tipo">tipo de venta</label>
-      </div>
-      <div class="form-floating mb-3">
         <input type="text" class="form-control" id="gesVentas" name="gesVentas" placeholder="Venta" value="{{ $ventas->gesVentas }}" required>
         <label for="gesVentas">Total venta</label>
       </div>
@@ -20,7 +16,7 @@
 
 
 
-      <button type="submit" class="btn btn-secondary">Guardar</button>
+      <button type="submit" class="btn btn-success">Guardar</button>
     <a href="{{ route('ventas.index') }}" class="btn btn-danger">Cancelar</a>
   </form>
  

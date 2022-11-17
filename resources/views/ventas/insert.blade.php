@@ -4,12 +4,9 @@
 @section('content')
 <form action="{{ route('ventas.store') }}" method="post" class="needs-validation" novalidate>
   @csrf
+  
   <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="tipo" name="tipo" placeholder="Tipo de venta" required>
-    <label for="tipo">Tipo de venta</label>
-  </div>
-  <div class="form-floating mb-3">
-    <input type="number" class="form-control" id="gesVentas" name="gesVentas" placeholder="Total a pagar" required>
+    <input type="double" class="form-control" id="gesVentas" name="gesVentas" placeholder="Total a pagar" required>
     <label for="gesVentas">Total a pagar</label>
           </div>
      
@@ -19,7 +16,7 @@
           </div>
       <button type="submit" class="btn btn-success">Guardar</button>
       <a href="{{ route('ventas.index') }}" class="btn btn-danger">Cancelar</a>
-    </form>
+</form>
 @endsection
 
 @section('scripts')

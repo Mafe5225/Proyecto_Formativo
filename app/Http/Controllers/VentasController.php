@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\user;
-use App\Models\Ventas;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Models\Clientes;
+use App\Models\Ventas;
+use App\Models\user;
 use Gate;
-
 class VentasController extends Controller
 {
     public function __construct()
@@ -48,6 +49,7 @@ class VentasController extends Controller
     {
         if(Gate::denies('administrador'))
         {
+            // abort(403);
             return redirect()->route('ventas.index');
         }
         return view('ventas.insert');
@@ -61,6 +63,7 @@ class VentasController extends Controller
      */
     public function store(Request $request)
     {
+       
         Ventas::create($request->all());
         return redirect()->route('ventas.index')->with('exito', '¡El registro se ha creado satisfactoriamente!');
     }
@@ -68,7 +71,7 @@ class VentasController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Ventas  $ventas
+     * @param  \App\Models\user  $user
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -80,7 +83,7 @@ class VentasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Ventas  $ventas
+     * @param  \App\Models\user  $user
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -93,7 +96,7 @@ class VentasController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Ventas  $ventas
+     * @param  \App\Models\user  $user
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request,$id)
@@ -102,12 +105,13 @@ class VentasController extends Controller
 
         $ventas->update($request->all());
         return redirect()->route('ventas.index')->with('exito', '¡El registro se ha actualizado satisfactoriamente!');
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Ventas  $ventas
+     * @param  \App\Models\user  $user
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

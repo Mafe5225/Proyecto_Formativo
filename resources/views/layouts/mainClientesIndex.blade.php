@@ -23,6 +23,10 @@
                     <li><a class="dropdown-item" href="{{ route('clientes.index') }}">Gestión de clientes</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="{{ route('ventas.index') }}">Gestión de ventas</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{{ route('egresos.index') }}">Gestión de egresos </a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{{ route('ganancias.index') }}">Gestion de ganancias </a></li>
                 </ul>
             </li>
         </ul>
