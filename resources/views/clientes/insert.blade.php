@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registrar cliente || Tienda Bella Vista</title>
+    <link rel="shortcut icon" href="{{ asset('images/logoTienda.png') }}">
+</head>
+<body>
+    
+</body>
+</html>
+
 @extends('layouts.main')
 
 @section('titulo', ' Nuevo cliente')
@@ -10,27 +24,26 @@
       <label for="nombre">Nombre</label>
     </div>
     <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="cedula" name="cedula" placeholder="cedula" minlength="0" maxlength="11" required>
-      <label for="cedula">Numero de identificación</label>
+      <input type="number" class="form-control" id="cedula" name="cedula" placeholder="Cedula" minlength="0" maxlength="10" required>
+      <label for="cedula">Cédula</label>
     </div>
     <div class="form-floating mb-3">
-      <input type="number" class="form-control" id="telefono" name="telefono" placeholder="Teléfono" minlength="0" maxlength="10" required>
+      <input type="number" class="form-control" id="telefono" name="telefono" placeholder="Telefono" minlength="0" maxlength="10" required>
       <label for="telefono">Teléfono</label>
     </div>
 
     <div class="form-floating mb-3">
       <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Direccion" required>
-      <label for="direccion">Direccion</label>
+      <label for="direccion">Dirección</label>
     </div>
 
-
-    <button type="submit" class="btn btn-success">Guardar</button>
-  <a href="{{ route('clientes.index') }}" class="btn btn-danger">Cancelar</a>
+    <button type="submit" class="btn btn-secondary">Guardar</button>
+    <a href="{{ route('clientes.index') }}" class="btn btn-danger">Cancelar</a>
 </form>
 
 @endsection
 
-@section('scripts')
+@section('script')
     <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
     (() => {

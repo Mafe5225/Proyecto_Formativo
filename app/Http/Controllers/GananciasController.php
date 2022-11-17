@@ -18,7 +18,6 @@ class GananciasController extends Controller
      */
     public function index(Request $request)
     {
-       
         $total=0;
         $total2=0;
         $total3=0;
@@ -40,25 +39,7 @@ class GananciasController extends Controller
         {
             $total2+= $item->gesEgresos;
         }
-        $total3= $total2 - $total;
-        // $ventas = Ventas::orderBy('fecha', 'asc')
-        //  ->paginate(5);
-         
-        // $total = DB::table('ventas')
-        //     ->select(DB::raw('sum(gesVentas) as "suma1" '))
-        //     ->whereNull('deleted_at')
-        //     ->first();
-
-        // $egresos = Egresos::orderBy('fecha', 'asc')
-        //     ->paginate(5);
-        // $total2 = DB::table('egresos')
-        //     ->select(DB::raw('sum(gesEgresos) as "suma2" '))
-        //     ->whereNull('deleted_at')
-        //     ->first();
-    
-      
-
-
+        $total3= $total - $total2;
         
         return view('ganancias.index', compact('ventas','egresos','total', 'total2', 'total3'));
 

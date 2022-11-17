@@ -8,48 +8,32 @@
                     <tr>
                         <th>Fecha</th>
                         <th>Venta</th>
-                    
-                    @foreach($ventas as $item)
-                        
-                            <td>{{ $item->fecha }}</td>
-                            <td>{{ $item->gesVentas }}</td> 
-                            @endforeach
+                    </tr>
+                    <tr>
+                        @foreach($ventas as $item)
+                            
+                                <td>{{ $item->fecha }}</td>
+                                <td>{{ $item->gesVentas }}</td> 
+                        @endforeach
                     </tr>
                    
                     <tr>
                         <th>Fecha</th>
                         <th>Venta</th>
-                    </tr>
-                    @foreach($egresos as $item2)
-    
+                        @foreach($egresos as $item2)
                         <tr>
                             <td>{{ $item2->fecha }}</td>
                             <td>{{ $item2->gesEgresos }}</td>    
                         </tr>   
+                        @endforeach
+                    </tr>
                 </thead>
                 
-                <tbody>
-                            
-                    @endforeach
-                    
-                       
-                </tbody>
+                
         </table>
     </div>
        
             
-            
-        
-            <td>El total de ventas: $<b>{{ $total }}</b></td>
-        </tr>
-        <tr>
-            <td>El total de gastos: $<b>{{ $total2 }}</b></td>
-        </tr>
-        <tr>
-            <td>El total de ganancias: $<b>{{ $total3 }}</b></td>
-        </tr>
-                                
-    </table>
     @else
         <p>El registro de ventas esta vacía.</p>
     @endif

@@ -16,25 +16,21 @@ class CreateClientesTable extends Migration
         Schema::create('clientes', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('telefono');
-            $table->string('cedula');
+            $table->String('cedula');
+            $table->String('telefono');
             $table->string('direccion');
             $table->timestamps();
             $table->softDeletes();
-           
-
-            
         });
     }
 
     /**
      * Reverse the migrations.
-     *Schema::dropIfExists('clientes');
+     *
      * @return void
      */
     public function down()
     {
         Schema::dropIfExists('clientes');
-        
     }
 }

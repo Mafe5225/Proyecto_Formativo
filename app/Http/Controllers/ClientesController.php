@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Clientes;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\Rol;
+use App\Models\Movimientos;
+use App\Models\Clientes;
+use Gate;
 
 class ClientesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -42,7 +48,6 @@ class ClientesController extends Controller
      */
     public function create()
     {
-        // $clientes = new Clientes;
         return view('clientes.insert');
     }
 
@@ -54,16 +59,16 @@ class ClientesController extends Controller
      */
     public function store(Request $request)
     {
-
-      
-        // $nombre = $request->nombre;
-        // $telefono = $request->telefono;
-        // $direccion = $request->direccion;
+        $nombre = $request->nombre;
+        $cedula = $request->cedula;
+        $telefono = $request->telefono;
+        $direccion = $request->direccion;
 
         Clientes::create($request->all());
-        return redirect()->route('clientes.index')->with('exito', '¡El registro se ha creado satisfactoriamente!');
+        return redirect()->route('clientes.index')->with('exito', '¡El registro del crédito se ha creado satisfactoriamente!');
 
     }
+
     /**
      * Display the specified resource.
      *
@@ -75,6 +80,8 @@ class ClientesController extends Controller
         $clientes = Clientes::findOrFail($id);
         return view('clientes.show', compact('clientes'));
     }
+        
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -95,13 +102,14 @@ class ClientesController extends Controller
      * @param  \App\Models\Clientes  $clientes
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Clientes $clientes, $id)
     {
         $clientes = Clientes::findOrFail($id);
 
         $clientes->update($request->all());
         return redirect()->route('clientes.index')->with('exito', '¡El registro se ha actualizado satisfactoriamente!');
     }
+    
 
     /**
      * Remove the specified resource from storage.

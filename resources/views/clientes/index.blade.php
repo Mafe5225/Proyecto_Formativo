@@ -1,76 +1,93 @@
-@extends('layouts.main')
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Clientes || Tienda Bella Vista</title>
+    <link rel="shortcut icon" href="{{ asset('images/logoTienda.png') }}">
+</head>
+<body>
+    
+</body>
+</html>
+
+@extends('layouts.mainClientesIndex')
 
 @section('titulo', 'Clientes')
 
 @section('content')
-@if ($mensaje = Session::get('exito'))
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-    <p>{{ $mensaje }}</p>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-@endif
- @can(['administrador'])
+
+    @can(['administrador'])
+        <div class="mt-3 mb-2">
+            <a href="{{ route('clientes.create') }}" class="btn btn-secondary">
+                Registrar nuevo cliente
+            </a>
+        </div>
+    @endcan
+
+    @if ($mensaje = Session::get('exito'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <p>{{ $mensaje }}</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     
-    <div class="mt-3">
-        <a href="{{ route('clientes.create') }}" class="btn btn-secondary">
-        Registrar nuevo cliente
-    </a>
-    </div>
-@endcan
-<div class="my-3">
-        @if(count($clientes)>0)
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Acciones</th>
-                    <th>Acciones para el credito</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($clientes as $item)
+    <div class="my-3">
+        @if (count($clientes) > 0)
+
+            @if ($query)
+                <div class="alert alert-info" role="alert">
+                    <p>A continuación se presentan los resultados de la búsqueda <span class="fw-bold">{{ $query }}</span></p>
+                </div>
+            @endif
+
+            <table class="table table-hover">
+                <thead>
                     <tr>
-                        <td>{{ $item->id }}</td>
-                        <td>{{ $item->nombre }}</td>
-                        <td class="d-flex">
-                            <a href="{{ route('clientes.show', $item->id) }}" class="btn btn-outline-info justify-content-start me-1 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Actualizar"><i class="fa-solid fa-eye"></i></a>
-        
-                            @can(['administrador'])
-                                <a href="{{ route('clientes.edit', $item->id) }}" type="button" class="btn btn-outline-warning justify-content-start me-1 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Actualizar"><i class="fa-solid fa-pen-to-square"></i></a>
-                            
-                                <form action="{{ route('clientes.destroy', $item->id) }}" method="post" class="justify-content-start form-delete" >
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-outline-danger rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Eliminar">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </button>
-                            </td>
-                                
-                            @endcan
-                            <td>
-                                
-                                <a href="{{ route('clientes.index') }}" class="btn btn-outline-success justify-content-start me-1 rounded-circle"> <i class="fa-solid fa-dollar-sign"></i></a>
-                                
-                            </td>
-                            
+                        <th>Nombre</th>
+                        <th>Acciones</th>
+                        <th>Crédito</th>
                     </tr>
-                @endforeach
-            </tbody> 
-        </table> 
+                </thead>
+                <tbody>
+                    @foreach($clientes as $item)
+                        <tr>
+                            <td>{{ $item->nombre }}</td>
+                            <td class="d-flex">
+                                <a href="{{ route('clientes.show', $item->id) }}" class="btn btn-outline-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye"></i></a>
+                                @can(['administrador'])
+                                    <a href="{{ route('clientes.edit', $item->id) }}" class="btn btn-outline-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <form action="{{ route('clientes.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-outline-danger rounded-circle">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </button>
+                                    </form>
+                                @endcan
+                            </td>
+                            <td>
+                                <a href="{{ route('movimientos.show', $item->id) }}" class="btn btn-outline-success justify-content-start me-1 rounded-circle"><i class="fa-solid fa-dollar-sign"></i></a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody> 
+            </table> 
         
-        {{ $clientes->links() }}
+            {{ $clientes->links() }}
    
         @else
             <p>La búsqueda no arrojó resultados.</p>
         @endif
     </div>
+    
 @endsection
 
 
 @section('scripts')
     <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
     <script>
         //Captura del evento submit del formulario para eliminar
         $('.form-delete').submit(function(e){
@@ -78,7 +95,7 @@
             e.preventDefault();
             //Lanzar alerta de sweetAlert
             Swal.fire({
-                title: '¿Está seguro de eliminar el cliente?',
+                title: '¿Está seguro de eliminar el registro del cliente?',
                 text: "¡Esta acción no se podrá deshacer!",
                 icon: 'warning',
                 showCancelButton: true,
@@ -92,7 +109,4 @@
             })
         });
     </script>
-    <Script>const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-    </Script>
 @endsection

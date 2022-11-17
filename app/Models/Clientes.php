@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Clientes extends Model
 {
     use SoftDeletes;
+    
     protected $fillable = [
         'nombre',
         'cedula',
@@ -15,4 +16,3 @@ class Clientes extends Model
         'direccion'
     ];
 }
-?>

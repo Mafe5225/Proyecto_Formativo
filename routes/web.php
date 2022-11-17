@@ -1,10 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ClientesController;
-use App\Http\Controllers\GananciasController;
 use App\Http\Controllers\VentasController;
 use App\Http\Controllers\EgresosController;
+use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\MovimientosController;
+use App\Http\Controllers\GananciasController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +28,11 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
-Route::resource('clientes', ClientesController::class)->middleware('auth');
 Route::resource('ventas', VentasController::class)->middleware('auth');
-Route::resource('ganancias', GananciasController::class)->middleware('auth');
 Route::resource('egresos', EgresosController::class)->middleware('auth');
+Route::resource('clientes', ClientesController::class)->middleware('auth');
+Route::resource('ganancias', GananciasController::class)->middleware('auth');
+Route::resource('movimientos', MovimientosController::class)->middleware('auth');
+
 
 

@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Egresos extends Model
+class Movimientos extends Model
 {
     use SoftDeletes;
     protected $fillable = [
-        'gesEgresos',
         'fecha',
-        'tipo'
+        'valor',
+        'tipoMovimiento',
+        'cliente_id'
     ];
 }
