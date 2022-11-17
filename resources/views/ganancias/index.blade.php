@@ -5,35 +5,50 @@
     <div class="bg-transparent">
         <table>
                 <thead>
-                    <tr>
-                        <th>Fecha</th>
-                        <th>Venta</th>
-                    </tr>
-                    <tr>
-                        @foreach($ventas as $item)
-                            
+                    <td>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Venta</th>
+                    
+                            @foreach($ventas as $item)
+                            <tr>
                                 <td>{{ $item->fecha }}</td>
                                 <td>{{ $item->gesVentas }}</td> 
-                        @endforeach
-                    </tr>
-                   
-                    <tr>
-                        <th>Fecha</th>
-                        <th>Venta</th>
-                        @foreach($egresos as $item2)
+                            </tr>
+                            @endforeach
                         <tr>
-                            <td>{{ $item2->fecha }}</td>
-                            <td>{{ $item2->gesEgresos }}</td>    
-                        </tr>   
-                        @endforeach
-                    </tr>
+                    </td>
+                    <td>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Venta</th>
+                            
+                            @foreach($egresos as $item2)
+            
+                                <tr>
+                                    <td>{{ $item2->fecha }}</td>
+                                    <td>{{ $item2->gesEgresos }}</td>    
+                                </tr>   
+                            @endforeach
+                        </tr>
+                    </td>
                 </thead>
-                
-                
         </table>
     </div>
        
             
+          <table>  
+        <tr>
+            <td>El total de Pablos: $<b>{{ $total }}</b></td>
+        </tr>
+        <tr>
+            <td>El total de gastos: $<b>{{ $total2 }}</b></td>
+        </tr>
+        <tr>
+            <td>El total de ganancias: $<b>{{ $total3 }}</b></td>
+        </tr>
+                                
+    </table>
     @else
         <p>El registro de ventas esta vacía.</p>
     @endif
