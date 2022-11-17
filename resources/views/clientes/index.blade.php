@@ -47,6 +47,7 @@
                     <tr>
                         <th>Nombre</th>
                         <th>Acciones</th>
+                        <th>Crédito</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -65,6 +66,9 @@
                                         </button>
                                     </form>
                                 @endcan
+                            </td>
+                            <td>
+                                <a href="{{ route('movimientos.show', $item->id) }}" class="btn btn-outline-success justify-content-start me-1 rounded-circle"><i class="fa-solid fa-dollar-sign"></i></a>
                             </td>
                         </tr>
                     @endforeach

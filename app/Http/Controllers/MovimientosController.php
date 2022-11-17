@@ -38,10 +38,8 @@ class MovimientosController extends Controller
      */
     public function store(Request $request)
     {
-        $valor = $request->valor;
-
         Movimientos::create($request->all());
-        return redirect()->route('clientes.show', $request->cliente_id)->with('exitoCredito', '¡El crédito se ha registrado satisfactoriamente!');
+        return redirect()->route('movimientos.show', $request->cliente_id)->with('exitoCredito', '¡El crédito se ha registrado satisfactoriamente!');
     }
 
     /**
@@ -52,7 +50,22 @@ class MovimientosController extends Controller
      */
     public function show($id)
     {
-        //
+        $clientes = Clientes::findOrFail($id);
+        $movimientos = Movimientos::where('cliente_id', $id)
+        ->orderBy('created_at', 'desc')
+        ->get();
+        $total = 0;
+
+        foreach($movimientos as $item)
+        {
+            if($item->tipoMovimiento == 'deuda')
+            {
+                $total += $item->valor;
+            }
+            else
+                $total -= $item->valor;
+        }
+        return view('movimientos.show', compact('clientes', 'movimientos', 'total'));
     }
 
 

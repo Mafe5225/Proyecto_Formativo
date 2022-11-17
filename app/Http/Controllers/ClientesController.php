@@ -79,22 +79,7 @@ class ClientesController extends Controller
     public function show($id)
     {
         $clientes = Clientes::findOrFail($id);
-        $movimientos = Movimientos::where('cliente_id', $id)
-        ->orderBy('created_at', 'desc')
-        ->get();
-        $total = 0;
-        foreach($movimientos as $item)
-        {
-            if($item->tipoMovimiento == 'deuda')
-            {
-                $total += $item->valor;
-            }
-            else{
-                $total -= $item->valor;
-            }
-            return view('clientes.show', compact('clientes','movimientos','item', 'total'));
-        }
-        return view('clientes.show', compact('clientes','movimientos', 'total'));
+        return view('clientes.show', compact('clientes'));
     }
         
     
