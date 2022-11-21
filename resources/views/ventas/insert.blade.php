@@ -2,6 +2,7 @@
 @section('titulo','Registra la venta')
 
 @section('content')
+@can('administrador')
 <form action="{{ route('ventas.store') }}" method="post" class="needs-validation" novalidate>
   @csrf
   
@@ -17,6 +18,13 @@
       <button type="submit" class="btn btn-success">Guardar</button>
       <a href="{{ route('ventas.index') }}" class="btn btn-danger">Cancelar</a>
 </form>
+    
+@endcan
+@can('usuario')
+           
+<p>No tienes permiso para estas funciones (⌣̀_⌣́)</p>
+@endcan
+
 @endsection
 
 @section('scripts')

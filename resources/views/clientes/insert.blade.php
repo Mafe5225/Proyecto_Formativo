@@ -17,6 +17,8 @@
 @section('titulo', ' Nuevo cliente')
 
 @section('content')
+@can('administrador')
+    
 <form action="{{ route('clientes.store') }}" method="post" class="needs-validation" novalidate>
     @csrf
     <div class="form-floating mb-3">
@@ -37,33 +39,36 @@
       <label for="direccion">Dirección</label>
     </div>
 
-    <button type="submit" class="btn btn-secondary">Guardar</button>
+    <button type="submit" class="btn btn-success">Guardar</button>
     <a href="{{ route('clientes.index') }}" class="btn btn-danger">Cancelar</a>
 </form>
+@endcan
+@can('usuario')
+           
+<p>No tienes permiso para estas funciones (⌣̀_⌣́)</p>
+@endcan
 
 @endsection
 
-@section('script')
-    <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (() => {
+@section('scripts')
+<script>
+  (() => {
     'use strict'
-
-     // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
     const forms = document.querySelectorAll('.needs-validation')
 
     // Loop over them and prevent submission
-    Array.from(forms).forEach(form => {
-      form.addEventListener('submit', event => {
-        if (!form.checkValidity()) {
-             event.preventDefault()
-             event.stopPropagation()
-         }
-
-        form.classList.add('was-validated')
-        }, false)
-    })
-    })()
-    </script>
-
+        Array.from(forms).forEach(form => {
+          form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+              }
+              
+              form.classList.add('was-validated')
+            }, false)
+          })
+        })()
+        </script>
 @endsection

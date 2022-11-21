@@ -17,31 +17,39 @@
 @section('titulo', 'Editar información del cliente')
 
 @section('content')
-    <form action="{{ route('clientes.update', $clientes->id) }}" method="post" class="needs-validation"  novalidate>
-        @method('PUT')
-        @csrf
-        
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" value="{{ $clientes->nombre}}" required>
-            <label for="nombre">Nombre</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="number" class="form-control" id="cedula" name="cedula" placeholder="Cedula" value="{{ $clientes->cedula }}" required>
-            <label for="cedula">Cédula</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="number" class="form-control" id="telefono" name="telefono" placeholder="Telefono" minlength="0" maxlength="10"  value="{{ $clientes->telefono }}"  required>
-            <label for="telefono">Teléfono</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Direccion" value="{{ $clientes->direccion }}" required>
-            <label for="direccion">Dirección</label>
-        </div>
+@can('administrador')
+    
+<form action="{{ route('clientes.update', $clientes->id) }}" method="post" class="needs-validation"  novalidate>
+    @method('PUT')
+    @csrf
+    
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" value="{{ $clientes->nombre}}" required>
+        <label for="nombre">Nombre</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="number" class="form-control" id="cedula" name="cedula" placeholder="Cedula" value="{{ $clientes->cedula }}" required>
+        <label for="cedula">Cédula</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="number" class="form-control" id="telefono" name="telefono" placeholder="Telefono" minlength="0" maxlength="10"  value="{{ $clientes->telefono }}"  required>
+        <label for="telefono">Teléfono</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Direccion" value="{{ $clientes->direccion }}" required>
+        <label for="direccion">Dirección</label>
+    </div>
 
 
-        <button type="submit" class="btn btn-secondary">Guardar</button>
-        <a href="{{ route('clientes.index') }}" class="btn btn-danger">Cancelar</a>
-    </form>
+    <button type="submit" class="btn btn-secondary">Guardar</button>
+    <a href="{{ route('clientes.index') }}" class="btn btn-danger">Cancelar</a>
+</form>
+@endcan
+@can('usuario')
+           
+<p>No tienes permiso para estas funciones (⌣̀_⌣́)</p>
+@endcan
+
 @endsection
 
 @section('scripts')

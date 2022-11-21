@@ -34,52 +34,60 @@
     @endif
     
     <div class="my-3">
-        @if (count($clientes) > 0)
+       
+            @if (count($clientes) > 0)
+                    
+                        @if ($query)
+                            <div class="alert alert-info" role="alert">
+                                <p>A continuación se presentan los resultados de la búsqueda <span class="fw-bold">{{ $query }}</span></p>
+                            </div>
+                        @endif
+                        <div class="form-floating mb-3">
+                            <table class="table table-hover table-bordered border-dark">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Nombre</th>
+                                @can('administrador')
+                                            
+                                            <th>Acciones</th>
+                                        <th>Crédito</th>
+                                    </tr>
+                                </thead>
+                               @endcan
+                                <tbody>
+                                    @foreach($clientes as $item)
+                                        <tr>
+                                            <td>{{ $item->nombre }}</td>
+                                            @can(['administrador'])
+                                            <td class="d-flex">
+                                                <a href="{{ route('clientes.show', $item->id) }}" class="btn btn-outline-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye"></i></a>
+                                                    <a href="{{ route('clientes.edit', $item->id) }}" class="btn btn-outline-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                    <form action="{{ route('clientes.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-outline-danger rounded-circle">
+                                                            <i class="fa-solid fa-trash-can"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                                <td>
+                                                    <a href="{{ route('movimientos.show', $item->id) }}" class="btn btn-outline-success justify-content-start me-1 rounded-circle"><i class="fa-solid fa-dollar-sign"></i></a>
+                                                </td>
+                                                @endcan
+                                        </tr>
+                                    @endforeach
+                                </tbody> 
+                        </div>
+                        </table> 
+                    
+                        {{ $clientes->links() }}
 
-            @if ($query)
-                <div class="alert alert-info" role="alert">
-                    <p>A continuación se presentan los resultados de la búsqueda <span class="fw-bold">{{ $query }}</span></p>
-                </div>
+            @else
+                <p>La búsqueda no arrojó resultados.</p>
             @endif
-
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Acciones</th>
-                        <th>Crédito</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($clientes as $item)
-                        <tr>
-                            <td>{{ $item->nombre }}</td>
-                            <td class="d-flex">
-                                <a href="{{ route('clientes.show', $item->id) }}" class="btn btn-outline-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye"></i></a>
-                                @can(['administrador'])
-                                    <a href="{{ route('clientes.edit', $item->id) }}" class="btn btn-outline-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <form action="{{ route('clientes.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-outline-danger rounded-circle">
-                                            <i class="fa-solid fa-trash-can"></i>
-                                        </button>
-                                    </form>
-                                @endcan
-                            </td>
-                            <td>
-                                <a href="{{ route('movimientos.show', $item->id) }}" class="btn btn-outline-success justify-content-start me-1 rounded-circle"><i class="fa-solid fa-dollar-sign"></i></a>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody> 
-            </table> 
-        
-            {{ $clientes->links() }}
-   
-        @else
-            <p>La búsqueda no arrojó resultados.</p>
-        @endif
+       
+       
+       
     </div>
     
 @endsection

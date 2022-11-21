@@ -1,57 +1,93 @@
 @extends('layouts.main')
 @section('titulo', 'Total de ganancias')
 @section('content')
+@can('administrador')
     @if(count($egresos)>0 or count($ventas)>0)  
-    <div class="bg-transparent">
-        <table>
-                <thead>
-                    <td>
-                        <tr>
-                            <th>Fecha</th>
-                            <th>Venta</th>
-                    
-                            @foreach($ventas as $item)
+        
+    <div class="row ">
+        <a href="{{ route('clientes.index') }}" ></a>
+        <div class="col overflow-scroll" id="scroll">
+            {{-- <h3 class="text-center">Ventas</h3> --}}
+            <div class="form-floating mb-3">
+                <table class="table table-bordered border-Secondary ">
+                    <thead class="table-dark">
                             <tr>
-                                <td>{{ $item->fecha }}</td>
-                                <td>{{ $item->gesVentas }}</td> 
+                                <th>Fecha</th>
+                                <th>Venta</th>
                             </tr>
-                            @endforeach
-                        <tr>
-                    </td>
-                    <td>
-                        <tr>
-                            <th>Fecha</th>
-                            <th>Venta</th>
-                            
-                            @foreach($egresos as $item2)
-            
+                    </thead>
+                    <tbody>
+                            <tr>
+                                @foreach($ventas as $item) 
+                                <tr class="bg-success bg-opacity-50">
+                                    <td>{{ $item->fecha }}</td>
+                                    <td>${{ $item->gesVentas }}</td> 
+                                </tr>
+                                @endforeach
+                            </tr>
+                    </tbody>
+                </table> 
+            </div>
+        </div>
+
+
+
+        <div class="col overflow-scroll" id="scroll">
+            <div class="form-floating mb-3">
+                <table class="table  table-bordered border-Secondary ">
+                    <thead class="table-dark">
+                        {{-- <h3 class="text-center">Gastos</h3> --}}
                                 <tr>
-                                    <td>{{ $item2->fecha }}</td>
-                                    <td>{{ $item2->gesEgresos }}</td>    
-                                </tr>   
-                            @endforeach
-                        </tr>
-                    </td>
-                </thead>
-        </table>
+                                    <th>Fecha</th>
+                                    <th>Tipo de gasto</th>
+                                    <th>Gasto</th>
+                                </tr>
+                        </thead>
+                        <tbody>
+                                <tr>
+                                    @foreach($egresos as $item2) 
+                                    <tr class="bg-danger bg-opacity-50">
+                                        <td>{{ $item2->fecha }}</td>
+                                        <td>{{ $item2->tipo }}</td>
+                                        <td>$ -{{ $item2->gesEgresos }}</td> 
+                                    </tr>
+                                    @endforeach
+                                </tr>
+                        </tbody>
+                </table> 
+            </div>
+        </div>
     </div>
-       
-            
-          <table>  
-        <tr>
-            <td>El total de Pablos: $<b>{{ $total }}</b></td>
-        </tr>
-        <tr>
-            <td>El total de gastos: $<b>{{ $total2 }}</b></td>
-        </tr>
-        <tr>
-            <td>El total de ganancias: $<b>{{ $total3 }}</b></td>
-        </tr>
-                                
-    </table>
-    @else
-        <p>El registro de ventas esta vacía.</p>
-    @endif
+    <br>
+        <table>  
+            <tr>
+                <td>El total de ganancias: <b class="text-success">${{ $total }}</b></td>
+            </tr>
+            <tr>
+                <td>El total de gastos:<b class="text-danger">$-{{ $total2 }}</b></td>
+            </tr>
+            @if ($total3 > 0)
+                <tr>
+                    <td>El total de ganancias: $<b class="text-success">{{ $total3 }}</b></td>
+                </tr> 
+                
+                
+            @else
+            <tr>
+                <td>El total de ganancias: <b class="text-danger">${{ $total3 }}</b></td>
+            </tr> 
+                        
+            @endif
+        </table>
+                
+        @else
+            <p>No se a registrado movimiento en la tienda. </p>
+        @endif
+    @endcan
+
+    @can('usuario')
+    <p>No tienes permiso para estas funciones (⌣̀_⌣́)</p>        
+    @endcan
 @endsection
 
 

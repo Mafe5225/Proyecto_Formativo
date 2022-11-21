@@ -15,31 +15,39 @@
             </a>
         </div>
         @if(count($egresos)>0)
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        
-                        <th>Fecha</th>
-                        <th>Tipo</th>
-                        <th>Gastos</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($egresos as $item)
+       
+            <div class="form-floating mb-3">
+                <table class="table table-bordered border-dark ">
+                    <thead class="table-dark">
                         <tr>
-                            <td>{{ $item->fecha }}</td>
-                            <td>{{ $item->tipo }}</td>
-                            <td>${{ $item->gesEgresos }}</td>    
+                            
+                            <th>Fecha</th>
+                            <th>Tipo</th>
+                            <th>Gastos</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach($egresos as $item)
+                            <tr>
+                                <td>{{ $item->fecha }}</td>
+                                <td>{{ $item->tipo }}</td>
+                                <td>${{ $item->gesEgresos }}</td>    
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+       
             {{ $egresos->links() }}
         @else
             <p> No hay resultados.</p>
                  
 
        @endif
+    @endcan
+    @can('usuario')
+           
+       <p>No tienes permiso para estas funciones (⌣̀_⌣́)</p>
     @endcan
 
 

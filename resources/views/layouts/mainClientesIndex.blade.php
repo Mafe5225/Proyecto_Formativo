@@ -11,7 +11,7 @@
 </head>
 <body class="fondo">
 <nav class="navbar navbar-expand-lg shadow" id="navbar">
-    <img src="{{ asset('images/logoTienda.png') }}" alt="Logo Tienda Bella Vista" class="logo ms-4">
+    <img  src="{{ asset('images/logoTienda.png') }}" alt="Logo Tienda Bella Vista" class="logo ms-4" >
     <div class="container">
         
         <ul class="navbar-nav text-white">
@@ -21,17 +21,21 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="{{ route('clientes.index') }}">Gestión de clientes</a></li>
+                    
+                    @can('administrador')
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="{{ route('ventas.index') }}">Gestión de ventas</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="{{ route('egresos.index') }}">Gestión de egresos </a></li>
+                    <li><a class="dropdown-item" href="{{ route('egresos.index') }}">Gestión de gastos </a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="{{ route('ganancias.index') }}">Gestion de ganancias </a></li>
+                        
+                    @endcan
                 </ul>
             </li>
         </ul>
 
-        <form class="d-flex position-absolute top-1 start-50" role="search">
+        <form class="d-flex col" role="search">
             <input class="form-control me-2" type="search" placeholder="Buscar..." name="buscar" aria-label="Buscar">
             <button class="btn btn-outline-success" type="submit">Buscar</button>
         </form>

@@ -28,6 +28,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
 Route::resource('ventas', VentasController::class)->middleware('auth');
 Route::resource('egresos', EgresosController::class)->middleware('auth');
 Route::resource('clientes', ClientesController::class)->middleware('auth');
