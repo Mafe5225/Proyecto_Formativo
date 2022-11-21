@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Editar info del cliente || Tienda Bella Vista</title>
-    <link rel="shortcut icon" href="{{ asset('images/logoTienda.png') }}">
+    <title>Edi info del cliente || Tienda Bella Vista</title>
+    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
 </head>
 <body>
     

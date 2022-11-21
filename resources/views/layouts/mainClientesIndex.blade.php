@@ -11,13 +11,13 @@
 </head>
 <body class="fondo">
 <nav class="navbar navbar-expand-lg shadow" id="navbar">
-    <img src="{{ asset('images/logoTienda.png') }}" alt="Logo Tienda Bella Vista" class="logo ms-4">
+    <img src="{{ asset('images/logoTiendaNavbar.png') }}" alt="Logo Tienda Bella Vista" class="logo ms-4">
     <div class="container">
         
-        <ul class="navbar-nav text-white">
+        <ul class="navbar-nav text-white  position-absolute mt-1 end-0" id="ges">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Gestiones
+                    <i class="fa-solid fa-bars"></i> Gestiones
                 </a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="{{ route('clientes.index') }}">Gestión de clientes</a></li>
@@ -31,14 +31,20 @@
             </li>
         </ul>
 
-        <form class="d-flex position-absolute top-1 start-50" role="search">
-            <input class="form-control me-2" type="search" placeholder="Buscar..." name="buscar" aria-label="Buscar">
-            <button class="btn btn-outline-success" type="submit">Buscar</button>
+        <form class="d-flex position-absolute top-1 end-50" role="search">
+            <input class="form-control me-2" type="search" placeholder="Buscar cliente por ID..." name="buscar" aria-label="Buscar">
+            <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
 
-        <ul class="navbar-nav text-white">
+        <ul class="navbar-nav text-white position-absolute mt-1 end-0 me-4">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    @can(['administrador'])
+                        <i class="fa-solid fa-user-tie"></i> 
+                    @endcan
+                    @can(['usuario'])
+                        <i class="fa-solid fa-user"></i>
+                    @endcan
                     {{ Auth::user()->name }}
                 </a>
                 <ul class="dropdown-menu">

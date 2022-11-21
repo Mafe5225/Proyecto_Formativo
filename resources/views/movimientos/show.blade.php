@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Crédito || Tienda Bella Vista</title>
-    <link rel="shortcut icon" href="{{ asset('images/logoTienda.png') }}">
+    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
 </head>
 <body>
 
@@ -16,7 +16,7 @@
 
 @section('content')
     @if ($mensaje = Session::get('exitoCredito'))
-        <div class="alert alert-success alert-dismissible fade show " role="alert">
+        <div class="alert alert-success alert-dismissible fade show position-absolute" role="alert">
             <p>{{ $mensaje }}</p>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
@@ -101,27 +101,25 @@
 @endsection
 
 
-@section('script')
-    <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (() => {
+@section('scripts')
+<script>
+  (() => {
     'use strict'
-
-     // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
     const forms = document.querySelectorAll('.needs-validation')
 
     // Loop over them and prevent submission
-    Array.from(forms).forEach(form => {
-      form.addEventListener('submit', event => {
-        if (!form.checkValidity()) {
-             event.preventDefault()
-             event.stopPropagation()
-         }
-
-        form.classList.add('was-validated')
-        }, false)
-    })
-    })()
-    </script>
-
+        Array.from(forms).forEach(form => {
+          form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+              }
+              
+              form.classList.add('was-validated')
+            }, false)
+          })
+        })()
+        </script>
 @endsection

@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registrar ventas || Tienda Bella Vista</title>
+    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
+</head>
+<body>
+
+</body>
+</html>
+
 @extends('layouts.main')
 @section('titulo','Registra la venta')
 

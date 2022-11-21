@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Clientes || Tienda Bella Vista</title>
-    <link rel="shortcut icon" href="{{ asset('images/logoTienda.png') }}">
+    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
 </head>
 <body>
     
@@ -21,7 +21,7 @@
     @can(['administrador'])
         <div class="mt-3 mb-2">
             <a href="{{ route('clientes.create') }}" class="btn btn-secondary">
-                Registrar nuevo cliente
+                <i class="fa-solid fa-user-plus"></i> Registrar nuevo cliente
             </a>
         </div>
     @endcan
@@ -37,7 +37,7 @@
         @if (count($clientes) > 0)
 
             @if ($query)
-                <div class="alert alert-info" role="alert">
+                <div class="alert  alert-success" role="alert">
                     <p>A continuación se presentan los resultados de la búsqueda <span class="fw-bold">{{ $query }}</span></p>
                 </div>
             @endif
@@ -78,7 +78,9 @@
             {{ $clientes->links() }}
    
         @else
-            <p>La búsqueda no arrojó resultados.</p>
+            <div class="alert  alert-danger" role="alert">
+                <p>La búsqueda no arrojó resultados.</p>
+            </div>
         @endif
     </div>
     
@@ -110,3 +112,4 @@
         });
     </script>
 @endsection
+

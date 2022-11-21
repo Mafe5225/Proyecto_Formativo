@@ -3,12 +3,13 @@
 }
 
 #navbar{
-    background-color: #bac3eb;
+    background-color: #6bddc4;
 }
 
 .overflow-scroll{
     width: 30rem;
     height: 10rem;   
+    
 }
 
 
@@ -17,7 +18,7 @@
 }
 
 .logo{
-    max-width: 70px;
+    max-width: 200px;
 }
 
 #Abo{
@@ -43,4 +44,8 @@
 
 h4{
     color: red;
+}
+
+#ges{
+    margin-right: 250px;
 }
