@@ -5,15 +5,15 @@
     @if(count($egresos)>0 or count($ventas)>0)  
         
     <div class="row ">
+    
         <a href="{{ route('clientes.index') }}" ></a>
         <div class="col overflow-scroll" id="scroll">
-            {{-- <h3 class="text-center">Ventas</h3> --}}
             <div class="form-floating mb-3">
                 <table class="table table-bordered border-Secondary ">
                     <thead class="table-dark">
                             <tr>
                                 <th>Fecha</th>
-                                <th>Venta</th>
+                                <th>Ventas</th>
                             </tr>
                     </thead>
                     <tbody>
@@ -40,7 +40,7 @@
                                 <tr>
                                     <th>Fecha</th>
                                     <th>Tipo de gasto</th>
-                                    <th>Gasto</th>
+                                    <th>Gastos</th>
                                 </tr>
                         </thead>
                         <tbody>

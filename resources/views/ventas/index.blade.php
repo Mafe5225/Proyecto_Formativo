@@ -21,7 +21,7 @@
             <table class="table table-hover table-bordered border-dark">
                 <thead class="table-dark">
                         <tr>
-                            <th>id</th>
+                           
                             <th>fecha</th>
                             <th>Valor</th>
                             <th>Acciones</th>
@@ -30,7 +30,7 @@
                 <tbody>
                     @foreach($ventas as $item)
                         <tr>
-                            <td>{{ $item->id }}</td>
+                         
                             <td>{{ $item->fecha}}</td>
                             <td>${{ $item->gesVentas }}</td>
                             <td class="d-flex">
