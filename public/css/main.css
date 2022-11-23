@@ -11,7 +11,7 @@
     height: 18rem;   
 }
 .overflow-scroll{
-    width: 3rem;
+    width: auto;
     height: 10rem;   
 }
 
@@ -44,7 +44,7 @@
 .aboColor{
     background-color: rgb(115, 218, 140);
 }
-
+/* 
 h4{
     color: red;
-}
+} */

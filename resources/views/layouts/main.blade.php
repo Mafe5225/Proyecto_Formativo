@@ -9,58 +9,58 @@
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <title>@yield('titulo')</title>
 </head>
-<body class="fondo">
-<nav class="navbar navbar-expand-lg shadow" id="navbar">
-    <img src="{{ asset('images/logoTienda.png') }}" alt="Logo Tienda Bella Vista" class="logo ms-4">
-        <div class="container">
-
-            <ul class="navbar-nav text-white">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Gestiones
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('clientes.index') }}">Gestión de clientes</a></li>
-                       @can('administrador')
-                           
-                       <li><hr class="dropdown-divider"></li>
-                       <li><a class="dropdown-item" href="{{ route('ventas.index') }}">Gestión de ventas</a></li>
-                       <li><hr class="dropdown-divider"></li>
-                       <li><a class="dropdown-item" href="{{ route('egresos.index') }}">Gestión de gastos</a></li>
-                       <li><hr class="dropdown-divider"></li>
-                       <li><a class="dropdown-item" href="{{ route('ganancias.index') }}">Gestion de ganancias </a></li>
-                       @endcan
-                    </ul>
-                </li>
-            </ul>
-
-            <ul class="navbar-nav text-white ms-3">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ Auth::user()->name }}
-                    </a>
+<body class="fondo ">
+    <nav class="navbar navbar-expand-lg shadow " id="navbar">
+        <img src="{{ asset('images/logoTienda.png') }}" alt="Logo Tienda Bella Vista" class="logo ms-4">
+            <div class="container d-flex justify-content-end"> 
+                <ul class="navbar-nav text-white">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-inbox  fa-beat-fade"></i> Gestiones 
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ route('clientes.index') }}"> Gestión de clientes  </i></a></li>
+                        @can('administrador')
+                            
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{{ route('ventas.index') }}">Gestión de ventas</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{{ route('egresos.index') }}">Gestión de gastos</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{{ route('ganancias.index') }}">Gestion de ganancias </a></li>
+                        @endcan
+                        </ul>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav text-white ms-3">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-cog fa-spin fa-spin-reverse"></i>
+                            {{ Auth::user()->name }}
+                        </a>
                     <ul class="dropdown-menu">
                         <li>
                             <a class="dropdown-item" href="{{ route('logout') }}" 
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                Cerrar sesión
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Cerrar sesión 
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="post">
                                 @csrf
                             </form>
                         </li>
                     </ul>
-                </li>
-            </ul>
-          
-        </div>
+                </ul>
+            </div>
+        </ul>
+        
     </nav>
 
-    <h1 class="text-center mt-4">@yield('titulo')</h1>
+<h1 class="text-center mt-4">@yield('titulo')</h1>
 
-    <div class="my-3 container">
-        @yield('content')
-    </div>
+<div class="my-3 container">
+    @yield('content')
+</div>
 
 
     <script src="{{ asset('css/bootstrap/js/bootstrap.bundle.js') }}"></script>

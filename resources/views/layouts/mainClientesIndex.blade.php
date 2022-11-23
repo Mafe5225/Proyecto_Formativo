@@ -11,9 +11,14 @@
 </head>
 <body class="fondo">
 <nav class="navbar navbar-expand-lg shadow" id="navbar">
-    <img  src="{{ asset('images/logoTienda.png') }}" alt="Logo Tienda Bella Vista" class="logo ms-4" >
+    <a href="/"><img  src="{{ asset('images/logoTienda.png') }}" alt="Logo Tienda Bella Vista" class="logo ms-4" ></a> 
     <div class="container">
         
+        
+        <form class="d-flex col" role="search">
+            <input class="form-control me-2" type="search" placeholder="Buscar..." name="buscar" aria-label="Buscar">
+            <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass fa-beat"></i></button>
+        </form>
         <ul class="navbar-nav text-white">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -34,11 +39,6 @@
                 </ul>
             </li>
         </ul>
-
-        <form class="d-flex col" role="search">
-            <input class="form-control me-2" type="search" placeholder="Buscar..." name="buscar" aria-label="Buscar">
-            <button class="btn btn-outline-success" type="submit">Buscar</button>
-        </form>
 
         <ul class="navbar-nav text-white">
             <li class="nav-item dropdown">

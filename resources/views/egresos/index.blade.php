@@ -9,7 +9,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-        <div class="mt-3">
+        <div class="my-3">
             <a href="{{ route('egresos.create') }}" class="btn btn-secondary">
                 Registrar nuevo egreso
             </a>

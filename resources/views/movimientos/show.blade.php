@@ -15,12 +15,8 @@
 @extends('layouts.main')
 
 @section('content')
-    @if ($mensaje = Session::get('exitoCredito'))
-        <div class="alert alert-success alert-dismissible fade show " role="alert">
-            <p>{{ $mensaje }}</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
+
+  
 
     {{-- Historial --}}
 @can('administrador')
@@ -34,37 +30,47 @@
             <div class="card-body">
                 
                 {{-- Input que muestra la deuda del cliente --}}
-                <h4>$ {{$total}}</h4> 
+                @if ($total > 0)
+                    
+                    <h4 class="text-success">$ {{$total}}</h4> 
                 
-                @if(count($movimientos) > 0)
+                    
+                @else
+                    
+                      
+                <h4 class="text-danger">$ {{$total}}</h4> 
+                @endif
+                
+            @if(count($movimientos) > 0)
+            
                 <div class="overflow-scroll">
                     <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Fecha</th>
-                                    <th>Valor</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($movimientos as $item)    
-                                    @if($item->tipoMovimiento == 'deuda')    
-                                        <tr class="deuColor">
-                                            <td>{{ $item->fecha }}</td>
-                                            <td>{{$item->valor}}</td>
-                                        </tr>
-                                    @else
-                                        <tr class="aboColor">
-                                            <td>{{ $item->fecha }}</td>
-                                            <td>{{$item->valor}}</td>
-                                        </tr>
-                                    @endif
-                                @endforeach
-                            </tbody>
-                        </table>
-                    @else
-                        <p>No hay historial °\(^-^)/°</p>
-                    @endif
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($movimientos as $item)    
+                                @if($item->tipoMovimiento == 'deuda')    
+                                    <tr class="deuColor">
+                                        <td>{{ $item->fecha }}</td>
+                                        <td>{{$item->valor}}</td>
+                                    </tr>
+                                @else
+                                    <tr class="aboColor">
+                                        <td>{{ $item->fecha }}</td>
+                                        <td>{{$item->valor}}</td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
+            @else
+                <p>No hay historial °\(^-^)/°</p>
+            @endif
     
 
                 <form action="{{ route('movimientos.store') }}" method="post" class="needs-validation" novalidate>
@@ -87,17 +93,33 @@
                           Abono
                         </label>
                     </div>
-
+                    
                     <button type="submit" class="btn btn-outline-success mt-5" id="btnGuardar">Guardar</button>
                     <a href="{{ route('clientes.index') }}" class="btn btn-danger position-absolute end-50" id="btnVolver">Volver</a>
                 </form>
+                {{-- <form action="{{ route('movimientos.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-outline-danger rounded-circle">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </form> --}}
             </div>
         </div>
         <div class="col-sm-3"></div>
     </div>
 
 </div>
+<div class="position-fixed bottom-0 end-0 p-3">
+    @if ($mensaje = Session::get('exitoCredito'))
+    <div class="alert alert-success alert-dismissible fade show " role="alert">
+        <p>{{ $mensaje }}</p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+</div>
 @endcan
+
 @can('usuario')
            
 <p>No tienes permiso para estas funciones (⌣̀_⌣́)</p>

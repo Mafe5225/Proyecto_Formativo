@@ -2,7 +2,7 @@
 
 @section('titulo','Modificacion de ventas')
 @section('content')
-@can('administradores')
+@can('administrador')
 <form action="{{ route('ventas.update', $ventas->id) }}" method="post" class="needs-validation" novalidate>
     @csrf
     @method('PUT')

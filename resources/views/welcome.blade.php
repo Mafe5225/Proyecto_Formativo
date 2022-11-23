@@ -20,7 +20,7 @@
             <main class="px-3">
                 <h3>Agrega información de tus clientes, ingresos y prestamos.</h3>
                 <td id="botones">
-                    <a href="{{ route('clientes.index') }}" class="btn  w-20">Iniciar sesión.</a> 
+                    <a href="{{ route('clientes.index') }}" class="btn  w-20">Iniciar sesión.</a>
                 </td>
             </main>
         </div>

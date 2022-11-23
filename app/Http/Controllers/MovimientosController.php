@@ -60,10 +60,10 @@ class MovimientosController extends Controller
         {
             if($item->tipoMovimiento == 'deuda')
             {
-                $total += $item->valor;
+                $total -= $item->valor;
             }
             else
-                $total -= $item->valor;
+                $total += $item->valor;
         }
         return view('movimientos.show', compact('clientes', 'movimientos', 'total'));
     }
