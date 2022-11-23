@@ -7,14 +7,13 @@
 }
 
 .overflow-scroll{
-    width: 30rem;
-    height: 10rem;   
-    
+    width: 28rem;
+    height: 10rem;
 }
 
 
 #historial{
-    margin-top: 4rem;
+    margin-top: 3rem;
 }
 
 .logo{
@@ -22,30 +21,30 @@
 }
 
 #Abo{
-    margin-right: 50px;
+    margin-right: 6rem;
 }
 
 #btnGuardar{
-    margin-right: 24rem;
+    margin-right: 29rem;
 }
 
 #btnVolver{
     margin-top: 3rem;
-    margin-right: 3rem;
-}
-
-.deuColor{
-    background-color: rgb(226, 73, 73);
-}
-
-.aboColor{
-    background-color: rgb(115, 218, 140);
-}
-
-h4{
-    color: red;
+    margin-right: 7rem;
 }
 
 #ges{
     margin-right: 250px;
 }
+
+#menCredi{
+    margin-top: 1rem;
+}
+
+.fondoLogin{
+    height: 700px;
+    background-image: linear-gradient(rgba(173, 173, 165, 0.616),rgba(82, 82, 77, 0.616) ), url(../images/fondoLogin.png);
+    opacity: 1;
+    
+}
+
