@@ -31,7 +31,7 @@
                             <tr>
                                 <td>{{ $item->fecha }}</td>
                                 <td>{{ $item->tipo }}</td>
-                                <td>${{ $item->gesEgresos }}</td>    
+                                <td>${{ number_format($item->gesEgresos) }}</td>    
                             </tr>
                         @endforeach
                     </tbody>

@@ -32,13 +32,13 @@
                 {{-- Input que muestra la deuda del cliente --}}
                 @if ($total > 0)
                     
-                    <h4 class="text-success">$ {{$total}}</h4> 
+                    <h4 class="text-success">$ {{number_format($total)}}</h4> 
                 
                     
                 @else
                     
                       
-                <h4 class="text-danger">$ {{$total}}</h4> 
+                <h4 class="text-danger">$ {{number_format($total)}}</h4> 
                 @endif
                 
             @if(count($movimientos) > 0)
@@ -56,12 +56,12 @@
                                 @if($item->tipoMovimiento == 'deuda')    
                                     <tr class="deuColor">
                                         <td>{{ $item->fecha }}</td>
-                                        <td>{{$item->valor}}</td>
+                                        <td>{{number_format($item->valor)}}</td>
                                     </tr>
                                 @else
                                     <tr class="aboColor">
                                         <td>{{ $item->fecha }}</td>
-                                        <td>{{$item->valor}}</td>
+                                        <td>{{number_format($item->valor)}}</td>
                                     </tr>
                                 @endif
                             @endforeach
@@ -112,17 +112,27 @@
 </div>
 <div class="position-fixed bottom-0 end-0 p-3">
     @if ($mensaje = Session::get('exitoCredito'))
-    <div class="alert alert-success alert-dismissible fade show " role="alert">
-        <p>{{ $mensaje }}</p>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+    
+
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+          <img src="..." class="rounded me-2" alt="...">
+          <strong class="me-auto">Bootstrap</strong>
+          <small class="text-muted">2 seconds ago</small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            <p>{{ $mensaje }}</p>
+        </div>
+      </div>
+    
     @endif
 </div>
 @endcan
 
 @can('usuario')
            
-<p>No tienes permiso para estas funciones (⌣̀_⌣́)</p>
+<p>No tienes permiso para estas funciones <i class="fa-solid fa-face-angry fs-3 text-danger"></i></p>
 @endcan
 
 
@@ -155,24 +165,35 @@
 @endsection --}}
 
 @section('scripts')
-<script>
-  (() => {
-    'use strict'
-    
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    const forms = document.querySelectorAll('.needs-validation')
+    <script>
+    (() => {
+        'use strict'
+        
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
 
-    // Loop over them and prevent submission
-        Array.from(forms).forEach(form => {
-          form.addEventListener('submit', event => {
-            if (!form.checkValidity()) {
-              event.preventDefault()
-              event.stopPropagation()
-              }
-              
-              form.classList.add('was-validated')
-            }, false)
-          })
-        })()
-        </script>
+        // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+                }
+                
+                form.classList.add('was-validated')
+                }, false)
+            })
+            })()
+
+            const toastTrigger = document.getElementById('liveToastBtn')
+        const toastLiveExample = document.getElementById('liveToast')
+        if (toastTrigger) {
+        toastTrigger.addEventListener('click', () => {
+            const toast = new bootstrap.Toast(toastLiveExample)
+
+            toast.show()
+        })
+    }
+
+    </script>
 @endsection

@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.ganancias')
 @section('titulo', 'Total de ganancias')
 @section('content')
 @can('administrador')
@@ -7,7 +7,7 @@
     <div class="row ">
     
         <a href="{{ route('clientes.index') }}" ></a>
-        <div class="col overflow-scroll" id="scroll">
+        <div class="col " id="scroll">
             <div class="form-floating mb-3">
                 <table class="table table-bordered border-Secondary ">
                     <thead class="table-dark">
@@ -21,12 +21,13 @@
                                 @foreach($ventas as $item) 
                                 <tr class="bg-success bg-opacity-50">
                                     <td>{{ $item->fecha }}</td>
-                                    <td>${{ $item->gesVentas }}</td> 
+                                    <td>${{ number_format($item->gesVentas) }}</td> 
                                 </tr>
                                 @endforeach
                             </tr>
                     </tbody>
                 </table> 
+                {{ $ventas->links() }}
             </div>
         </div>
 
@@ -36,7 +37,7 @@
             <div class="form-floating mb-3">
                 <table class="table  table-bordered border-Secondary ">
                     <thead class="table-dark">
-                        {{-- <h3 class="text-center">Gastos</h3> --}}
+
                                 <tr>
                                     <th>Fecha</th>
                                     <th>Tipo de gasto</th>
@@ -49,32 +50,33 @@
                                     <tr class="bg-danger bg-opacity-50">
                                         <td>{{ $item2->fecha }}</td>
                                         <td>{{ $item2->tipo }}</td>
-                                        <td>$ -{{ $item2->gesEgresos }}</td> 
+                                        <td>$ -{{ number_format($item2->gesEgresos )}}</td> 
                                     </tr>
                                     @endforeach
                                 </tr>
                         </tbody>
-                </table> 
+                </table>
+                {{ $egresos->links() }}
             </div>
         </div>
     </div>
     <br>
         <table>  
             <tr>
-                <td>El total de ganancias: <b class="text-success">${{ $total }}</b></td>
+                <td>El total de ganancias: <b class="text-success">${{ number_format($total) }}</b></td>
             </tr>
             <tr>
-                <td>El total de gastos:<b class="text-danger">$-{{ $total2 }}</b></td>
+                <td>El total de gastos:<b class="text-danger">$-{{ number_format($total2) }}</b></td>
             </tr>
             @if ($total3 > 0)
                 <tr>
-                    <td>El total de ganancias: $<b class="text-success">{{ $total3 }}</b></td>
+                    <td>El total de ganancias: $<b class="text-success">{{ number_format($total3) }}</b></td>
                 </tr> 
                 
                 
             @else
             <tr>
-                <td>El total de ganancias: <b class="text-danger">${{ $total3 }}</b></td>
+                <td>El total de ganancias: <b class="text-danger">${{ number_format($total3) }}</b></td>
             </tr> 
                         
             @endif

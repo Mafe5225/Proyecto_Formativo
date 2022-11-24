@@ -8,11 +8,22 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
-    <div class="mt-3">
-        <a href="{{ route('ventas.create') }}" class="btn btn-secondary">
-            Registrar nuevo cliente
-        </a>
-    </div>
+    
+    <form action="{{ route('ventas.store') }}" method="post" class="needs-validation" novalidate>
+        @csrf
+        
+        <div class="form-floating mb-3">
+          <input type="double" class="form-control" id="gesVentas" name="gesVentas" placeholder="Total a pagar" required>
+          <label for="gesVentas">Total a pagar</label>
+                </div>
+           
+                <div class="form-floating mb-3">
+                  <input type="date" class="form-control" id="fecha" name="fecha" placeholder="Fecha de la venta"  value="<?php echo date("Y-n-j"); ?>"required>
+                  <label for="fecha">Fecha de la venta</label>
+                </div>
+            <button type="submit" class="btn btn-success">Guardar</button>
+            <a href="{{ route('ventas.index') }}" class="btn btn-danger">Cancelar</a>
+      </form>
     @endcan
     <div class="my-3">
         @can('administrador')
@@ -32,7 +43,7 @@
                         <tr>
                          
                             <td>{{ $item->fecha}}</td>
-                            <td>${{ $item->gesVentas }}</td>
+                            <td>${{number_format( $item->gesVentas) }}</td>
                             <td class="d-flex">
                                 <a href="{{ route('ventas.show', $item->id) }}" class="btn btn-outline-info justify-content-start me-1 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Visualisar"><i class="fa-solid fa-eye"></i></a>
                                     @can('administrador')
@@ -59,7 +70,12 @@
         @endif
         @endcan
         @can('usuario')
-        <p>No tienes permiso para estas funciones (⌣̀_⌣́)</p>
+        
+        
+
+        <p class="fs-5">No tienes permiso para estas funciones <i class="fa-solid fa-face-angry fs-3 text-danger"></i>
+
+        </p>
         @endcan
     </div>
     

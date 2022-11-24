@@ -21,7 +21,7 @@
     @can(['administrador'])
         <div class="mt-3 mb-2">
             <a href="{{ route('clientes.create') }}" class="btn btn-secondary">
-                Registrar nuevo cliente
+                <i class="fa-solid fa-user-plus"></i> Registrar nuevo cliente
             </a>
         </div>
     @endcan

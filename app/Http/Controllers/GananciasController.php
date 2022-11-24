@@ -18,18 +18,62 @@ class GananciasController extends Controller
      */
     public function index(Request $request)
     {
+        
+        if($request)
+        {
+            $total=0;
+            $total2=0;
+            $total3=0;
+            
+            $sumVentas = Ventas::where('deleted_at', null)
+            ->orderBy('fecha', 'asc')
+            ->get();
+            
+            
+            $sumEgresos= Egresos::where('deleted_at', null)
+            ->orderBy('fecha', 'asc')
+            ->get();
+            
+            $query = $request->buscar1;
+            $ventas = Ventas::where('fecha', 'LIKE', '%' . $query . '%')
+            ->orderBy('fecha', 'desc')
+            ->paginate(5);
+            $egresos = Egresos::where('fecha', 'LIKE', '%' . $query . '%')
+            ->orderBy('fecha', 'desc')
+            ->paginate(5);
+            
+            foreach($sumVentas as $item)
+            {
+                $total+= $item->gesVentas;
+            }
+            foreach($sumEgresos as $item)
+            {
+                $total2+= $item->gesEgresos;
+            }
+            $total3= $total - $total2;
+            
+            
+            return view('ganancias.index', compact('ventas','egresos','total','total2','total3', 'query'));
+            
+      
+        }
+
+
+
+        //  Obtener todos los registros
+         
         $total=0;
         $total2=0;
         $total3=0;
-
+        
         $ventas = Ventas::where('deleted_at', null)
         ->orderBy('fecha', 'asc')
         ->get();
-         
-
+        
+        
         $egresos = Egresos::where('deleted_at', null)
-            ->orderBy('fecha', 'asc')
-            ->get();
+        ->orderBy('fecha', 'asc')
+        ->get();
         
         foreach($ventas as $item)
         {
@@ -40,7 +84,8 @@ class GananciasController extends Controller
             $total2+= $item->gesEgresos;
         }
         $total3= $total - $total2;
-        
+         
+        // enviar a la vista
         return view('ganancias.index', compact('ventas','egresos','total', 'total2', 'total3'));
 
     }

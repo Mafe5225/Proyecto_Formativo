@@ -15,14 +15,14 @@
     <div class="container">
         
         
-        <form class="d-flex col" role="search">
-            <input class="form-control me-2" type="search" placeholder="Buscar..." name="buscar" aria-label="Buscar">
-            <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass fa-beat"></i></button>
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="date" placeholder="Buscar..." name="buscar1" aria-label="Buscar" value="<?php echo date("Y-n-j"); ?>">
+            <button class="btn btn-outline-success" type="submit">Buscar</button>
         </form>
         <ul class="navbar-nav text-white">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fa-solid fa-inbox   mx-2 fa-flip" style="--fa-animation-duration: 3s;"></i> Gestiones
+                    <i class="fa-solid fa-inbox   mx-2 fa-flip" style="--fa-animation-duration: 4s;"></i> Gestiones
                 </a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="{{ route('clientes.index') }}">Gestión de clientes</a></li>

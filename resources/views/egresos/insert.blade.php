@@ -11,7 +11,7 @@
     </div>
        
     <div class="form-floating mb-3">
-        <input type="date" class="form-control" id="fecha" name="fecha" placeholder="Fecha de la egreso"  value="<?php echo date("Y-n-j"); ?>"required>
+        <input type="date" class="form-control" id="fecha" name="fecha" placeholder="Fecha de la egreso"  value="<?php echo date("Y-n-j"); ?>" required>
         <label for="fecha">Fecha del gasto</label>
     </div>
     <div class="form-floating mb-3">

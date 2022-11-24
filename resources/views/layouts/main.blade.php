@@ -16,7 +16,7 @@
                 <ul class="navbar-nav text-white">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-inbox  fa-beat-fade"></i> Gestiones 
+                            <i class="fa-solid fa-inbox  fa-beat-fade mx-2"></i> Gestiones 
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ route('clientes.index') }}"> Gestión de clientes  </i></a></li>
@@ -36,7 +36,7 @@
                 <ul class="navbar-nav text-white ms-3">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-cog fa-spin fa-spin-reverse"></i>
+                            <i class="fa-solid fa-cog fa-spin fa-spin-reverse mx-2"></i>
                             {{ Auth::user()->name }}
                         </a>
                     <ul class="dropdown-menu">
