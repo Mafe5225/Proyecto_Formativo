@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Crédito || Tienda Bella Vista</title>
+    <link rel="stylesheet" href="{{ asset('css/credito.css') }}">
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
+
 </head>
 <body>
 
@@ -21,83 +23,86 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
-
-    {{-- Historial --}}
-
-    <div class="col-sm-6">
-        <div class="position-absolute top-50 start-50 translate-middle" id="historial">
-            <div class="card text-center">
-                <div class="card-header">
-                    <h3>Historial de {{$clientes->nombre}}</h3>
-                </div>
-                <div class="card-body">
-
-                    {{-- Input que muestra la deuda del cliente --}}
-                   <h4>$ {{$total}}</h4> 
-
-                    <div class="overflow-scroll">
-                        @if(count($movimientos) > 0)
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Fecha</th>
-                                        <th>Valor</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($movimientos as $item)    
-                                        @if($item->tipoMovimiento == 'deuda')    
-                                            <tr class="deuColor">
-                                                <td>{{ $item->fecha }}</td>
-                                                <td>{{$item->valor}}</td>
-                                            </tr>
-                                        @else
-                                            <tr class="aboColor">
-                                                <td>{{ $item->fecha }}</td>
-                                                <td>{{$item->valor}}</td>
-                                            </tr>
-                                        @endif
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        @else
-                            <p>No hay historial °\(^_^)/°</p>
-                        @endif
-                    </div>
         
-
-                    <form action="{{ route('movimientos.store') }}" method="post" class="needs-validation" novalidate>
-                        @csrf
-                        <input type="hidden" name="cliente_id" value="{{$clientes->id}}">
-                        <div class="input-group mb-3 mt-1">
-                            <label class="input-group-text" for="valor">$</label>
-                            <input type="number" class="form-control" id="valor" name="valor" minlength="0" maxlength="6" required>
+        {{-- Historial --}}
+        
+        <div class="row">
+            <div class="col-5">
+                <div class="card text-center">
+                    <div class="card-header">
+                        <h3>Valor a registrar</h3>
+                    </div>
+                    <div class="card-body">
+                        <form action="{{ route('movimientos.store') }}" method="post" class="needs-validation" novalidate>
+                            @csrf
+                            <input type="hidden" name="cliente_id" value="{{$clientes->id}}">
+                            <div class="input-group mb-3 mt-1">
+                                <label class="input-group-text" for="valor">$</label>
+                                <input type="number" class="form-control" id="valor" name="valor" minlength="0" maxlength="6" required>
+                            </div>
+                    
+                            <div class="form-check position-absolute ms-2">
+                                <input class="form-check-input" type="radio" name="tipoMovimiento" value="deuda" checked>
+                                <label class="form-check-label" for="deuda">
+                                  Deuda
+                                </label>
+                            </div>
+                            <div class="form-check position-absolute top-5 end-50" id="abono">
+                                <input class="form-check-input" type="radio" name="tipoMovimiento" value="abono">
+                                <label class="form-check-label" for="abono">
+                                  Abono
+                                </label>
+                            </div>
+                    
+                            <button type="submit" class="btn btn-outline-success mt-5" id="btnGuardar">Guardar</button>
+                        </form>
+                    </div>
+                </div>
+                <a href="{{ route('clientes.index') }}" class="btn btn-outline-secondary mt-3 ms-3" id="btnVolver">Volver</a>
+            </div>
+            <div class="col-7">
+                <div class="card text-center">
+                    <div class="card-header">
+                        <h3>Historial de {{$clientes->nombre}}</h3>
+                    </div>
+                    <div class="card-body">
+        
+                        {{-- Input que muestra la deuda del cliente --}}
+                       <h4>$ {{$total}}</h4> 
+        
+                        <div class="overflow-scroll">
+                            @if(count($movimientos) > 0)
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Valor</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($movimientos as $item)    
+                                            @if($item->tipoMovimiento == 'deuda')    
+                                                <tr class="deuColor">
+                                                    <td>{{ $item->fecha }}</td>
+                                                    <td>{{$item->valor}}</td>
+                                                </tr>
+                                            @else
+                                                <tr class="aboColor">
+                                                    <td>{{ $item->fecha }}</td>
+                                                    <td>{{$item->valor}}</td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            @else
+                                <p>No hay historial °\(^_^)/°</p>
+                            @endif
                         </div>
-
-                        <div class="form-check position-absolute ms-2">
-                            <input class="form-check-input" type="radio" name="tipoMovimiento" id="deuda" value="deuda" checked>
-                            <label class="form-check-label" for="deuda">
-                              Deuda
-                            </label>
-                        </div>
-                        <div class="form-check position-absolute top-5 end-50" id="Abo">
-                            <input class="form-check-input" type="radio" name="tipoMovimiento" id="abono" value="abono">
-                            <label class="form-check-label" for="abono">
-                              Abono
-                            </label>
-                        </div>
-
-                        <button type="submit" class="btn btn-outline-success mt-5" id="btnGuardar">Guardar</button>
-                        <a href="{{ route('clientes.index') }}" class="btn btn-danger position-absolute end-50" id="btnVolver">Volver</a>
-                    </form>
+                    </div>
                 </div>
             </div>
-            <div class="col-sm-3"></div>
         </div>
-
-    </div>
-
-
 @endsection
 
 

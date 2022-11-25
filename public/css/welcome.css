@@ -1,0 +1,29 @@
+body{
+    height: 700px;
+    background-image: linear-gradient(rgba(173, 173, 165, 0.616),rgba(82, 82, 77, 0.616) ), url(../images/fondoLogin.jpg);
+    opacity: 3;
+}
+
+.btnClientes{
+    border-color: black;
+    margin-top: 30rem;
+    margin-left: 29.4rem;
+}
+
+.btnVentas{
+    border-color: black;
+    margin-top: 30rem;
+    margin-left: 1.5rem;
+}
+
+.btnEgresos{
+    border-color: black;
+    margin-top: 30rem;
+    margin-left: 2rem;
+}
+
+.btnGanancias{
+    border-color: black;
+    margin-top: 30rem;
+    margin-left: 2.1rem;
+}

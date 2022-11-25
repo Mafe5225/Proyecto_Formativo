@@ -1,0 +1,39 @@
+body{
+    /* background-repeat: no-repeat; */
+    height: 700px;
+    background-image: linear-gradient(rgba(173, 173, 165, 0.616),rgba(82, 82, 77, 0.616) ), url(../images/fondoLogin.jpg);
+    opacity: 3;
+}
+
+.logo
+{
+    width: 70%;
+    height: 70%;
+    top: -20%;
+}
+.container
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.content{
+    margin-top: 15%;
+    box-shadow: 10px 25px 25px 25px rgba(63, 63, 63, 0.575);
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 3rem;
+    position: relative;
+}
+
+#email{
+    border-radius: 5px;
+}
+
+#password{
+    border-radius: 5px;
+    border-color: black;
+}
+
