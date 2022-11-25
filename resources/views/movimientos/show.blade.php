@@ -131,9 +131,9 @@
 @endcan
 
 @can('usuario')
-           
-<p>No tienes permiso para estas funciones <i class="fa-solid fa-face-angry fs-3 text-danger"></i></p>
-@endcan
+<p class="fs-4 ms-4 fa-fade">  <i class="fa-solid text-danger fa-triangle-exclamation fa-fade"></i>No tienes permiso para estas funciones <i class="fa-solid text-danger fa-triangle-exclamation fa-fade"></i>
+    <a href="{{ route('clientes.index') }}" id="myTooltip" class="btn btn-warning  me-1 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top"><i class="fa-solid fa-left-long"></i></a>
+</p>@endcan
 
 
 @endsection

@@ -35,10 +35,10 @@ class GananciasController extends Controller
             ->get();
             
             $query = $request->buscar1;
-            $ventas = Ventas::where('fecha', 'LIKE', '%' . $query . '%')
+            $ventas = Ventas::where('fecha', 'LIKE', $query )
             ->orderBy('fecha', 'desc')
             ->paginate(5);
-            $egresos = Egresos::where('fecha', 'LIKE', '%' . $query . '%')
+            $egresos = Egresos::where('fecha', 'LIKE',  $query )
             ->orderBy('fecha', 'desc')
             ->paginate(5);
             

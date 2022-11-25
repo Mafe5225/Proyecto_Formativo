@@ -15,7 +15,7 @@
     <div class="container">
         
         
-        <form class="d-flex" role="search">
+        <form class="d-flex col" role="search">
             <input class="form-control me-2" type="date" placeholder="Buscar..." name="buscar1" aria-label="Buscar" value="<?php echo date("Y-n-j"); ?>">
             <button class="btn btn-outline-success" type="submit">Buscar</button>
         </form>

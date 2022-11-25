@@ -5,8 +5,6 @@
     @if(count($egresos)>0 or count($ventas)>0)  
         
     <div class="row ">
-    
-        <a href="{{ route('clientes.index') }}" ></a>
         <div class="col " id="scroll">
             <div class="form-floating mb-3">
                 <table class="table table-bordered border-Secondary ">
@@ -50,7 +48,7 @@
                                     <tr class="bg-danger bg-opacity-50">
                                         <td>{{ $item2->fecha }}</td>
                                         <td>{{ $item2->tipo }}</td>
-                                        <td>$ -{{ number_format($item2->gesEgresos )}}</td> 
+                                        <td>$ {{ number_format($item2->gesEgresos )}}</td> 
                                     </tr>
                                     @endforeach
                                 </tr>
@@ -66,7 +64,7 @@
                 <td>El total de ganancias: <b class="text-success">${{ number_format($total) }}</b></td>
             </tr>
             <tr>
-                <td>El total de gastos:<b class="text-danger">$-{{ number_format($total2) }}</b></td>
+                <td>El total de gastos:<b class="text-danger">${{ number_format($total2) }}</b></td>
             </tr>
             @if ($total3 > 0)
                 <tr>
@@ -88,7 +86,9 @@
     @endcan
 
     @can('usuario')
-    <p>No tienes permiso para estas funciones (⌣̀_⌣́)</p>        
+    <p class="fs-4 ms-4 fa-fade">  <i class="fa-solid text-danger fa-triangle-exclamation fa-fade"></i>No tienes permiso para estas funciones <i class="fa-solid text-danger fa-triangle-exclamation fa-fade"></i>
+        <a href="{{ route('clientes.index') }}" id="myTooltip" class="btn btn-warning  me-1 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top"><i class="fa-solid fa-left-long"></i></a>
+    </p>       
     @endcan
 @endsection
 
