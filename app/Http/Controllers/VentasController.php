@@ -24,7 +24,7 @@ class VentasController extends Controller
     {
         if($request)
         {
-            $query = $request->buscar;
+            $query = $request->buscar1;
             $ventas = Ventas::where('fecha', 'LIKE', $query )
                                     ->orderBy('fecha', 'desc')
                                     ->paginate(5);

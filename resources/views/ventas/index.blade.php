@@ -6,6 +6,7 @@
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <p>{{ $mensaje }}</p>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
         </div>
     @endif
     
@@ -30,19 +31,19 @@
             @endcan
         </div>
             @can('administrador')
-            @if(count($ventas)>0)
             <div class="col">
-
+                
                 <div class="form-floating mb-3">
                     <table class="table table-hover ">
                         <thead class="table-dark">
-                                <tr class="text-center">
-                                   
-                                    <th>Fecha</th>
-                                    <th>Valor</th>
-                                    <th>Acciones</th>
-                                </tr>
+                            <tr class="text-center">
+                                
+                                <th>Fecha</th>
+                                <th>Valor</th>
+                                <th>Acciones</th>
+                            </tr>
                         </thead>
+                        @if(count($ventas)>0)
                         <tbody>
                             @foreach($ventas as $item)
                                 <tr class="text-center">
@@ -66,10 +67,10 @@
                             @endforeach
                         </tbody> 
                     </table> 
+                    {{ $ventas->links() }}
                 </div>
-                {{ $ventas->links() }}
              
-        </div>
+            </div>
             </div>
         @else
             <p>La búsqueda no arrojó resultados.</p>
@@ -91,6 +92,26 @@
    
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
+    <script>
+        (() => {
+          'use strict'
+          
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          const forms = document.querySelectorAll('.needs-validation')
+      
+          // Loop over them and prevent submission
+              Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                  if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                    }
+                    
+                    form.classList.add('was-validated')
+                  }, false)
+                })
+              })()
+    </script>
     <script>
         const myTooltipEl = document.getElementById('myTooltip')
         const tooltip = bootstrap.Tooltip.getOrCreateInstance(myTooltipEl)
@@ -124,6 +145,13 @@
             })
         });
                 
+    </script>
+    <script>
+        const myToastEl = document.getElementById('myToast')
+        myToastEl.addEventListener('hidden.bs.toast', () => {
+        // do something...
+        })
+
     </script>
     
 @endsection

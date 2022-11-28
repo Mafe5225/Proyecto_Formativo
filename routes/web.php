@@ -8,6 +8,7 @@ use App\Http\Controllers\MovimientosController;
 use App\Http\Controllers\GananciasController;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,22 +19,26 @@ use App\Http\Controllers\GananciasController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+require __DIR__.'/auth.php';
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('inicio');
 });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+Route::get('inicio', function () {
+    return view('welcome');
+})->middleware(['auth']);
 
 Route::resource('ventas', VentasController::class)->middleware('auth');
 Route::resource('egresos', EgresosController::class)->middleware('auth');
 Route::resource('clientes', ClientesController::class)->middleware('auth');
 Route::resource('ganancias', GananciasController::class)->middleware('auth');
 Route::resource('movimientos', MovimientosController::class)->middleware('auth');
+
 
 
 

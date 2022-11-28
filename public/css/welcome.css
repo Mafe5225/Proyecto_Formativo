@@ -1,0 +1,49 @@
+body{
+    height: 620px;
+    background-image: linear-gradient(rgba(173, 173, 165, 0.616),rgba(82, 82, 77, 0.616) ), url(../images/fondoLogin.jpg);
+    opacity: 3;
+    background-size: 1320px;
+}
+#fondo{
+    height: 670px;
+    background-image: linear-gradient(rgba(173, 173, 165, 0.616),rgba(82, 82, 77, 0.616) ), url(../images/fondoLogin.jpg);
+    opacity: 3;
+    background-size: 1400px;
+}
+
+.btnClientes{
+    border-color: black;
+    margin-top: 30rem;
+    margin-left: 29.4rem;
+}
+
+.btnVentas{
+    border-color: black;
+    margin-top: 30rem;
+    margin-left: 1.5rem;
+}
+
+.btnEgresos{
+    border-color: black;
+    margin-top: 30rem;
+    margin-left: 2rem;
+}
+
+.btnGanancias{
+    border-color: black;
+    margin-top: 30rem;
+    margin-left: 2.1rem;
+}
+
+#Inincio{
+    margin: 10rem 0rem 0rem 28rem;
+}
+#btnInicio
+{
+    margin: 2rem 0rem 0rem 8rem;
+}
+#btnUsuario
+{
+    margin-left: 40rem;
+    margin-top: 31rem;
+}
