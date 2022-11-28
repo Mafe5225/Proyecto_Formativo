@@ -1,6 +1,7 @@
 body{
-    height: 700px;
+    background-repeat: no-repeat;
     background-image: linear-gradient(rgba(173, 173, 165, 0.616),rgba(82, 82, 77, 0.616) ), url(../images/fondoLogin.jpg);
+    height: 100vh;
     opacity: 3;
 }
 

@@ -1,11 +1,6 @@
 .overflow-scroll{
-    width: 28rem;
-    height: 10rem;
-}
-
-
-#historial{
-    margin-top: 3rem;
+    height: 23rem;
+    max-height: 23rem;
 }
 
 #abono{
@@ -13,6 +8,18 @@
 }
 
 #btnGuardar{
-    margin-left: -20rem;
+    margin-left: -16rem;
+}
+
+h4{
+    color: rgb(252, 31, 31);
+}
+
+.deuColor{
+    color: rgb(252, 31, 31);
+}
+
+.aboColor{
+    color: forestgreen;
 }
 

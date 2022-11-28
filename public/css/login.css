@@ -1,15 +1,14 @@
 body{
-    /* background-repeat: no-repeat; */
-    height: 700px;
+    background-repeat: no-repeat;
     background-image: linear-gradient(rgba(173, 173, 165, 0.616),rgba(82, 82, 77, 0.616) ), url(../images/fondoLogin.jpg);
     opacity: 3;
 }
 
 .logo
 {
-    width: 70%;
-    height: 70%;
-    top: -20%;
+    width: 60%;
+    height: 40%;
+    top: -8%;
 }
 .container
 {
@@ -22,7 +21,7 @@ body{
 .content{
     margin-top: 15%;
     box-shadow: 10px 25px 25px 25px rgba(63, 63, 63, 0.575);
-    background-color: #fff;
+    background-color: #fdfdfd;
     border-radius: 15px;
     padding: 3rem;
     position: relative;
@@ -34,6 +33,5 @@ body{
 
 #password{
     border-radius: 5px;
-    border-color: black;
 }
 

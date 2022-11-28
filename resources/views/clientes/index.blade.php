@@ -82,6 +82,7 @@
                 <p>La búsqueda no arrojó resultados.</p>
             </div>
         @endif
+
     </div>
     
 @endsection
@@ -103,13 +104,14 @@
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#dc4545',
-                confirmButtonText: 'Sí, eliminar!'
+                confirmButtonText: 'Sí, ¡eliminar!'
                 }).then((result) => {
                 if (result.isConfirmed) {
                     this.submit();
                 }
             })
         });
+
     </script>
 @endsection
 

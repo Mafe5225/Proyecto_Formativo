@@ -7,21 +7,34 @@
     <title>Crédito || Tienda Bella Vista</title>
     <link rel="stylesheet" href="{{ asset('css/credito.css') }}">
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
-
 </head>
 <body>
 
 </body>
 </html>
 
+</body>
 @extends('layouts.main')
 
 @section('content')
     @if ($mensaje = Session::get('exitoCredito'))
-        <div class="alert alert-success alert-dismissible fade show position-absolute" role="alert">
+
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        Hello, world! This is a toast message.
+      </div>
+    </div>
+  </div>
+
+        {{-- <div class="alert alert-success alert-dismissible fade show position-absolute top-50 end-50" role="alert">
             <p>{{ $mensaje }}</p>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
+        </div> --}}
     @endif
         
         {{-- Historial --}}
@@ -55,10 +68,10 @@
                             </div>
                     
                             <button type="submit" class="btn btn-outline-success mt-5" id="btnGuardar">Guardar</button>
+                            <a href="{{ route('clientes.index') }}" class="btn btn-outline-secondary mt-5 ms-3"><i class="fa-solid fa-arrow-left"></i></a>
                         </form>
                     </div>
                 </div>
-                <a href="{{ route('clientes.index') }}" class="btn btn-outline-secondary mt-3 ms-3" id="btnVolver">Volver</a>
             </div>
             <div class="col-7">
                 <div class="card text-center">
@@ -72,13 +85,14 @@
         
                         <div class="overflow-scroll">
                             @if(count($movimientos) > 0)
-                                <table class="table table-hover">
+                                <table class="table">
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
                                             <th>Valor</th>
                                         </tr>
                                     </thead>
+
                                     <tbody>
                                         @foreach($movimientos as $item)    
                                             @if($item->tipoMovimiento == 'deuda')    
@@ -107,24 +121,36 @@
 
 
 @section('scripts')
-<script>
-  (() => {
-    'use strict'
+    <script>
+        (() => {
+            'use strict'
     
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    const forms = document.querySelectorAll('.needs-validation')
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
 
-    // Loop over them and prevent submission
-        Array.from(forms).forEach(form => {
-          form.addEventListener('submit', event => {
-            if (!form.checkValidity()) {
-              event.preventDefault()
-              event.stopPropagation()
-              }
+            // Loop over them and prevent submission
+                Array.from(forms).forEach(form => {
+                    form.addEventListener('submit', event => {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
               
-              form.classList.add('was-validated')
-            }, false)
-          })
+                        form.classList.add('was-validated')
+                    }, false)
+                })
         })()
-        </script>
+
+
+                
+        const toastTrigger = document.getElementById('btnGuardar')
+        const toastLiveExample = document.getElementById('liveToast')
+        if (toastTrigger) {
+            toastTrigger.addEventListener('click', () => {
+                const toast = new bootstrap.Toast(toastLiveExample)
+
+                toast.show()
+            })
+        }
+    </script>
 @endsection
