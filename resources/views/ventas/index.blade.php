@@ -3,13 +3,15 @@
     @section('content')
     @can('administrador')
     @if ($mensaje = Session::get('exito'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{-- <div class="alert alert-success alert-dismissible fade show" role="alert">
             <p>{{ $mensaje }}</p>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
-        </div>
-    @endif
-    
+        </div> --}}
+        
+
+        @endif
+        
     <div class="row my-3">
         <div class="col">
             
@@ -25,10 +27,10 @@
                           <input type="date" class="form-control" id="fecha" name="fecha" placeholder="Fecha de la venta"  value="<?php echo date("Y-n-j"); ?>"required>
                           <label for="fecha">Fecha de la venta</label>
                         </div>
-                    <button type="submit" class="btn btn-success">Guardar</button>
-                    
+                        <button type="submit"  id="liveToastBtn" class="btn btn-success">Guardar</button>
+                        
               </form>
-            @endcan
+              @endcan
         </div>
             @can('administrador')
             <div class="col">
@@ -47,11 +49,11 @@
                         <tbody>
                             @foreach($ventas as $item)
                                 <tr class="text-center">
-                                 
+                                    
                                     <td>{{ $item->fecha}}</td>
                                     <td>${{number_format( $item->gesVentas) }}</td>
                                     <td class="d-flex justify-content-center">
-                                            @can('administrador')
+                                        @can('administrador')
                                             <div class="row  ">                         
                                                 <a href="{{ route('ventas.edit', $item->id) }}" class="btn btn-outline-warning  me-1 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Actualizar"><i class="fa-solid fa-pen-to-square"></i></a>
                                                 {{-- <form action="{{ route('ventas.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
@@ -60,8 +62,8 @@
                                                         <button type="submit" class="btn btn-outline-danger rounded-circle"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Eliminar">
                                                             <i class="fa-solid fa-trash-can"></i>
                                                         </button>
-                                                </form> --}}
-                                            @endcan
+                                                    </form> --}}
+                                                    @endcan
                                     </td>
                                 </tr>
                             @endforeach
@@ -69,48 +71,75 @@
                     </table> 
                     {{ $ventas->links() }}
                 </div>
-             
+                
             </div>
-            </div>
+        </div>
+       
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <img src="..." class="rounded me-2" alt="...">
+        <strong class="me-auto">Bootstrap</strong>
+        <small>11 mins ago</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        Hello, world! This is a toast message.
+      </div>
+    </div>
+  </div>
+  
         @else
-            <p>La búsqueda no arrojó resultados.</p>
+        <p>La búsqueda no arrojó resultados.</p>
         @endif
         @endcan
         @can('usuario')
         
         
-
+        
         <p class="fs-4 ms-4 fa-fade">  <i class="fa-solid text-danger fa-triangle-exclamation fa-fade"></i>No tienes permiso para estas funciones <i class="fa-solid text-danger fa-triangle-exclamation fa-fade"></i>
             <a href="{{ route('clientes.index') }}" id="myTooltip" class="btn btn-warning  me-1 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top"><i class="fa-solid fa-left-long"></i></a>
         </p>
         @endcan
     </div>
     
-@endsection
-
+    @endsection
+    
 @section('scripts')
-   
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
+
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
     <script>
         (() => {
           'use strict'
           
           // Fetch all the forms we want to apply custom Bootstrap validation styles to
           const forms = document.querySelectorAll('.needs-validation')
-      
+          
           // Loop over them and prevent submission
-              Array.from(forms).forEach(form => {
+          Array.from(forms).forEach(form => {
                 form.addEventListener('submit', event => {
-                  if (!form.checkValidity()) {
-                    event.preventDefault()
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
                     event.stopPropagation()
-                    }
-                    
-                    form.classList.add('was-validated')
-                  }, false)
+                }
+                
+                form.classList.add('was-validated')
+            }, false)
                 })
-              })()
+            })()
+            </script>
+    <script>
+        const toastTrigger = document.getElementById('liveToastBtn')
+        const toastLiveExample = document.getElementById('liveToast')
+        if (toastTrigger) {
+            toastTrigger.addEventListener('click', () => {
+            const toast = new bootstrap.Toast(toastLiveExample)
+            
+            toast.show()
+        })
+    }
+    
     </script>
     <script>
         const myTooltipEl = document.getElementById('myTooltip')
