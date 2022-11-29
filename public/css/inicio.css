@@ -1,0 +1,12 @@
+body{
+    height: 670px;
+    background-image: linear-gradient(rgba(173, 173, 165, 0.616),rgba(82, 82, 77, 0.616) ), url(../images/fondo.jpg);
+    opacity: 3;
+    background-size: 1400px;
+}
+
+.btnSeccion{
+    border-color: black;
+    margin-top: 27rem;
+    margin-left: 36.5rem;
+}

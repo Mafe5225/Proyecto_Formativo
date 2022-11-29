@@ -23,3 +23,9 @@ h4{
     color: forestgreen;
 }
 
+.alert{
+    margin-top: 5rem;
+    position: relative;
+    left: 17rem;
+}
+

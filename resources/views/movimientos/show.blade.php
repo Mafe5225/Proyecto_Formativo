@@ -18,23 +18,10 @@
 
 @section('content')
     @if ($mensaje = Session::get('exitoCredito'))
-
-
-<div class="toast-container position-fixed bottom-0 end-0 p-3">
-    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header">
-        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-      </div>
-      <div class="toast-body">
-        Hello, world! This is a toast message.
-      </div>
-    </div>
-  </div>
-
-        {{-- <div class="alert alert-success alert-dismissible fade show position-absolute top-50 end-50" role="alert">
+        <div class="alert alert-success alert-dismissible fade show position-absolute top-50 end-50 ms-2 translate-middle" role="alert">
             <p>{{ $mensaje }}</p>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div> --}}
+        </div>
     @endif
         
         {{-- Historial --}}
@@ -49,6 +36,7 @@
                         <form action="{{ route('movimientos.store') }}" method="post" class="needs-validation" novalidate>
                             @csrf
                             <input type="hidden" name="cliente_id" value="{{$clientes->id}}">
+                            <input type="hidden" name="fecha" value="<?php echo date("y-n-j"); ?>">
                             <div class="input-group mb-3 mt-1">
                                 <label class="input-group-text" for="valor">$</label>
                                 <input type="number" class="form-control" id="valor" name="valor" minlength="0" maxlength="6" required>

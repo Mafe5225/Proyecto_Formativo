@@ -19,13 +19,21 @@ use App\Http\Controllers\GananciasController;
 |
 */
 
+require __DIR__.'/auth.php';
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('inicio');
 });
+
+Route::get('inicio', function () {
+    return view('welcome');
+})->middleware(['auth']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+
 
 require __DIR__.'/auth.php';
 Route::resource('ventas', VentasController::class)->middleware('auth');

@@ -14,10 +14,15 @@
     <img src="{{ asset('images/logoTienda.png') }}" style="width: 350px" class="position-absolute top-50 start-50 translate-middle" > 
 
     <div class="position-relative">
-        <a href="{{route('clientes.index') }}" class="btn btn-dark btnClientes translate-middle">Clientes</a>
-        <a href="{{route('ventas.index') }}" class="btn btn-dark btnVentas translate-middle">Ventas</a>
-        <a href="{{route('egresos.index') }}" class="btn btn-dark btnEgresos translate-middle">Egresos</a>
-        <a href="{{route('ganancias.index') }}" class="btn btn-dark btnGanancias translate-middle">Ganancias</a>
+        @can('administrador')
+            <a href="{{route('clientes.index') }}" class="btn btn-dark btnClientes translate-middle">Clientes</a>
+            <a href="{{route('ventas.index') }}" class="btn btn-dark btnVentas translate-middle">Ventas</a>
+            <a href="{{route('egresos.index') }}" class="btn btn-dark btnEgresos translate-middle">Egresos</a>
+            <a href="{{route('ganancias.index') }}" class="btn btn-dark btnGanancias translate-middle">Ganancias</a>
+        @endcan
+        @can('usuario')
+            <a href="{{route('clientes.index') }}" class="btn btn-dark btnClientesU">Clientes</a>
+        @endcan
     </div>
 
     

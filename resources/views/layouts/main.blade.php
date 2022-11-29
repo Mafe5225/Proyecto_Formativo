@@ -14,7 +14,8 @@
     <img src="{{ asset('images/logoTiendaNavbar.png') }}" alt="Logo Tienda Bella Vista" class="logo ms-4">
         <div class="container">
 
-            <ul class="navbar-nav text-white position-absolute mt-1 end-0" id="ges">
+        @can('administrador')
+            <ul class="navbar-nav text-white  position-absolute mt-1 end-0" id="ges">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa-solid fa-bars"></i> Gestiones
@@ -30,6 +31,7 @@
                     </ul>
                 </li>
             </ul>
+        @endcan
 
             <ul class="navbar-nav text-white position-absolute mt-1 end-0 me-4" >
                 <li class="nav-item dropdown">

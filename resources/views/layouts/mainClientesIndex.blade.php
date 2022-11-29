@@ -14,22 +14,24 @@
     <img src="{{ asset('images/logoTiendaNavbar.png') }}" alt="Logo Tienda Bella Vista" class="logo ms-4">
     <div class="container">
         
-        <ul class="navbar-nav text-white  position-absolute mt-1 end-0" id="ges">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fa-solid fa-bars"></i> Gestiones
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{{ route('clientes.index') }}">Gestión de clientes</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="{{ route('ventas.index') }}">Gestión de ventas</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="{{ route('egresos.index') }}">Gestión de egresos </a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="{{ route('ganancias.index') }}">Gestion de ganancias </a></li>
-                </ul>
-            </li>
-        </ul>
+        @can('administrador')
+            <ul class="navbar-nav text-white  position-absolute mt-1 end-0" id="ges">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-bars"></i> Gestiones
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ route('clientes.index') }}">Gestión de clientes</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{{ route('ventas.index') }}">Gestión de ventas</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{{ route('egresos.index') }}">Gestión de egresos </a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{{ route('ganancias.index') }}">Gestion de ganancias </a></li>
+                    </ul>
+                </li>
+            </ul>
+        @endcan
 
         <form class="d-flex position-absolute top-1 end-50" role="search">
             <input class="form-control me-2" type="search" placeholder="Buscar cliente por ID..." name="buscar" aria-label="Buscar">
