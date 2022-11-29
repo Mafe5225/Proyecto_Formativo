@@ -3,14 +3,16 @@
     @section('content')
     @can('administrador')
     @if ($mensaje = Session::get('exito'))
-    {{-- <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <p>{{ $mensaje }}</p>
+
+        <div class="alert alert-success alert-dismissible fade show  position-fixed bottom-0 end-0 mx-4" role="alert" >
+            <p id="MensajeExi">{{ $mensaje }}</p>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
-        </div> --}}
-        
+        </div>
 
-        @endif
+    @endif
+        
+        
         
     <div class="row my-3">
         <div class="col">
@@ -27,8 +29,8 @@
                           <input type="date" class="form-control" id="fecha" name="fecha" placeholder="Fecha de la venta"  value="<?php echo date("Y-n-j"); ?>"required>
                           <label for="fecha">Fecha de la venta</label>
                         </div>
-                        <button type="submit"  id="liveToastBtn" class="btn btn-success">Guardar</button>
-                        
+                        <button type="submit"  id="guardar" class="btn btn-success">Guardar</button>
+
               </form>
               @endcan
         </div>
@@ -75,19 +77,7 @@
             </div>
         </div>
        
-<div class="toast-container position-fixed bottom-0 end-0 p-3">
-    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header">
-        <img src="..." class="rounded me-2" alt="...">
-        <strong class="me-auto">Bootstrap</strong>
-        <small>11 mins ago</small>
-        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-      </div>
-      <div class="toast-body">
-        Hello, world! This is a toast message.
-      </div>
-    </div>
-  </div>
+
   
         @else
         <p>La búsqueda no arrojó resultados.</p>
@@ -129,18 +119,18 @@
                 })
             })()
             </script>
-    <script>
-        const toastTrigger = document.getElementById('liveToastBtn')
-        const toastLiveExample = document.getElementById('liveToast')
-        if (toastTrigger) {
-            toastTrigger.addEventListener('click', () => {
-            const toast = new bootstrap.Toast(toastLiveExample)
+            <script>
+                const toastTrigger = document.getElementById('guardar')
+                const toastLiveExample = document.getElementById('liveToast')
+                if (toastTrigger) {
+                    toastTrigger.addEventListener('click', () => {
+                    const toast = new bootstrap.Toast(toastLiveExample)
+                    
+                    toast.show()
+                })
+            }
             
-            toast.show()
-        })
-    }
-    
-    </script>
+            </script>
     <script>
         const myTooltipEl = document.getElementById('myTooltip')
         const tooltip = bootstrap.Tooltip.getOrCreateInstance(myTooltipEl)

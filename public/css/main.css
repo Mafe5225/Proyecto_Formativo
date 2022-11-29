@@ -44,7 +44,19 @@
 .aboColor{
     background-color: rgb(115, 218, 140);
 }
-/* 
-h4{
-    color: red;
+
+/* #MensajeExi{
+    position: relative;
+    animation-duration: 6s;
+    animation: slidein;
+}
+
+@keyframes slidein {
+    from{
+        margin-left: 100%;
+        width: 300%;
+    }
+    to{
+        margin-right: 100%;
+    }
 } */

@@ -13,27 +13,11 @@
     @endcan
 
     @if ($mensaje = Session::get('exito'))
-        {{-- <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <p>{{ $mensaje }}</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div> --}}
-        <button type="button" class="btn btn-primary" id="liveToastBtn">hola</button>
-
-        <div class="toast-container position-fixed bottom-0 end-0 p-3">
-            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-header">
-                <img src="..." class="rounded me-2" alt="...">
-                <strong class="me-auto">Bootstrap</strong>
-                <small>11 mins ago</small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body">
-                Hello, world! This is a toast message.
-                </div>
+            <div class="alert alert-success alert-dismissible fade show  position-fixed bottom-0 end-0 mx-4" role="alert" >
+                <p id="MensajeExi">{{ $mensaje }}</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-        </div>
-
-    @endif
+        @endif
     
     <div class="my-3">
        
@@ -45,7 +29,7 @@
                             </div>
                         @endif
                         <div class="form-floating mb-3">
-                            <table class="table table-hover table-bordered border-dark">
+                            <table class="table table-hover border-dark">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Nombre</th>

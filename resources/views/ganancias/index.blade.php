@@ -2,6 +2,7 @@
 @section('titulo', 'Total de ganancias')
 @section('content')
 @can('administrador')
+
     @if(count($egresos)>0 or count($ventas)>0)  
         
     <div class="row ">

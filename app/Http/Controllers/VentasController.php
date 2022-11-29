@@ -52,7 +52,7 @@ class VentasController extends Controller
             // abort(403);
             return redirect()->route('ventas.index');
         }
-        return view('ventas.insert');
+        
     }
 
     /**

@@ -4,8 +4,8 @@
 
     @can('administrador')
         @if ($mensaje = Session::get('exito'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <p>{{ $mensaje }}</p>
+            <div class="alert alert-success alert-dismissible fade show  position-fixed bottom-0 end-0 mx-4" role="alert" >
+                <p id="MensajeExi">{{ $mensaje }}</p>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
