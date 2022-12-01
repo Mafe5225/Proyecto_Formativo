@@ -40,7 +40,7 @@
                 </tbody>
             </table>
     
-            <a href="{{ route('clientes.index') }}" class="btn btn-secondary">Volver</a>
+            <a href="{{ route('clientes.index') }}" class="btn btn-outline-secondary"><i class="fa-solid fa-arrow-left"></i></a>
         </div>
         <div class="col-sm-3"></div>
     </div>

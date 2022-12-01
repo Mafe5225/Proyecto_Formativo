@@ -12,8 +12,17 @@ class EgresosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if($request)
+        {
+            $query = $request->buscar1;
+            $egresos = Egresos::where('fecha', 'LIKE', $query)
+                                    ->orderBy('fecha', 'desc')
+                                    ->paginate(5);
+            // 
+            return view('egresos.index', compact('egresos', 'query'));
+        }
         $egresos = Egresos::orderBy('fecha', 'asc')
         ->paginate(5);
 

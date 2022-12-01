@@ -26,7 +26,7 @@
             <label for="nombre">Nombre</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="number" class="form-control" id="cedula" name="cedula" placeholder="Cedula" value="{{ $clientes->cedula }}" required>
+            <input disabled type="number" class="form-control" id="cedula" name="cedula" placeholder="Cedula" value="{{ $clientes->cedula }}" required>
             <label for="cedula">Cédula</label>
         </div>
         <div class="form-floating mb-3">
@@ -39,8 +39,8 @@
         </div>
 
 
-        <button type="submit" class="btn btn-secondary">Guardar</button>
-        <a href="{{ route('clientes.index') }}" class="btn btn-danger">Cancelar</a>
+        <button type="submit" class="btn btn-outline-success">Guardar</button>
+        <a href="{{ route('clientes.index') }}" class="btn btn-outline-danger">Cancelar</a>
     </form>
 @endsection
 

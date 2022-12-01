@@ -18,7 +18,7 @@
             <ul class="navbar-nav text-white  position-absolute mt-1 end-0" id="ges">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-solid fa-bars"></i> Gestiones
+                        <i class="fa-solid fa-inbox  fa-beat-fade mx-2"></i> Gestiones
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{{ route('clientes.index') }}">Gestión de clientes</a></li>

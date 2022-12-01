@@ -37,8 +37,8 @@
       <label for="direccion">Dirección</label>
     </div>
 
-    <button type="submit" class="btn btn-secondary">Guardar</button>
-    <a href="{{ route('clientes.index') }}" class="btn btn-danger">Cancelar</a>
+    <button type="submit" class="btn btn-outline-success">Guardar</button>
+    <a href="{{ route('clientes.index') }}" class="btn btn-outline-danger">Cancelar</a>
 </form>
 
 @endsection
