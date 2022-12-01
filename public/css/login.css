@@ -1,0 +1,47 @@
+body{
+    height: 660px;
+    background-image: linear-gradient(rgba(173, 173, 165, 0.616),rgba(82, 82, 77, 0.616) ), url(../images/fondo.jpg);
+    opacity: 3;
+    background-size: 1320px;
+}
+
+.logo
+{
+    width: 60%;
+    height: 40%;
+    top: -8%;
+}
+.container
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.content{
+    margin-top: 15%;
+    box-shadow: 10px 25px 25px 25px rgba(63, 63, 63, 0.575);
+    background-color: #fdfdfd;
+    border-radius: 15px;
+    padding: 3rem;
+    position: relative;
+}
+
+#email{
+    border-radius: 5px;
+}
+
+#password{
+    border-radius: 5px;
+}
+
+body{
+    background-image: linear-gradient(rgba(29, 26, 26, 0.479),rgba(29, 26, 26, 0.479)), url(../images/fondoLogin.jpg);
+    margin: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 30vh;
+}
+

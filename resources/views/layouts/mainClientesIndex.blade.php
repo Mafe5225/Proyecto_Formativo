@@ -11,7 +11,7 @@
 </head>
 <body class="fondo">
 <nav class="navbar navbar-expand-lg shadow" id="navbar">
-    <a href="/"><img  src="{{ asset('images/logoTienda.png') }}" alt="Logo Tienda Bella Vista" class="logo ms-4" ></a> 
+    <img  src="{{ asset('images/logoTiendaNavbar.png') }}" alt="Logo Tienda Bella Vista" class="logo ms-4" >
     <div class="container">
         
         

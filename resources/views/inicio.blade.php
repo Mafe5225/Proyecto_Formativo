@@ -18,7 +18,7 @@
          
 
                 <div>
-                    <a href="inicio" class="btn btn-dark" id="btnInicio">Clientes</a>
+                    <a href="inicio" class="btn btn-dark" id="btnInicio">Iniciar sección</a>
                     {{-- <a href="{{route('ventas.index') }}" class="btn btn-dark btnVentas translate-middle">Ventas</a>
                     <a href="{{route('egresos.index') }}" class="btn btn-dark btnEgresos translate-middle">Egresos</a>
                     <a href="{{route('ganancias.index') }}" class="btn btn-dark btnGanancias translate-middle">Ganancias</a> --}}

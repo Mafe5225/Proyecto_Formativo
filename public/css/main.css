@@ -20,9 +20,6 @@
     margin-top: 4rem;
 }
 
-.logo{
-    max-width: 70px;
-}
 
 #Abo{
     margin-right: 50px;
@@ -43,6 +40,10 @@
 
 .aboColor{
     background-color: rgb(115, 218, 140);
+}
+
+.logo{
+    max-width: 200px;
 }
 
 /* #MensajeExi{
