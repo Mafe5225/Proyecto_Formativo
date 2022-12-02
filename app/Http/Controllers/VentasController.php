@@ -24,16 +24,16 @@ class VentasController extends Controller
     {
         if($request)
         {
-            $query = $request->buscar;
-            $ventas = Ventas::where('id', 'LIKE', '%' . $query . '%')
-                                    ->orderBy('fecha', 'asc')
+            $query = $request->buscar1;
+            $ventas = Ventas::where('fecha', 'LIKE', $query )
+                                    ->orderBy('fecha', 'desc')
                                     ->paginate(5);
             // 
             return view('ventas.index', compact('ventas', 'query'));
         }
          // Obtener todos los registros
          
-         $ventas = Ventas::orderBy('fecha', 'asc')
+         $ventas = Ventas::orderBy('fecha', 'desc')
          ->paginate(5);
 
         // enviar a la vista
@@ -52,7 +52,7 @@ class VentasController extends Controller
             // abort(403);
             return redirect()->route('ventas.index');
         }
-        return view('ventas.insert');
+        
     }
 
     /**

@@ -46,6 +46,7 @@
                 <thead>
                     <tr>
                         <th>Nombre</th>
+                        <th>Cédula</th>
                         <th>Acciones</th>
                         <th>Crédito</th>
                     </tr>
@@ -54,6 +55,7 @@
                     @foreach($clientes as $item)
                         <tr>
                             <td>{{ $item->nombre }}</td>
+                            <td>{{ $item->cedula }}</td>
                             <td class="d-flex">
                                 <a href="{{ route('clientes.show', $item->id) }}" class="btn btn-outline-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye"></i></a>
                                 @can(['administrador'])
@@ -68,7 +70,7 @@
                                 @endcan
                             </td>
                             <td>
-                                <a href="{{ route('movimientos.show', $item->id) }}" class="btn btn-outline-success justify-content-start me-1 rounded-circle"><i class="fa-solid fa-dollar-sign"></i></a>
+                                <a href="{{ route('movimientos.show', $item->id) }}" class="btn btn-outline-success justify-content-start me-1 rounded-circle"><i class="fa-solid fa-sack-dollar"></i></a>
                             </td>
                         </tr>
                     @endforeach

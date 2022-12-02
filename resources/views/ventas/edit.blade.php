@@ -14,48 +14,47 @@
 
 @extends('layouts.main')
 
-@section('titulo','Modificacion de ventas')
-@section('content')
-  <form action="{{ route('ventas.update', $ventas->id) }}" method="post" class="needs-validation" novalidate>
-      @csrf
-      @method('PUT')
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="gesVentas" name="gesVentas" placeholder="Venta" value="{{ $ventas->gesVentas }}" required>
-        <label for="gesVentas">Total venta</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input type="date" class="form-control" id="fecha" name="fecha" placeholder="fecha" value="{{ $ventas->fecha }}" required>
-        <label for="fecha">fecha</label>
-      </div>
+  @section('titulo','Editar registro de ventas')
+    @section('content')
+      <form action="{{ route('ventas.update', $ventas->id) }}" method="post" class="needs-validation" novalidate>
+        @csrf
+        @method('PUT')
+        <div class="form-floating mb-3">
+          <input type="double" class="form-control" id="gesVentas" name="gesVentas" placeholder="Venta" value="{{ $ventas->gesVentas }}" required>
+          <label for="gesVentas">Valor de la venta</label>
+        </div>
 
+        <div class="form-floating mb-3">
+          <input type="date" class="form-control" id="fecha" name="fecha" placeholder="fecha" value="{{ $ventas->fecha }}" required>
+          <label for="fecha">Fecha</label>
+        </div>
 
-
-      <button type="submit" class="btn btn-success">Guardar</button>
-    <a href="{{ route('ventas.index') }}" class="btn btn-danger">Cancelar</a>
-  </form>
+        <button type="submit" class="btn btn-outline-success">Guardar</button>
+        <a href="{{ route('ventas.index') }}" class="btn btn-outline-danger">Cancelar</a>
+      </form>
  
-@endsection
-@section('script')
+  @endsection
+
+
+@section('scripts')
     <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (() => {
-    'use strict'
+        (() => {
+            'use strict'
+    
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
 
-     // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    const forms = document.querySelectorAll('.needs-validation')
-
-    // Loop over them and prevent submission
-    Array.from(forms).forEach(form => {
-      form.addEventListener('submit', event => {
-        if (!form.checkValidity()) {
-             event.preventDefault()
-             event.stopPropagation()
-         }
-
-        form.classList.add('was-validated')
-        }, false)
-    })
-    })()
+            // Loop over them and prevent submission
+                Array.from(forms).forEach(form => {
+                    form.addEventListener('submit', event => {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+              
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
     </script>
-
 @endsection

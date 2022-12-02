@@ -17,11 +17,11 @@
                     
                         <div class="form-floating mb-3">
                             <input type="double" class="form-control" id="gesEgresos" name="gesEgresos" placeholder="Egreso a registrar" required>
-                            <label for="gesEgresos">Gasto a registrar</label>
+                            <label for="gesEgresos">Valor del egreso a registrar</label>
                         </div>
                        
                         <div class="form-floating mb-3">
-                            <input type="date" class="form-control" id="fecha" name="fecha" placeholder="Fecha de la egreso"  value="<?php echo date("Y-n-j"); ?>" required>
+                            <input type="date" class="form-control" id="fecha" name="fecha" placeholder="Fecha de la egreso"  value="<?php echo date("y-n-j"); ?>" required>
                             <label for="fecha">Fecha del gasto</label>
                         </div>
                         <div class="form-floating mb-3">
@@ -59,7 +59,9 @@
                         {{ $egresos->links() }}
         
                     @else
-                        <p> No hay resultados.</p>
+                        <div class="alert  alert-danger" role="alert">
+                            <p>La búsqueda no arrojó resultados.</p>
+                        </div>
                     @endif
                 </div>
             </div>
