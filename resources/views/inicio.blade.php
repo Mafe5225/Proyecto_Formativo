@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
 </head>
 <body>
-    <img src="{{ asset('images/logoTienda.png') }}" style="width: 350px" class="position-absolute top-50 start-50 translate-middle" > 
+    <img src="{{ asset('images/logoTienda.png') }}" style="width: 330px" class="position-absolute top-50 start-50 translate-middle" > 
     <a href="inicio" class="btn btn-dark btnSesion">Iniciar sesión</a>
 
     <script src="{{ asset('css/bootstrap/js/bootstrap.bundle.js') }}"></script>
