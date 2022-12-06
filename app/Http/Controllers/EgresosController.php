@@ -41,7 +41,7 @@ class EgresosController extends Controller
             // abort(403);
             return redirect()->route('egresos.index');
         }
-        return view('egresos.insert');
+
     }
 
     /**
@@ -74,9 +74,10 @@ class EgresosController extends Controller
      * @param  \App\Models\Egresos  $egresos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Egresos $egresos)
+    public function edit($id)
     {
-        //
+        $egresos = Egresos::findOrFail($id);
+        return view('egresos.edit', compact('egresos'));
     }
 
     /**

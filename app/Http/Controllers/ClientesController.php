@@ -121,6 +121,6 @@ class ClientesController extends Controller
     {
         $clientes = Clientes::findOrFail($id);
         $clientes->delete();
-        return redirect()->route('clientes.index');
+        return redirect()->route('clientes.index')->with('exito', '¡El registro se ha eliminado satisfactoriamente!');
     }
 }

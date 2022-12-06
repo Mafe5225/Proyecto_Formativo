@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registro de ventas || Tienda Bella Vista</title>
+    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
+</head>
+<body>
+
+</body>
+</html>
+
 @extends('layouts.ganancias')
     @section('titulo','Registro de venta')
         @section('content')
@@ -14,10 +28,9 @@
                     <form action="{{ route('ventas.store') }}" method="post" class="needs-validation" novalidate>
                         @csrf
                         <div class="form-floating mb-3">
-                            <input type="double" class="form-control" id="gesVentas" name="gesVentas" placeholder="Total a pagar" required>
+                            <input type="number" class="form-control" id="gesVentas" name="gesVentas" placeholder="Total a pagar" required>
                             <label for="gesVentas">Valor de la venta</label>
                         </div>
-                   
                         <div class="form-floating mb-3">
                             <input type="date" class="form-control" id="fecha" name="fecha" placeholder="Fecha de la venta"  value="<?php echo date("Y-n-j"); ?>"required>
                             <label for="fecha">Fecha de la venta</label>
@@ -25,7 +38,6 @@
                         <button type="submit"  id="guardar" class="btn btn-outline-success">Guardar</button>
                     </form>
                 </div>
-        
 
                 <div class="col-5">
                     <div class="form-floating mb-3">
@@ -59,10 +71,11 @@
 
   
                 @else
-                <div class="alert  alert-danger" role="alert">
-                    <p>La búsqueda no arrojó resultados.</p>
-                </div>
-        @endif
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <p>La búsqueda no arrojó resultados.</p>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
         @endcan
         @can('usuario')
         

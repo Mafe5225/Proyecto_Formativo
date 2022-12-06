@@ -94,8 +94,9 @@
         </table>
                 
         @else
-            <div class="alert  alert-danger" role="alert">
-                <p>No se a registrado movimiento en la tienda. </p>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <p>No se han registrado movimintos en la tienda.</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
     @endcan

@@ -34,7 +34,7 @@
     @endif
     
     <div class="my-3">
-        @if (count($clientes) > 0)
+        @if (count($clientes) > 1)
 
             @if ($query)
                 <div class="alert  alert-success" role="alert">
@@ -45,8 +45,8 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Nombre</th>
                         <th>Cédula</th>
+                        <th>Nombre</th>
                         <th>Acciones</th>
                         <th>Crédito</th>
                     </tr>
@@ -54,8 +54,8 @@
                 <tbody>
                     @foreach($clientes as $item)
                         <tr>
-                            <td>{{ $item->nombre }}</td>
                             <td>{{ $item->cedula }}</td>
+                            <td>{{ $item->nombre }}</td>
                             <td class="d-flex">
                                 <a href="{{ route('clientes.show', $item->id) }}" class="btn btn-outline-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye"></i></a>
                                 @can(['administrador'])
@@ -80,8 +80,9 @@
             {{ $clientes->links() }}
    
         @else
-            <div class="alert  alert-danger" role="alert">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <p>La búsqueda no arrojó resultados.</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
 
